@@ -20,3 +20,7 @@ Route::get('/', function () {
     dd($allUser);
     return view('welcome');
 });
+
+Route::get('/a', function () {
+    return view('abc');
+});
