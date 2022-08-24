@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 class HomeUserController extends Controller
 {
     public function index() {
-        return "Trang chủ user";
+        $abc = "Hai";
+        return view('user/index', compact('abc'));
     }
 }
