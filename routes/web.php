@@ -5,26 +5,21 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\admin\HomeAdminController;
 use App\Http\Controllers\user\HomeUserController;
 use App\Http\Controllers\user\AccountController;
-use App\Http\Controllers\HomeController;
 
 use App\Models\User;
 use GuzzleHttp\Psr7\Request;
 
 // Routes user
 Route::prefix('/')->group(function(){
-    Route::get('/', [HomeUserController::class, 'index'])->name('home');
+    Route::get('/', [HomeUserController::class, 'index'])->name('homeuser');
 
     Route::get('/page/{page?}', [HomeUserController::class, 'page'])->where([
         'page'=>"[0-9]+"
     ])->name('pagehome');
 
-    Route::get('/form', function () {
-        return view('form');
-    })->name('formne');
+    Route::get('/form', [HomeUserController::class, 'viewform'])->name('formne');
 
-    Route::post('/form', function () {
-        return "Post ne";
-    });
+    Route::post('/form', [HomeUserController::class, 'getForm']);
 
     Route::put('/form', function () {
         return "Put ne";
@@ -32,6 +27,7 @@ Route::prefix('/')->group(function(){
 
     Route::prefix('/login')->group(function(){
         Route::get('/', [AccountController::class, 'login'])->name('login');
+        Route::post('/', [AccountController::class, 'checkLogin'])->name('checkLogin');
     });
     
 });

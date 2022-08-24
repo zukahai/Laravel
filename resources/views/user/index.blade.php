@@ -8,6 +8,6 @@
 </head>
 <body>
     <h1>Nội dung</h1>
-    <h1> {{$abc}} </h1>
+    <h2>{{$abc}}</h2>
 </body>
 </html>

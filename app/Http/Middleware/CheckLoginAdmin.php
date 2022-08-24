@@ -23,6 +23,6 @@ class CheckLoginAdmin
     }
 
     public function isLogin() {
-        return false;
+        return true;
     }
 }

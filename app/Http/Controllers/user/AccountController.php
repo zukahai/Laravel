@@ -14,4 +14,10 @@ class AccountController extends Controller
     public function login() {
         return View('admin/account/login');
     }
+
+    public function checkLogin(Request $request) {
+        $allData = $request->all();
+        dd($allData);
+        return View('admin.index');
+    }
 }

@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class HomeAdminController extends Controller
 {
     public function __construct() {
-        echo "Admin khoi dong";
+        echo "Admin khoi dong<br>";
     }
 
     public function index() {

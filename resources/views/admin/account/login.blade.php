@@ -7,7 +7,7 @@
     <title>Form</title>
 </head>
 <body>
-    <form action="/form" method="post">
+    <form action="" method="post">
         <input type="text" name="username" id="username" placeholder="username"> <br>
         <input type="password" name="password" id="password" placeholder="password"> <br>
         <!-- <input type="hidden" name="_method" value="PUT"> -->
