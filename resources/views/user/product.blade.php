@@ -1,5 +1,13 @@
 @extends('layouts.client')
 
+@section('title')
+    {{$title}}
+@endsection
+
+@section('content')
+    content
+@endsection
+
 @section('css')
     <style type="text/css">
         h1, h2, h3, h4, h5, h6{
