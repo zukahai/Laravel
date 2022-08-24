@@ -7,9 +7,12 @@ use Illuminate\Http\Request;
 
 class HomeUserController extends Controller
 {
+    public $data = [];
+
     public function index() {
-        $abc = "Hai";
-        return view('user.index', compact('abc'));
+        $this->data['abc'] = "Phan Đức Hải";
+        $this->data['array'] = ['Hai'=>'Linh', 'Sy'=>'na'];
+        return view('user.index', $this->data);
     }
 
     public function viewform() {
