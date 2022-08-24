@@ -24,7 +24,7 @@ class HomeUserController extends Controller
         if ($request->hasFile('file')) {
             $file = $request->file;
             $path = $file->store('images');
-            echo $path;
+            dd($path);
         } else {
             return "Vui long chon file";
         }

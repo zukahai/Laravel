@@ -7,6 +7,7 @@
     <title>Form</title>
 </head>
 <body>
+    <img src="storage/images/sO6hfaB8eQK2iV9f2DJOD69gwMves6eyyGqSkhq0.jpg" alt="22" srcset="">
     <form action="/form" method="post" enctype="multipart/form-data">
         <input type="text" name="name" id="name" placeholder="Name" value="<?php echo old('name', 'Default')?>">
         <input type="file" name="file" id="file" value="Chọn file">
