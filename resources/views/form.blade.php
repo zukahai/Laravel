@@ -9,7 +9,7 @@
 <body>
     <form action="/form" method="post">
         <input type="text" name="name" id="name" placeholder="Name">
-        <input type="hidden" name="_method" value="PUT">
+        <!-- <input type="hidden" name="_method" value="PUT"> -->
         <input type="hidden" name="_token" value="<?php echo csrf_token()?>">
         <input type="submit" value="Gửi">
     </form>
