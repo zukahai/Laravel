@@ -18,8 +18,18 @@ class HomeUserController extends Controller
 
     public function getForm(Request $request) {
         $allData = $request->all();
-        dd($allData);
+        // Kết hợp với old() để lưu dữ liệu cũ
+        $request->flash();
+        echo $request->file;
+        if ($request->hasFile('file')) {
+            $file = $request->file;
+            $path = $file->store('images');
+            echo $path;
+        } else {
+            return "Vui long chon file";
+        }
 
+        return view('form');
     }
 
     public function page($page=null) {

@@ -7,9 +7,9 @@
     <title>Form</title>
 </head>
 <body>
-    <form action="/form" method="post">
-        <input type="text" name="name" id="name" placeholder="Name">
-        <!-- <input type="hidden" name="_method" value="PUT"> -->
+    <form action="/form" method="post" enctype="multipart/form-data">
+        <input type="text" name="name" id="name" placeholder="Name" value="<?php echo old('name', 'Default')?>">
+        <input type="file" name="file" id="file" value="Chọn file">
         <input type="hidden" name="_token" value="<?php echo csrf_token()?>">
         <input type="submit" value="Gửi">
     </form>
