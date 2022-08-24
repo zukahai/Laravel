@@ -12,7 +12,10 @@
     </header>
     <main>
         <aside>
-            Main sideber
+            @section('sidebar')
+                @include('user.blocks.sidebar')
+            @show
+            
         </aside>
         <div class="content">
             @yield('content')
