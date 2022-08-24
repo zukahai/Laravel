@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\admin\HomeAdminController;
 use App\Http\Controllers\user\HomeUserController;
 use App\Http\Controllers\user\AccountController;
+use App\Http\Controllers\user\ProductController;
 
 use App\Models\User;
 use GuzzleHttp\Psr7\Request;
@@ -20,6 +21,8 @@ Route::prefix('/')->group(function(){
     Route::get('/form', [HomeUserController::class, 'viewform'])->name('formne');
 
     Route::get('/view', [HomeUserController::class, 'view']);
+
+    Route::get('/product', [ProductController::class, 'home']);
 
     Route::post('/form', [HomeUserController::class, 'getForm']);
 

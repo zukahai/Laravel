@@ -43,7 +43,7 @@ class HomeUserController extends Controller
     }
 
     public function view() {
-        $this->data['title'] = 'HaiZula';
+        $this->data['title'] = 'HaiZuka';
         return view('user/view', $this->data);
     }
 }
