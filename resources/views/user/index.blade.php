@@ -7,6 +7,7 @@
     <title>Home user</title>
 </head>
 <body>
+    <a href="{{route('formne')}}" target="_blank" rel="noopener noreferrer">Form</a>
     <h1>Nội dung</h1>
     <h2>{{$abc}}</h2>
     @for($i = 0; $i < 5; $i++)
