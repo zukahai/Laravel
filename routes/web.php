@@ -10,13 +10,20 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/a', function () {
-    return view('abc');
-});
+Route::get('/page/{page?}', function ($page=null) {
+    $content = "";
+    if ($page == null)
+        $content .= "Khong co page" . "<br>";
+    else
+        $content .= "Page = ".$page."<br>";
+    return $content;
+})->where([
+    'page'=>"[0-9]+"
+])->name('pagehome');
 
 Route::get('/form', function () {
     return view('form');
-});
+})->name('formne');
 
 Route::post('/form', function () {
     return "Post ne";

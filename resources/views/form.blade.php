@@ -13,5 +13,7 @@
         <input type="hidden" name="_token" value="<?php echo csrf_token()?>">
         <input type="submit" value="Gửi">
     </form>
+
+    <a href="<?php echo route('pagehome', ['page'=>3])?>">Click to form</a>
 </body>
 </html>
