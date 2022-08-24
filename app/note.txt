@@ -1,0 +1,5 @@
+Khởi tạo project:
+composer create-project laravel/laravel example-app
+
+Chạy project:
+php artisan serve
