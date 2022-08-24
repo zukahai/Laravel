@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\admin\HomeAdminController;
 use App\Http\Controllers\user\HomeUserController;
+use App\Http\Controllers\user\AccountController;
 use App\Http\Controllers\HomeController;
 
 use App\Models\User;
@@ -28,14 +29,20 @@ Route::prefix('/')->group(function(){
     Route::put('/form', function () {
         return "Put ne";
     });
+
+    Route::prefix('/login')->group(function(){
+        Route::get('/', [AccountController::class, 'login'])->name('login');
+    });
+    
 });
 
 // Routes admin
-Route::prefix('admin')->middleware('checkadmin')->group(function(){
+Route::prefix('admin')->group(function(){
     Route::get('/', [HomeAdminController::class, 'index'])->name('admin');
+
+    Route::get('/account', [AccountController::class, 'index']);
+
     Route::get('/user', function(){
         return "Page Admin/home";
     });
 });
-
-Route::get('/login', [HomeController::class, 'login'])->name('login');

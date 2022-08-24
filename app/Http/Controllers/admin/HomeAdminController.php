@@ -8,6 +8,6 @@ use Illuminate\Http\Request;
 class HomeAdminController extends Controller
 {
     public function index() {
-        return "Trang chủ admin";
+        return View('admin/account/index');
     }
 }
