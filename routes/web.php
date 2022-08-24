@@ -3,17 +3,6 @@
 use Illuminate\Support\Facades\Route;
 use App\Models\User;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
 Route::get('/', function () {
     $user = new User();
     $allUser = $user::all();
@@ -23,4 +12,22 @@ Route::get('/', function () {
 
 Route::get('/a', function () {
     return view('abc');
+});
+
+Route::get('/form', function () {
+    return view('form');
+});
+
+Route::post('/form', function () {
+    return "Post ne";
+});
+
+Route::put('/form', function () {
+    return "Put ne";
+});
+
+Route::prefix('admin')->group(function(){
+    Route::get('/user', function(){
+        return "Page Admin/home";
+    });
 });
