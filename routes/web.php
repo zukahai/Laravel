@@ -19,6 +19,8 @@ Route::prefix('/')->group(function(){
 
     Route::get('/form', [HomeUserController::class, 'viewform'])->name('formne');
 
+    Route::get('/view', [HomeUserController::class, 'view']);
+
     Route::post('/form', [HomeUserController::class, 'getForm']);
 
     Route::put('/form', function () {

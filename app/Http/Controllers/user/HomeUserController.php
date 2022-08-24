@@ -41,4 +41,9 @@ class HomeUserController extends Controller
         else
             return "Page = ".$page;
     }
+
+    public function view() {
+        $this->data['title'] = 'HaiZula';
+        return view('user/view', $this->data);
+    }
 }
