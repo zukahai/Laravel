@@ -12,7 +12,7 @@ use GuzzleHttp\Psr7\Request;
 
 // Routes user
 Route::prefix('/')->group(function(){
-    Route::get('/', [HomeUserController::class, 'index']);
+    Route::get('/', [HomeUserController::class, 'index'])->name('home');
 
     Route::get('/page/{page?}', [HomeUserController::class, 'page'])->where([
         'page'=>"[0-9]+"
@@ -37,8 +37,8 @@ Route::prefix('/')->group(function(){
 });
 
 // Routes admin
-Route::prefix('admin')->group(function(){
-    Route::get('/', [HomeAdminController::class, 'index'])->name('admin');
+Route::prefix('admin')->middleware('CheckLoginAdmin')->group(function(){
+    Route::get('/', [HomeAdminController::class, 'index']);
 
     Route::get('/account', [AccountController::class, 'index']);
 
