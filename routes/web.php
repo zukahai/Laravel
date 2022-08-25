@@ -3,9 +3,10 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\admin\HomeAdminController;
+use App\Http\Controllers\admin\AccountController;
 use App\Http\Controllers\user\HomeUserController;
-use App\Http\Controllers\user\AccountController;
 use App\Http\Controllers\user\ProductController;
+
 
 use App\Models\User;
 use GuzzleHttp\Psr7\Request;
@@ -38,12 +39,11 @@ Route::prefix('/')->group(function(){
 });
 
 // Routes admin
-Route::prefix('admin')->middleware('CheckLoginAdmin')->group(function(){
+// ->middleware('CheckLoginAdmin')
+Route::prefix('admin')->group(function(){ 
     Route::get('/', [HomeAdminController::class, 'index']);
 
     Route::get('/account', [AccountController::class, 'index']);
 
-    Route::get('/user', function(){
-        return "Page Admin/home";
-    });
+    Route::get('/user', [AccountController::class, 'index']);
 });

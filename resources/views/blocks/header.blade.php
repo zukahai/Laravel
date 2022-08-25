@@ -9,7 +9,7 @@
                 <!-- hours -->
                 <div class="kf-h-group">
                     <i class="far fa-clock"></i>
-                    <em>Giờ mở cửa :</em> 08:00 am - 09:00 pm
+                    <em>Thời gian hiện tại :</em> {{date('H:i:s d-M-Y')}}
                 </div>
 
             </div>

@@ -1,14 +1,21 @@
 <?php
 
-namespace App\Http\Controllers\user;
+namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Account;
 
 class AccountController extends Controller
 {
     public function index() {
-        return View('admin/account/index');
+        $account = new Account();
+        $account->username = "linhne";
+        $account->password = "Hai ne";
+        $account->save();
+        $users = Account::all();
+        dd($users);
+        return "Hello user";
     }
 
     public function login() {
