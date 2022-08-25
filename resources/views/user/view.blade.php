@@ -16,15 +16,6 @@
     @endfor
 @endsection
 
-@section('css')
-    <style type="text/css">
-        body{
-            background: rgb(0, 173, 145);
-            color: #fa2;
-        }
-        header{
-            background: rgb(0, 32, 36);
-            color: rgb(152, 235, 250);
-        }
-    </style>
+@section('menu')
+    @include('blocks.header')
 @endsection

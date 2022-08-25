@@ -13,21 +13,25 @@
 </head>
 <body>
     
-    @include('blocks.header')
+    @yield('menu')
     
     <main class="py-5">
         <div class="container py-5 mt-5">
             <div class="row">
-                <div class="col-4">
-                    <aside>
-                        @section('sidebar')
-                            @include('blocks.sidebar')
-                        @show
-                    </aside>
+                <div class="col-0 col-lg-3 card my-1 mx-auto">
+                    <div class="card-body">
+                        <aside>
+                            @section('sidebar')
+                                @include('blocks.sidebar')
+                            @show
+                        </aside>
+                    </div>
                 </div>
-                <div class="col-8">
-                    <div class="content">
-                        @yield('content')
+                <div class="col-12 col-lg-8 card my-1">
+                    <div class="card-body">
+                        <div class="content">
+                            @yield('content')
+                        </div>
                     </div>
                 </div>
             </div>
