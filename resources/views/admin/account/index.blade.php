@@ -1,7 +1,7 @@
 @extends('layouts.client')
 
 @section('title')
-    Danh sách tài khoản
+   Danh sách tài khoản
 @endsection
 
 @section('menu')
@@ -10,7 +10,8 @@
 
 @section('sidebar')
     @parent
-    <h1>Danh sách tài khoản</h1>
+    <a class="text-danger"><div class="divider"><span></span><span>Test Sidebar</span><span></span></div></a>
+
 @endsection
 
 @section('content')

@@ -29,7 +29,7 @@
                 <!-- location -->
                 <div class="kf-h-group">
                     <i class="fas fa-map-marker-alt"></i>
-                    <em>Địa chỉ :</em> Nhóm Wibucian, thành phố Đà Nẵng
+                    <em>Địa chỉ :</em> Lung ta lung tung
                 </div>
 
             </div>

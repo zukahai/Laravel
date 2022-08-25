@@ -39,13 +39,14 @@ class AccountController extends Controller
     public function add(Request $request) {
         $request->validate(
             [
-                'username' => 'required|unique:accounts|max:15',
+                'username' => 'required|unique:accounts|max:15|alpha_dash',
                 'password' => 'required|min:6',
             ],
             [
                 'username.required' => 'Vui lòng nhập tên đăng nhập',
                 'username.unique' => 'Tên tài khoản đã được sử dụng',
                 'username.max' => 'Tên tài khoản không được quá 15 ký tự',
+                'username.alpha_dash' => 'Tên tài khoản không chứa ký tự đặc biệt',
                 'password.required' => 'Vui lòng nhập mật khẩu',
                 'password.min' => 'Mật khẩu phải 6 ký tự',
             ]
