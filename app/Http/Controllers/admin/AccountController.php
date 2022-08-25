@@ -5,6 +5,7 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Services\AccountService;
+use App\Models\Account;
 
 class AccountController extends Controller
 {
@@ -35,13 +36,29 @@ class AccountController extends Controller
         return view('admin.account.add');
     }
 
-    public function destroy($id) {
-        $this->accountService->destroy($id);
-        return $id;
+    public function add(Request $request) {
+        $request->validate(
+            [
+                'username' => 'required',
+                'password' => 'required|',
+            ],
+            [
+                'username.required' => 'Vui lòng nhập tên đăng nhập',
+                'password.required' => 'Vui lòng nhập mật khẩu',
+            ]
+        );
+        $account = new Account();
+        $account->username = $request->username;
+        $account->password = $request->password;
+        $this->accountService->add($account);
+
+        $this->data['success'] = true;
+        return redirect(route('admin.account.index'));
     }
 
-    public function add($id, Request $request) {
-        $this->accountService->add($id, $request);
+
+    public function destroy($id) {
+        $this->accountService->destroy($id);
         return $id;
     }
 

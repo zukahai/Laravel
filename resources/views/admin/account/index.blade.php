@@ -16,6 +16,10 @@
 @section('content')
     <h5 class="text-center">Danh sách tài khoản</h5>
     <a href="{{route('admin.account.formAdd')}}" class="btn btn-primary mb-2">Thêm tài khoản</a>
+    @if(!empty($success))
+        <h6 class="alert alert-info"> {{$success}}</h6>
+    @endif
+
     <table class="table">
         <thead>
         <tr>
@@ -32,10 +36,10 @@
                 <th scope="row">{{$item->id}}</th>
                 <td>{{$item->username}}</td>
                 <td>{{$item->created_at}}</td>
-                <td>{{$item->update_at}}</td>
+                <td>{{$item->updated_at}}</td>
                 <td class="align-center justify-content-center">
-                    <a href="admin/typeProduct/edit/${item.id}" class="btn btn-success m mx-1">Sửa</a>
-                    <span data-id="{{$item->id}}" class="btn btn-danger mx-1 delete-btn">Xoá</span>
+                    <a href="admin/typeProduct/edit/${item.id}" class="btn btn-success m mx-1 my-1">Sửa</a>
+                    <span data-id="{{$item->id}}" class="btn btn-danger mx-1 delete-btn my-1">Xoá</span>
                 </td>
             </tr>
         @endforeach

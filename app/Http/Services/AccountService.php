@@ -21,5 +21,15 @@ class AccountService
         $account->delete();
     }
 
+    public function update($id, $data) {
+        $account = $this->account->find($id);
+        $account->update($data);
+    }
+
+    public function add($data) {
+        $account = $data;
+        $account->save();
+    }
+
 
 }
