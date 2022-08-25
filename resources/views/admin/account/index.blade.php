@@ -26,7 +26,7 @@
             <th scope="col">#</th>
             <th scope="col">UserName</th>
             <th scope="col">Created_at</th>
-            <th scope="col">Update_at</th>
+            <th scope="col">Status</th>
             <th>&nbsp;</th>
         </tr>
         </thead>
@@ -36,7 +36,7 @@
                 <th scope="row">{{$item->id}}</th>
                 <td>{{$item->username}}</td>
                 <td>{{$item->created_at}}</td>
-                <td>{{$item->updated_at}}</td>
+                <td>{{$item->id}}</td>
                 <td class="align-center justify-content-center">
                     <a href="admin/typeProduct/edit/${item.id}" class="btn btn-success m mx-1 my-1">Sửa</a>
                     <span data-id="{{$item->id}}" class="btn btn-danger mx-1 delete-btn my-1">Xoá</span>
