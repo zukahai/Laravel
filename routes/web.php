@@ -43,7 +43,11 @@ Route::prefix('/')->group(function(){
 Route::prefix('admin')->group(function(){ 
     Route::get('/', [HomeAdminController::class, 'index']);
 
-    Route::get('/account', [AccountController::class, 'index']);
+    Route::prefix('account')->group(function(){ 
+        Route::get('/', [AccountController::class, 'index'])->name('admin.account');
+        Route::get('/delete/{id}', [AccountController::class, 'delete'])->name('admin.delete');
+    });
+    
 
     Route::get('/user', [AccountController::class, 'index']);
 });

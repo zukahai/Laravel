@@ -9,10 +9,8 @@ class HomeUserController extends Controller
 {
     public $data = [];
 
-    public function index() {
-        $this->data['abc'] = "Phan Đức Hải";
-        $this->data['array'] = ['Hai'=>'Linh', 'Sy'=>'na'];
-        return view('user.index', $this->data);
+    public function index() {;
+        return "Trang chủ";
     }
 
     public function viewform() {
