@@ -35,19 +35,20 @@ Route::prefix('/')->group(function(){
         Route::get('/', [AccountController::class, 'login'])->name('login');
         Route::post('/', [AccountController::class, 'checkLogin'])->name('checkLogin');
     });
-    
+
 });
 
 // Routes admin
 // ->middleware('CheckLoginAdmin')
-Route::prefix('admin')->group(function(){ 
+Route::prefix('admin')->group(function(){
     Route::get('/', [HomeAdminController::class, 'index']);
 
-    Route::prefix('account')->group(function(){ 
-        Route::get('/', [AccountController::class, 'index'])->name('admin.account');
-        Route::get('/delete/{id}', [AccountController::class, 'delete'])->name('admin.delete');
+    Route::prefix('account')->group(function(){
+        Route::get('/', [AccountController::class, 'index'])->name('admin.account.index');
+        Route::get('/add', [AccountController::class, 'formAdd'])->name('admin.account.formAdd');
+        Route::get('/delete/{id}', [AccountController::class, 'delete'])->name('admin.account.delete');
     });
-    
+
 
     Route::get('/user', [AccountController::class, 'index']);
 });

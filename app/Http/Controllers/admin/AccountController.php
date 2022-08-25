@@ -18,10 +18,30 @@ class AccountController extends Controller
     public function index() {
         $listAccount = $this->accountService->getAll();
         $this->data['accounts'] = $listAccount;
-        return view('user.index', $this->data);
+        return view('admin.account.index', $this->data);
     }
 
-    public function delete($id) {   
+    public function delete($id) {
+        $this->accountService->delete($id);
+        return $id;
+    }
+
+    public function update($id, Request $request) {
+        $this->accountService->update($id, $request);
+        return $id;
+    }
+
+    public function formAdd() {
+        return view('admin.account.add');
+    }
+
+    public function destroy($id) {
+        $this->accountService->destroy($id);
+        return $id;
+    }
+
+    public function add($id, Request $request) {
+        $this->accountService->add($id, $request);
         return $id;
     }
 
