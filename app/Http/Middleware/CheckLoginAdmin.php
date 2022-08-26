@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use App\Http\Services\AccountService;
 
 class CheckLoginAdmin
 {
@@ -14,15 +15,22 @@ class CheckLoginAdmin
      * @param  \Closure(\Illuminate\Http\Request): (\Illuminate\Http\Response|\Illuminate\Http\RedirectResponse)  $next
      * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
      */
+
+    public function __construct(AccountService $accountService)
+    {
+        $this->accountService = $accountService;
+    }
+
     public function handle(Request $request, Closure $next)
     {
         echo  "Check login admin Middleware"."<br>";
-        if (!$this->isLogin())
-            return redirect(route('home'));
+        if (!$this->isLoginAdmin())
+            return redirect(route('login'));
+
         return $next($request);
     }
 
-    public function isLogin() {
-        return true;
+    public function isLoginAdmin() {
+        return $this->accountService->checkLoginByCookies() == 'admin';
     }
 }

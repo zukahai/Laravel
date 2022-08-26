@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Services\AccountService;
 use App\Models\Account;
+use Cookie;
 
 class AccountController extends Controller
 {
@@ -94,8 +95,22 @@ class AccountController extends Controller
     }
 
     public function checkLogin(Request $request) {
-        $allData = $request->all();
-        dd($allData);
-        return View('admin.index');
+        $username = $request->username;
+        $password = $request->password;
+
+        $account = $this->accountService->checkLogin($username, $password);
+
+        if ($account != null) {
+            Cookie::queue('username', $username, 120);
+            Cookie::queue('password', $password, 120);
+        }
+        if ($account == null) {
+            return redirect(route('login'));
+        } else {
+            if ($account->role == 'admin')
+                return redirect(route('admin.account.index'));
+            else
+                return redirect(route('homeUser'));
+        }
     }
 }

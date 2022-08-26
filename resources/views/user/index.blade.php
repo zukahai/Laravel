@@ -1,14 +1,3 @@
-@extends('layouts.client')
+Trang chủ <br>
 
-@section('title')
-    Trang chủ user
-@endsection
-
-@section('menu')
-    @include('blocks.header')
-@endsection
-
-@section('sidebar')
-    @parent
-    <h1>Danh sách tài khoản</h1>
-@endsection
+Đang đăng nhâ vào tài khoản : <h1>{{Cookie::get('username')}} </h1>

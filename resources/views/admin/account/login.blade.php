@@ -1,20 +1,34 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Form</title>
-</head>
-<body>
-    <form action="" method="post">
-        <input type="text" name="username" id="username" placeholder="username"> <br>
-        <input type="password" name="password" id="password" placeholder="password"> <br>
-        <!-- <input type="hidden" name="_method" value="PUT"> -->
-        <input type="hidden" name="_token" value="<?php echo csrf_token()?>">
-        <input type="submit" value="Gửi">
-    </form>
+@extends('layouts.content')
 
-    <a href="<?php echo route('pagehome', ['page'=>3])?>">Click to form</a>
-</body>
-</html>
+@section('menu')
+    @include('blocks.header');
+@endsection
+
+@section('content')
+    <div id="login" class="mt-5">
+        <div class="container">
+            <div id="login-row" class="row justify-content-center align-items-center">
+                <div  class="col-md-12">
+                    <div id="login-box" class="col-md-12">
+                        <form id="login-form" class="form" action="" method="post">
+                            @csrf
+                            <h3 class="text-center text-info">Login</h3>
+                            <div class="form-group">
+                                <label for="username" class="text-info">Username:</label>
+                                <input class="border border-info" type="text" name="username" id="username" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="password" class="text-info">Password:</label>
+                                <input class="border border-info" type="text" name="password" id="password" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="remember-me" class="text-info"><span>Remember me</span> <span><input id="remember-me" name="remember-me" type="checkbox"></span></label><br>
+                                <input  type="submit" name="submit" class="btn btn-dark btn-md" value="Đăng nhập">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+@endsection

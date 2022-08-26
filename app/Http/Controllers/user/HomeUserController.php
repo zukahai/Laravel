@@ -10,7 +10,7 @@ class HomeUserController extends Controller
     public $data = [];
 
     public function index() {;
-        return "Trang chủ";
+        return view('user.index');
     }
 
     public function viewform() {
