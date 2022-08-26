@@ -6,13 +6,16 @@ php artisan serve
 -----------------------------------------------------------------------------
 migrate sql
 php artisan migrate
+
+php artisan make:model tableName --migration
+
 -----------------------------------------------------------------------------
 
 
 Quy ước ORM
 Tên table trong SQl (xampp) là chữ thường
 Mỗi chữ cách nhau bởi _
-Là dạng số nhiều, ví dụ users, accounts, 
+Là dạng số nhiều, ví dụ users, accounts,
 
 Hoặc quy ước bằng code:
 protected $table = "accounts";
