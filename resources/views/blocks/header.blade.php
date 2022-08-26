@@ -17,7 +17,8 @@
 
                 <!-- social -->
                 <div class="kf-h-social">
-
+                    <a href="https://www.facebook.com/chiatayde"><i class="fa fa-facebook-square" aria-hidden="true"></i></a>
+                    <a href="https://github.com/zukahai" target="_blank"><i class="fa fa-github"></i></a>
                 </div>
 
             </div>
