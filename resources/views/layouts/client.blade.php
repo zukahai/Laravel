@@ -21,7 +21,7 @@
     @yield('css')
 
 </head>
-<body>
+<body @yield('onload')">
 
     @yield('menu')
 

@@ -14,7 +14,15 @@
 
 @endsection
 
+@section('onload')
+    @if ($message = Session::get('info'))
+        onload="abc('Xin chào')"
+    @endif
+
+@endsection
+
 @section('content')
+
     <h5 class="text-center">Danh sách tài khoản</h5>
     <a href="{{route('admin.account.formAdd')}}" class="btn btn-primary mb-2">Thêm tài khoản</a>
     @if(!empty($success))
@@ -51,6 +59,13 @@
 
 @section('js')
     <script>
+        function abc(result) {
+            if (result !== null) {
+                toastr.success(result);
+            } else {
+                toastr.error("Xóa thất bại");
+            }
+        };
         //handle on click delete-btn
         $(document).on("click", ".delete-btn", function () {
             var row = $(this).closest("tr");
