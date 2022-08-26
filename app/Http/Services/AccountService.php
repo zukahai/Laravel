@@ -44,6 +44,16 @@ class AccountService
         return ($account == null) ? null : $account->role;
     }
 
+    public function setCookie($username, $password) {
+        Cookie::queue('username', $username, 120);
+        Cookie::queue('password', $password, 120);
+    }
+
+    public function clearCookie() {
+        Cookie::queue('username', null , -1);
+        Cookie::queue('password', null, -1);
+    }
+
     public function checkLogin($username, $password){
         return $this->account->where('username', $username)->where('password', $password)->first();
     }

@@ -91,6 +91,7 @@ class AccountController extends Controller
     }
 
     public function login() {
+        $this->accountService->clearCookie();
         return View('admin/account/login');
     }
 
@@ -101,8 +102,7 @@ class AccountController extends Controller
         $account = $this->accountService->checkLogin($username, $password);
 
         if ($account != null) {
-            Cookie::queue('username', $username, 120);
-            Cookie::queue('password', $password, 120);
+            $this->accountService->setcookie($username, $password);
         }
         if ($account == null) {
             return redirect(route('login'));
