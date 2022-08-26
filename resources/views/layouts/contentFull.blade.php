@@ -28,7 +28,7 @@
 <div class="py-5">
     <div class="container py-5 mt-5">
         <div class="row">
-            <div class="col-12 col-lg-7 card mx-auto">
+            <div class="col-12 col-lg-12 card mx-auto">
                 <div class="">
                     <div class="content">
                         @yield('content')

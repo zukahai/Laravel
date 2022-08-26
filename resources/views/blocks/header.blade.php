@@ -17,10 +17,7 @@
 
                 <!-- social -->
                 <div class="kf-h-social">
-                    <a href="facebook.com" target="blank"><i class="fab fa-facebook-f"></i></a>
-                    <a href="twitter.com" target="blank"><i class="fab fa-twitter"></i></a>
-                    <a href="instagram.com" target="blank"><i class="fab fa-instagram"></i></a>
-                    <a href="youtube.com" target="blank"><i class="fab fa-youtube"></i></a>
+
                 </div>
 
             </div>
@@ -28,8 +25,13 @@
 
                 <!-- location -->
                 <div class="kf-h-group">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <em>Địa chỉ :</em> Lung ta lung tung
+                    @if(!empty(Cookie::get('username')))
+                    <em>Tài khoản :</em> {{Cookie::get('username')}}
+                    <a href="{{route('login')}}" ><i class="fa fa-sign-out" aria-hidden="true"></i></a>
+                    @else
+                        <em>Đăng nhập</em>
+                        <a href="{{route('login')}}" ><i class="fa fa-sign-out" aria-hidden="true"></i></a>
+                    @endif
                 </div>
 
             </div>
@@ -43,7 +45,7 @@
 
                 <!-- logo -->
                 <div class="kf-logo">
-                    <a href="/home"><img src="user/images/logo.png" alt="" /></a>
+                    <a href="{{route('homeUser')}}"><img src="user/images/logo.png" alt="" /></a>
                 </div>
 
             </div>
@@ -52,7 +54,7 @@
                 <!-- main menu -->
                 <div class="kf-main-menu">
                     <ul>
-                        <li><a href="/home">Trang chủ<i class=""></i></a></li>
+                        <li><a href="{{route('homeUser')}}">Trang chủ<i class=""></i></a></li>
                         <li><a href="/product">Sản phẩm</a></li>
                         <li><a href="/about">Về chúng tôi</a></li>
                     </ul>
@@ -73,7 +75,7 @@
         <div class="kf-main-menu">
             <ul>
                 <li class="has-children">
-                    <a href="/home">Trang chủ</a>
+                    <a href="{{route('homeUser')}}">Trang chủ</a>
                 </li>
                 <li><a href="/product">Sản phẩm</a></li>
                 <li><a href="/about">Về chúng tôi</a></li>
