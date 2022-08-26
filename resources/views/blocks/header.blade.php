@@ -55,7 +55,7 @@
                 <div class="kf-main-menu">
                     <ul>
                         <li><a href="{{route('homeUser')}}">Trang chủ<i class=""></i></a></li>
-                        <li><a href="/product">Sản phẩm</a></li>
+                        <li><a href="{{route('admin.account.index')}}">Admin</a></li>
                         <li><a href="/about">Về chúng tôi</a></li>
                     </ul>
                 </div>
@@ -77,7 +77,7 @@
                 <li class="has-children">
                     <a href="{{route('homeUser')}}">Trang chủ</a>
                 </li>
-                <li><a href="/product">Sản phẩm</a></li>
+                <li><a href="{{route('admin.account.index')}}">Admin</a></li>
                 <li><a href="/about">Về chúng tôi</a></li>
             </ul>
         </div>
