@@ -44,7 +44,7 @@ class AccountController extends Controller
             ],
             [
                 'password.required' => 'Vui lòng nhập mật khẩu',
-                'password.min' => 'Mật khẩu phải 6 ký tự',
+                'password.min' => 'Mật khẩu ít nhất phải 6 ký tự',
             ]
         );
         $data = ['id'=>$id,'username' => $request->username, 'password' => $request->password];
@@ -68,7 +68,7 @@ class AccountController extends Controller
                 'username.max' => 'Tên tài khoản không được quá 15 ký tự',
                 'username.alpha_dash' => 'Tên tài khoản không chứa ký tự đặc biệt',
                 'password.required' => 'Vui lòng nhập mật khẩu',
-                'password.min' => 'Mật khẩu phải 6 ký tự',
+                'password.min' => 'Mật khẩu ít nhất phải 6 ký tự',
             ]
         );
     }
