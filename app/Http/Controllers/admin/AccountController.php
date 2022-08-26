@@ -49,7 +49,7 @@ class AccountController extends Controller
         );
         $data = ['id'=>$id,'username' => $request->username, 'password' => $request->password];
         $this->accountService->update($id, $data);
-        return redirect(route('admin.account.index'));
+        return redirect(route('admin.account.index'))->with('info', 'Thông tin đã được cập nhật');
     }
 
     public function formAdd() {
