@@ -37,6 +37,15 @@ class AccountController extends Controller
     }
 
     public function update($id=null, Request $request) {
+        $request->validate(
+            [
+                'password' => 'required|min:6',
+            ],
+            [
+                'password.required' => 'Vui lòng nhập mật khẩu',
+                'password.min' => 'Mật khẩu phải 6 ký tự',
+            ]
+        );
         $data = ['id'=>$id,'username' => $request->username, 'password' => $request->password];
         $this->accountService->update($id, $data);
         return redirect(route('admin.account.index'));
@@ -46,7 +55,7 @@ class AccountController extends Controller
         return view('admin.account.add');
     }
 
-    public function add(Request $request) {
+    public function validateForm($request) {
         $request->validate(
             [
                 'username' => 'required|unique:accounts|max:15|alpha_dash',
@@ -61,6 +70,10 @@ class AccountController extends Controller
                 'password.min' => 'Mật khẩu phải 6 ký tự',
             ]
         );
+    }
+
+    public function add(Request $request) {
+        $this->validateForm($request);
         $account = new Account();
         $account->username = $request->username;
         $account->password = $request->password;
