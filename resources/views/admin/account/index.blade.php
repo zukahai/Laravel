@@ -39,7 +39,7 @@
                 <td>{{$item->created_at}}</td>
                 <td>{{$item->id}}</td>
                 <td class="align-center justify-content-center">
-                    <a href="admin/typeProduct/edit/${item.id}" class="btn btn-success m mx-1 my-1">Sửa</a>
+                    <a href="{{route('admin.account.update')}}/{{$item->id}}" class="btn btn-success m mx-1 my-1">Sửa</a>
                     <span data-id="{{$item->id}}" class="btn btn-danger mx-1 delete-btn my-1">Xoá</span>
                 </td>
             </tr>

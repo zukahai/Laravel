@@ -22,14 +22,24 @@ class AccountController extends Controller
         return view('admin.account.index', $this->data);
     }
 
-    public function delete($id) {
+    public function delete($id=null) {
+        if ($id == null)
+            return false;
         $this->accountService->delete($id);
         return $id;
     }
 
-    public function update($id, Request $request) {
-        $this->accountService->update($id, $request);
-        return $id;
+    public function formUpdate($id=null) {
+        if ($id == null)
+            return false;
+        $this->data['account'] = $this->accountService->find($id);
+        return view("admin.account.update", $this->data);
+    }
+
+    public function update($id=null, Request $request) {
+        $data = ['id'=>$id,'username' => $request->username, 'password' => $request->password];
+        $this->accountService->update($id, $data);
+        return redirect(route('admin.account.index'));
     }
 
     public function formAdd() {

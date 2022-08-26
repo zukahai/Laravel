@@ -22,13 +22,18 @@ class AccountService
     }
 
     public function update($id, $data) {
-        $account = $this->account->find($id);
-        $account->update($data);
+
+        $this->account->where('id', $id)->update($data);
+        return $this->account->find($id);
     }
 
     public function add($data) {
         $account = $data;
         $account->save();
+    }
+
+    public function find($id) {
+        return $this->account->find($id);
     }
 
 

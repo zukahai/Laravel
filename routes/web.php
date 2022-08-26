@@ -47,7 +47,9 @@ Route::prefix('admin')->group(function(){
         Route::get('/', [AccountController::class, 'index'])->name('admin.account.index');
         Route::get('/add', [AccountController::class, 'formAdd'])->name('admin.account.formAdd');
         Route::post('/add', [AccountController::class, 'add'])->name('admin.account.add');
-        Route::get('/delete/{id}', [AccountController::class, 'delete'])->name('admin.account.delete');
+        Route::get('/delete/{id?}', [AccountController::class, 'delete'])->name('admin.account.delete');
+        Route::get('/update/{id?}', [AccountController::class, 'formUpdate'])->name('admin.account.formUpdate');
+        Route::post('/update/{id?}', [AccountController::class, 'update'])->name('admin.account.update');
     });
 
 
