@@ -25,7 +25,7 @@ class CheckLoginAdmin
     {
         echo  "Check login admin Middleware"."<br>";
         if (!$this->isLoginAdmin())
-            return redirect(route('homeUser'));
+            return redirect(route('homeUser'))->with('error', 'Login Admin Error');
 
         return $next($request);
     }

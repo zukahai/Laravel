@@ -80,8 +80,7 @@ class AccountController extends Controller
         $account->password = $request->password;
         $this->accountService->add($account);
 
-        $this->data['success'] = true;
-        return redirect(route('admin.account.index'));
+        return redirect(route('admin.account.index'))->with('info', 'Thêm thành công');
     }
 
 
@@ -90,12 +89,13 @@ class AccountController extends Controller
         return $id;
     }
 
-    public function login() {
+    public function login($msg = 123) {
         $this->accountService->clearCookie();
-        return View('admin/account/login');
+        return View('admin/account/login')->with('msg', $msg);
     }
 
     public function checkLogin(Request $request) {
+        $request->flash();
         $username = $request->username;
         $password = $request->password;
 
@@ -105,12 +105,12 @@ class AccountController extends Controller
             $this->accountService->setcookie($username, $password);
         }
         if ($account == null) {
-            return redirect(route('login'));
+            return redirect(route('login'))->with('error', 'Tài khoản hoặc mật khẩu không đúng');
         } else {
             if ($account->role == 'admin')
                 return redirect(route('admin.account.index'));
             else
-                return redirect(route('homeUser'));
+                return redirect(route('homeUser'))->with('info', 'Tài khoản hoặc mật khẩu không đúng');
         }
     }
 }

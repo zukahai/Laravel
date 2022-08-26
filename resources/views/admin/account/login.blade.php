@@ -13,6 +13,7 @@
                         <form id="login-form" class="form" action="" method="post">
                             @csrf
                             <h3 class="text-center text-info">Login</h3>
+                            @include('blocks.flash-message')
                             <div class="form-group">
                                 <label for="username" class="text-info">Username:</label>
                                 <input class="border border-info" type="text" name="username" id="username" class="form-control
