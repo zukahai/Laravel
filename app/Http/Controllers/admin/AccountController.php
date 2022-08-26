@@ -74,6 +74,7 @@ class AccountController extends Controller
     }
 
     public function add(Request $request) {
+        $request->flash();
         $this->validateForm($request);
         $account = new Account();
         $account->username = $request->username;

@@ -14,7 +14,12 @@ class HomeUserController extends Controller
     }
 
     public function viewform() {
-        return view('form');
+        return view('user.form');
+    }
+
+    public function testForm(Request $request) {
+        $request->flash();
+        return view('user.form');
     }
 
     public function getForm(Request $request) {

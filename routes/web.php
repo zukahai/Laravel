@@ -25,11 +25,8 @@ Route::prefix('/')->group(function(){
 
     Route::get('/product', [ProductController::class, 'home']);
 
-    Route::post('/form', [HomeUserController::class, 'getForm']);
+    Route::post('/form', [HomeUserController::class, 'testForm']);
 
-    Route::put('/form', function () {
-        return "Put ne";
-    });
 
     Route::prefix('/login')->group(function(){
         Route::get('/', [AccountController::class, 'login'])->name('login');
