@@ -108,9 +108,9 @@ class AccountController extends Controller
             return redirect(route('login'))->with('error', 'Tài khoản hoặc mật khẩu không đúng');
         } else {
             if ($account->role == 'admin')
-                return redirect(route('admin.account.index'));
+                return redirect(route('admin.account.index'))->with('info', 'Đăng nhập admin thành công');
             else
-                return redirect(route('homeUser'))->with('info', 'Tài khoản hoặc mật khẩu không đúng');
+                return redirect(route('homeUser'))->with('info', 'Đăng nhập người dùng thành công');
         }
     }
 }

@@ -39,3 +39,21 @@
         </div>
     </form>
 @endsection
+
+
+@section('js')
+    <script>
+        function abc(result, type) {
+            if (result !== null) {
+                if (type === 'success')
+                    toastr.success(result);
+                if (type === 'error')
+                    toastr.error(result);
+                if (type === 'warning')
+                    toastr.warning(result);
+                if (type === 'info')
+                    toastr.info(result);
+            }
+        };
+    </script>
+@endsection

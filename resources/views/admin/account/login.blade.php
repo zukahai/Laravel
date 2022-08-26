@@ -4,6 +4,15 @@
     @include('blocks.header');
 @endsection
 
+@section('onload')
+    @if ($message = Session::get('info'))
+        onload="abc('{{$message}}' , 'success')"
+    @endif
+    @if ($message = Session::get('error'))
+        onload="abc('{{$message}}' , 'danger')"
+    @endif
+@endsection
+
 @section('content')
     <div id="login" class="mt-5">
         <div class="container">

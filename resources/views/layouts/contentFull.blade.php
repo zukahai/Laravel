@@ -21,7 +21,7 @@
     @yield('css')
 
 </head>
-<body>
+<body @yield('onload')>
 
 @yield('menu')
 
@@ -54,5 +54,6 @@
 <script src="{{asset('assets/js/common.js')}}"></script>
 
 @yield('js')
+@include('blocks.notify')
 </body>
 </html>
