@@ -8,7 +8,7 @@
 
                 <!-- hours -->
                 <div class="kf-h-group">
-                    <i class="far fa-clock"></i>
+                    <i class="fa fa-clock-o" aria-hidden="true"></i>
                     <em>Thời gian hiện tại :</em> {{date('H:i:s d-M-Y')}}
                 </div>
 

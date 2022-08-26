@@ -12,7 +12,7 @@ class AccountController extends Controller
 {
     public $data = [];
 
-    protected $limit = 3;
+    protected $limit = 5;
 
     public function __construct(AccountService $accountService)
     {

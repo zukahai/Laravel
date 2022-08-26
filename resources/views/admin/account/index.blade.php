@@ -34,20 +34,20 @@
     <table class="table">
         <thead>
         <tr>
-            <th scope="col">#</th>
-            <th scope="col">UserName</th>
-            <th scope="col">Created_at</th>
-            <th scope="col">Role</th>
+            <th class="text-center" scope="col">#</th>
+            <th class="text-center" scope="col">UserName</th>
+            <th class="text-center" scope="col">Created_at</th>
+            <th class="text-center" scope="col">Role</th>
             <th>&nbsp;</th>
         </tr>
         </thead>
         <tbody>
         @foreach ($accounts as $item)
             <tr class="align-middle">
-                <th class="align-middle" scope="row">{{$item->id}}</th>
-                <td class="align-middle">{{$item->username}}</td>
-                <td class="align-middle">{{$item->created_at}}</td>
-                <td class="align-middle"><span class="badge {{($item->role == 'admin') ? 'badge-danger': 'badge-success'}}"> {{$item->role}} </span></td>
+                <th class="align-middle text-center" scope="row">{{$item->id}}</th>
+                <td class="align-middle text-center">{{$item->username}}</td>
+                <td class="align-middle text-center">{{$item->created_at}}</td>
+                <td class="align-middle text-center"><span class="badge {{($item->role == 'admin') ? 'badge-danger': 'badge-success'}}"> {{$item->role}} </span></td>
                 <td class="align-center justify-content-center">
                     <a href="{{route('admin.account.update')}}/{{$item->id}}" class="btn btn-success m mx-1 my-1">Sửa</a>
                     <span data-id="{{$item->id}}" class="btn btn-danger mx-1 delete-btn my-1">Xoá</span>
