@@ -5798,3 +5798,7 @@ header {
 .card {
     background-color: rgba(0, 0, 0, 0.2);
 }
+
+.page-link>a{
+    color: #0b2e13;
+}

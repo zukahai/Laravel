@@ -17,6 +17,10 @@ class AccountService
         return $this->account->all();
     }
 
+    public function paginate($limit){
+        return $this->account->paginate($limit);
+    }
+
     public function delete($id) {
         $account = $this->account->find($id);
         $account->delete();

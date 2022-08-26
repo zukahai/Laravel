@@ -12,13 +12,15 @@ class AccountController extends Controller
 {
     public $data = [];
 
+    protected $limit = 3;
+
     public function __construct(AccountService $accountService)
     {
         $this->accountService = $accountService;
     }
 
     public function index() {
-        $listAccount = $this->accountService->getAll();
+        $listAccount = $this->accountService->paginate($this->limit);
         $this->data['accounts'] = $listAccount;
         return view('admin.account.index', $this->data);
     }

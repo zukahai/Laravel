@@ -57,5 +57,8 @@
 
         </tbody>
     </table>
+    <div class="d-flex justify-content-center text-dark">
+        {{$accounts->links()}}
+    </div>
 @endsection
 
