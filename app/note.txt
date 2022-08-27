@@ -11,6 +11,10 @@ php artisan make:model tableName --migration
 
 -----------------------------------------------------------------------------
 
+Chuyển link storage
+//rm storage
+php artisan storage:link
+-----------------------------------------------------------------------------
 
 Quy ước ORM
 Tên table trong SQl (xampp) là chữ thường

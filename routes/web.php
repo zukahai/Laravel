@@ -25,7 +25,7 @@ Route::prefix('/')->group(function(){
 
     Route::get('/product', [ProductController::class, 'home']);
 
-    Route::post('/form', [HomeUserController::class, 'testForm']);
+    Route::post('/form', [HomeUserController::class, 'getForm']);
 
 
     Route::prefix('/login')->group(function(){

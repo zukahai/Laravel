@@ -29,13 +29,14 @@ class HomeUserController extends Controller
         echo $request->file;
         if ($request->hasFile('file')) {
             $file = $request->file;
-            $path = $file->store('images');
-            dd($path);
+            $file_name = $file->getclientOriginalName();
+            $file->move(public_path('images'), $file_name);
+            dd($file_name);
         } else {
             return "Vui long chon file";
         }
 
-        return view('form');
+        return redirect(route('honeUser'));
     }
 
     public function page($page=null) {
