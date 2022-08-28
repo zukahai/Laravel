@@ -20,6 +20,7 @@ class AccountController extends Controller
     }
 
     public function index() {
+//        $listAccount = $this->accountService->getAll();
         $listAccount = $this->accountService->paginate($this->limit);
         $this->data['accounts'] = $listAccount;
         return view('admin.account.index', $this->data);

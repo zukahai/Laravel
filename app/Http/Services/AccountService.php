@@ -14,11 +14,11 @@ class AccountService
     }
 
     public function getAll() {
-        return $this->account->all();
+        return $this->account->orderBy('created_at','desc')->paginate();
     }
 
     public function paginate($limit){
-        return $this->account->paginate($limit);
+        return $this->account->orderBy('role','asc')->paginate($limit);
     }
 
     public function delete($id) {
