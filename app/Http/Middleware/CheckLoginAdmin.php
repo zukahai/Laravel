@@ -24,13 +24,15 @@ class CheckLoginAdmin
     public function handle(Request $request, Closure $next)
     {
         echo  "Check login admin Middleware"."<br>";
-        if (!$this->isLoginAdmin())
+        if ($this->isLoginAdmin() == 'user')
             return redirect(route('homeUser'))->with('warning', 'Bạn không phải là admin');
+        else if ($this->isLoginAdmin() == null)
+            return redirect(route('login'))->with('error', 'Bạn cần đăng nhập tài khoản admin');
 
         return $next($request);
     }
 
     public function isLoginAdmin() {
-        return $this->accountService->checkLoginByCookies() == 'admin';
+        return $this->accountService->checkLoginByCookies();
     }
 }
