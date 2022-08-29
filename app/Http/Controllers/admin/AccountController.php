@@ -19,11 +19,17 @@ class AccountController extends Controller
         $this->accountService = $accountService;
     }
 
-    public function index() {
+    public function index(Request $request) {
+//        dd($request->all());
 //        $listAccount = $this->accountService->getAll();
-        $listAccount = $this->accountService->paginate($this->limit);
+        $keywords = $request->keywords;
+        $listAccount = $this->accountService->paginate($this->limit, $keywords);
         $this->data['accounts'] = $listAccount;
         return view('admin.account.index', $this->data);
+    }
+
+    public function search() {
+        return "Hello";
     }
 
     public function delete($id=null) {

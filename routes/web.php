@@ -41,6 +41,7 @@ Route::prefix('admin')->middleware('CheckLoginAdmin')->group(function(){
 
     Route::prefix('account')->group(function(){
         Route::get('/', [AccountController::class, 'index'])->name('admin.account.index');
+//        Route::get('/', [AccountController::class, 'search'])->name('admin.account.search');
         Route::get('/add', [AccountController::class, 'formAdd'])->name('admin.account.formAdd');
         Route::post('/add', [AccountController::class, 'add'])->name('admin.account.add');
         Route::get('/delete/{id?}', [AccountController::class, 'delete'])->name('admin.account.delete');

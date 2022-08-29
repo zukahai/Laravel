@@ -17,8 +17,12 @@ class AccountService
         return $this->account->orderBy('created_at','desc')->paginate();
     }
 
-    public function paginate($limit){
-        return $this->account->orderBy('role','asc')->paginate($limit);
+    public function paginate($limit, $keywords){
+        $user = $this->account->orderBy('role','asc');
+        if (!empty($keywords)) {
+            $user->where('username', 'like', '%'. $keywords.'%');
+        }
+        return $user->paginate($limit)->withQueryString();
     }
 
     public function delete($id) {

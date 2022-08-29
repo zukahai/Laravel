@@ -24,7 +24,8 @@
 @endsection
 
 @section('content')
-    <form method="post" action="">
+    <form method="get" action="">
+{{--        @csrf--}}
         <div class="container">
 
             <div class="row height d-flex justify-content-center align-items-center">
@@ -33,7 +34,8 @@
 
                     <div class="search">
                         <i class="fa fa-search"></i>
-                        <input type="text" class="form-control" placeholder="Từ khoá tìm kiếm">
+                        <input type="text" class="form-control" name="keywords" placeholder="Từ khoá tìm kiếm"
+                        value="{{request()->keywords}}">
                         <button class="btn btn-primary">Tìm kiếm</button>
                     </div>
 
