@@ -79,12 +79,20 @@ class AccountController extends Controller
     }
 
     public function add(Request $request) {
-        $request->flash();
-        $this->validateForm($request);
-        $account = new Account();
-        $account->username = $request->username;
-        $account->password = $request->password;
-        $this->accountService->add($account);
+//        $request->flash();
+//        $this->validateForm($request);
+//        $account = new Account();
+//        $account->username = $request->username;
+//        $account->password = $request->password;
+//        $this->accountService->add($account);
+
+
+        for ($i=55; $i <= 555; $i++) {
+            $account = new Account();
+            $account->username = 'user_' . $i;
+            $account->password = 'password_' . $i;
+            $this->accountService->add($account);
+        }
 
         return redirect(route('admin.account.index'))->with('info', 'Thêm thành công');
     }
