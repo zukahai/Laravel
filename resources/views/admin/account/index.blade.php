@@ -53,6 +53,7 @@
 
     <table class="table">
         <thead>
+        @if(!$accounts->isEmpty())
         <tr>
             <th class="text-center" scope="col">#</th>
             <th class="text-center" scope="col">UserName</th>
@@ -60,9 +61,10 @@
             <th class="text-center" scope="col">Role</th>
             <th>&nbsp;</th>
         </tr>
+        @endif
         </thead>
         <tbody>
-        @foreach ($accounts as $item)
+        @forelse ($accounts as $item)
             <tr class="align-middle">
                 <th class="align-middle text-center" scope="row">{{$item->id}}</th>
                 <td class="align-middle text-center">{{$item->username}}</td>
@@ -73,7 +75,9 @@
                     <span data-id="{{$item->id}}" class="btn btn-danger mx-1 delete-btn my-1">Xoá</span>
                 </td>
             </tr>
-        @endforeach
+        @empty
+            <h1 class="text-light text-center">Không có dữ liệu</h1>
+        @endforelse
 
         </tbody>
     </table>

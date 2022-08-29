@@ -12,7 +12,7 @@ class AccountController extends Controller
 {
     public $data = [];
 
-    protected $limit = 5;
+    protected $limit = 10;
 
     public function __construct(AccountService $accountService)
     {
@@ -26,10 +26,6 @@ class AccountController extends Controller
         $listAccount = $this->accountService->paginate($this->limit, $keywords);
         $this->data['accounts'] = $listAccount;
         return view('admin.account.index', $this->data);
-    }
-
-    public function search() {
-        return "Hello";
     }
 
     public function delete($id=null) {

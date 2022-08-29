@@ -18,7 +18,8 @@ class AccountService
     }
 
     public function paginate($limit, $keywords){
-        $user = $this->account->orderBy('role','asc');
+        $user = $this->account;
+        $user = $user->orderBy('created_at','desc');
         if (!empty($keywords)) {
             $user->where('username', 'like', '%'. $keywords.'%');
             $user->orWhere('id', 'like', '%'. $keywords.'%');
