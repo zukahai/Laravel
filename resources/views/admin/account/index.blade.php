@@ -24,6 +24,24 @@
 @endsection
 
 @section('content')
+    <form method="post" action="">
+        <div class="container">
+
+            <div class="row height d-flex justify-content-center align-items-center">
+
+                <div class="col-md-8">
+
+                    <div class="search">
+                        <i class="fa fa-search"></i>
+                        <input type="text" class="form-control" placeholder="Từ khoá tìm kiếm">
+                        <button class="btn btn-primary">Tìm kiếm</button>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </form>
 
     <h5 class="text-center">Danh sách tài khoản</h5>
     <a href="{{route('admin.account.formAdd')}}" class="btn btn-primary mb-2">Thêm tài khoản</a>

@@ -18,8 +18,7 @@
 
 @section('content')
     @include('blocks.flash-message')
-    <img src="{{ url('storage/images/') }}" alt="333" title="" />
-    <img src="storage/app/images/gahCdT2onwUp75vO6mKbkmRbxZ55PJulhKPDCrW9.jpg" alt="Heee" />
+    <img src="images/HaiPD7.jpg" alt="Heee" />
 Trang chủ <br>
 Đang đăng nhâ vào tài khoản : <h1>{{Cookie::get('username')}} </h1>
 @endsection
