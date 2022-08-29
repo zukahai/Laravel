@@ -51,7 +51,7 @@
         <h6 class="alert alert-info"> {{$success}}</h6>
     @endif
 
-    <table class="table">
+    <table class="table search-table-outter">
         <thead>
         @if(!$accounts->isEmpty())
         <tr>
