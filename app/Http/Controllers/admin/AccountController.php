@@ -25,7 +25,7 @@ class AccountController extends Controller
         $keywords = $request->keywords;
         $listAccount = $this->accountService->paginate($this->limit, $keywords);
         $this->data['accounts'] = $listAccount;
-        return view('admin.account.index', $this->data);
+        return view('admin.pages.account.index', $this->data);
     }
 
     public function delete($id=null) {
@@ -39,7 +39,7 @@ class AccountController extends Controller
         if ($id == null)
             return false;
         $this->data['account'] = $this->accountService->find($id);
-        return view("admin.account.update", $this->data);
+        return view("admin.pages.account.edit", $this->data);
     }
 
     public function update($id=null, Request $request) {

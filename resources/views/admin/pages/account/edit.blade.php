@@ -1,6 +1,6 @@
 @extends('admin.layouts.main')
 @section('title_page')
-    Edit - Account - Admin - {{ config('app.name') }}
+    Edit Account - Admin - {{ config('app.name') }}
 @endsection
 @section('name_user')
 {{--    {{auth()->user()->name}}--}} HaiZuka
@@ -19,14 +19,14 @@
 @section('menu')
     @php
         $menu_parent = 'account';
-        $menu_child = 'create';
+        $menu_child = 'edit';
     @endphp
 @endsection
 @section('title_component')
     Account
 @endsection
 @section('title_layout')
-    Create Account
+    Edit Account
 @endsection
 @section('actions_layout')
     <a href="{{route('admin.account.index')}}" class="btn btn-primary btn-sm mr-2 mb-2 mb-lg-0">
@@ -34,10 +34,10 @@
     </a>
 @endsection
 @section('title_card')
-    Create Account
+    Edit Account
 @endsection
 @section('content_card')
-    <form action="{{route('admin.account.add')}}" method="post">
+    <form action="{{route('admin.account.update')}}/{{$account->id}}" method="post">
         @csrf
         @if($errors->any())
             <div class="alert alert-warning d-flex align-items-center">
@@ -47,23 +47,26 @@
                 <div>Thông tin chưa hợp lệ</div>
             </div>
         @endif
-        <div class="form-group my-2">
+        <div class="form-group">
+{{--            {{$account}}--}}
             <label for="username">Tên tài khoản</label>
-            <input type="text" class="form-control" id="username" name="username" placeholder="Tên tài khoản">
+            <input type="text" class="form-control" id="username" name="username" placeholder="Tên tài khoản"
+                   value="{{$account->username}}" readonly>
             @error('username')
             <span class="text-bold text-italic text-danger">{{$message}}</span>
             @enderror
         </div>
-        <div class="form-group my-2">
+        <div class="form-group">
             <label for="password">Password</label>
-            <input type="password" class="form-control" id="password" name="password" placeholder="Mật khẩu">
+            <input type="password" class="form-control" id="password" name="password" placeholder="Mật khẩu"
+                   value="{{$account->password}}">
             @error('password')
             <span class="text-bold text-italic text-danger">{{$message}}</span>
             @enderror
         </div>
         {{--        <input type="hidden" name="_token" value="<?php echo csrf_token()?>">--}}
         <div class="justify-content-center d-flex my-5">
-            <button type="submit" class="btn btn-primary">Thêm tài khoản</button>
+            <button type="submit" class="btn btn-warning">Cập nhật tài khoản</button>
         </div>
     </form>
 @endsection
