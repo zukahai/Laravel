@@ -66,7 +66,7 @@
 
                             <!-- Checkbox -->
                             <div class="form-check d-flex justify-content-start mb-4">
-                                <input class="form-check-input" type="checkbox" value="" id="form1Example3" />
+                                <input class="form-check-input mx-5" type="checkbox" value="" id="form1Example3" />
                                 <label class="form-check-label" for="form1Example3"> Remember password </label>
                             </div>
 
