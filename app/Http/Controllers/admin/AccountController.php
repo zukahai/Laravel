@@ -58,7 +58,7 @@ class AccountController extends Controller
     }
 
     public function formAdd() {
-        return view('admin.account.add');
+        return view('admin.pages.account.create');
     }
 
     public function validateForm($request) {

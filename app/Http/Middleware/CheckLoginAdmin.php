@@ -23,7 +23,7 @@ class CheckLoginAdmin
 
     public function handle(Request $request, Closure $next)
     {
-        echo  "Check login admin Middleware"."<br>";
+//        echo  "Check login admin Middleware"."<br>";
         if ($this->isLoginAdmin() == 'user')
             return redirect(route('homeUser'))->with('warning', 'Bạn không phải là admin');
         else if ($this->isLoginAdmin() == null)
