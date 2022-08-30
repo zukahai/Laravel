@@ -105,7 +105,7 @@ class AccountController extends Controller
 
     public function login($msg = 123) {
         $this->accountService->clearCookie();
-        return View('admin/account/login')->with('msg', $msg);
+        return View('admin.pages.account.login')->with('msg', $msg);
     }
 
     public function checkLogin(Request $request) {
