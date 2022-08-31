@@ -450,6 +450,7 @@
 </div>
 <!--end::Scrolltop-->
 @include('admin.includes.scripts')
+@yield('jscustom');
 </body>
 <!--end::Body-->
 </html>

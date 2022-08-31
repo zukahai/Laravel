@@ -21,4 +21,26 @@ return [
             ]
         ],
     ],
+
+    [
+        'title' => 'Role',
+        'name' => 'role',
+        'route' => 'admin.role.index',
+        'children' => [
+            [
+                'title' => 'List Role',
+                'name' => 'index',
+                'route' => 'admin.role.index',
+            ],
+            [
+                'title' => 'Create Account',
+                'name' => 'create',
+                'route' => 'admin.account.add',
+            ],
+            [
+                'title' => 'Edit User',
+                'name' => 'edit',
+            ]
+        ],
+    ],
 ];

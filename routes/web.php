@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\admin\HomeAdminController;
 use App\Http\Controllers\admin\AccountController;
+use App\Http\Controllers\admin\RoleController;
 use App\Http\Controllers\user\HomeUserController;
 use App\Http\Controllers\user\ProductController;
 
@@ -36,17 +37,21 @@ Route::prefix('/')->group(function(){
 });
 
 // Routes admin
-Route::prefix('admin')->middleware('CheckLoginAdmin')->group(function(){
+Route::prefix('admin')->middleware('CheckLoginAdmin')->group(callback: function(){
     Route::get('/', [HomeAdminController::class, 'index']);
 
     Route::prefix('account')->group(function(){
         Route::get('/', [AccountController::class, 'index'])->name('admin.account.index');
-//        Route::get('/', [AccountController::class, 'search'])->name('admin.account.search');
         Route::get('/add', [AccountController::class, 'formAdd'])->name('admin.account.formAdd');
         Route::post('/add', [AccountController::class, 'add'])->name('admin.account.add');
         Route::get('/delete/{id?}', [AccountController::class, 'delete'])->name('admin.account.delete');
         Route::get('/update/{id?}', [AccountController::class, 'formUpdate'])->name('admin.account.formUpdate');
         Route::post('/update/{id?}', [AccountController::class, 'update'])->name('admin.account.update');
+    });
+
+    Route::prefix('role')->group(function(){
+        Route::get('/', [RoleController::class, 'index'])->name('admin.role.index');
+        Route::get('/delete/{id?}', [RoleController::class, 'delete'])->name('admin.role.delete');
     });
 
 

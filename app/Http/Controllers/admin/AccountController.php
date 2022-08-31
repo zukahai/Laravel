@@ -20,8 +20,6 @@ class AccountController extends Controller
     }
 
     public function index(Request $request) {
-//        dd($request->all());
-//        $listAccount = $this->accountService->getAll();
         $keywords = $request->keywords;
         $listAccount = $this->accountService->paginate($this->limit, $keywords);
         $this->data['accounts'] = $listAccount;

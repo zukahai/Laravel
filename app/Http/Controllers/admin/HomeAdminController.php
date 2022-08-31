@@ -12,6 +12,6 @@ class HomeAdminController extends Controller
     }
 
     public function index() {
-        return View('user/index');
+        return "admin";
     }
 }
