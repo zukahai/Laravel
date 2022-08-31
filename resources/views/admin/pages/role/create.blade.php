@@ -1,6 +1,6 @@
 @extends('admin.layouts.main')
 @section('title_page')
-    Edit - Account - Admin - {{ config('app.name') }}
+    Edit - Role - Admin - {{ config('app.name') }}
 @endsection
 @section('name_user')
 {{--    {{auth()->user()->name}}--}} HaiZuka
@@ -23,10 +23,10 @@
     @endphp
 @endsection
 @section('title_component')
-    Account
+    Role
 @endsection
 @section('title_layout')
-    Create Account
+    Create Role
 @endsection
 @section('actions_layout')
     <a href="{{route('admin.account.index')}}" class="btn btn-primary btn-sm mr-2 mb-2 mb-lg-0">

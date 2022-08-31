@@ -42,18 +42,14 @@ class RoleService
     }
 
 
-//    public function setCookie($username, $password) {
-//        Cookie::queue('username', $username, 120);
-//        Cookie::queue('password', $password, 120);
-//    }
-//
-//    public function clearCookie() {
-//        Cookie::queue('username', null , -1);
-//        Cookie::queue('password', null, -1);
-//    }
-//
-//    public function checkLogin($username, $password){
-//        return $this->account->where('username', $username)->where('password', $password)->first();
-//    }
+    public function paginate($limit, $keywords){
+        $role = $this->role;
+        $role = $role->orderBy('created_at','desc');
+        if (!empty($keywords)) {
+            $role->where('role_name', 'like', '%'. $keywords.'%');
+            $role->orWhere('description', 'like', '%'. $keywords.'%');
+        }
+        return $role->paginate($limit)->withQueryString();
+    }
 
 }

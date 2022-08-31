@@ -1,6 +1,6 @@
 @extends('admin.layouts.main')
 @section('title_page')
-    Account - Admin - {{ config('app.name') }}
+    Role - Admin - {{ config('app.name') }}
 @endsection
 @section('name_user')
 {{--    {{auth()->user()->name}}--}} HaiZuka
@@ -164,6 +164,7 @@
                         url: "/admin/role/delete/" + id,
                         type: "GET",
                         success: function (result) {
+                            console.log(result);
                             if (result !== null) {
                                 toastr.success("Xóa thành công");
                                 row.remove();
