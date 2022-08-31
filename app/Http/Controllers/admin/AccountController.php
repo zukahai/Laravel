@@ -33,6 +33,11 @@ class AccountController extends Controller
         return $id;
     }
 
+    public function role($id=null) {
+        $account = $this->accountService->find($id);
+        return $account->roles()->get();
+    }
+
     public function formUpdate($id=null) {
         if ($id == null)
             return false;

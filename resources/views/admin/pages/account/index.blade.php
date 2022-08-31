@@ -83,7 +83,15 @@
                 <th class="align-middle text-center" scope="row">{{$item->id}}</th>
                 <td class="align-middle text-center">{{$item->username}}</td>
                 <td class="align-middle text-center">{{$item->created_at}}</td>
-                <td class="align-middle text-center"><span class="badge {{($item->role == 'admin') ? 'badge-danger': 'badge-success'}}"> {{$item->role}} </span></td>
+                <td class="align-middle text-center">
+                    @foreach($item->roles as $role)
+                    <span class="
+                    badge {{($role->role_name == 'admin') ? 'badge-danger':
+    (($role->role_name == 'staff') ? 'badge-info':'badge-success')}}
+    "> {{$role->role_name}}</span> </span>
+                    @endforeach
+                </td>
+{{--                <td class="align-middle text-center"><span class="badge {{($item->role == 'admin') ? 'badge-danger': 'badge-success'}}"> {{$item->role}} </span></td>--}}
                 <td class="align-center justify-content-center">
                     <a href="{{route('admin.account.update')}}/{{$item->id}}" class="btn btn-success m mx-1 my-1">Sửa</a>
                     <span data-id="{{$item->id}}" class="btn btn-danger mx-1 delete-btn my-1">Xoá</span>

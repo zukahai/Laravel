@@ -37,7 +37,7 @@ Route::prefix('/')->group(function(){
 });
 
 // Routes admin
-Route::prefix('admin')->middleware('CheckLoginAdmin')->group(callback: function(){
+Route::prefix('admin')->group(callback: function(){
     Route::get('/', [HomeAdminController::class, 'index']);
 
     Route::prefix('account')->group(function(){
@@ -47,6 +47,7 @@ Route::prefix('admin')->middleware('CheckLoginAdmin')->group(callback: function(
         Route::get('/delete/{id?}', [AccountController::class, 'delete'])->name('admin.account.delete');
         Route::get('/update/{id?}', [AccountController::class, 'formUpdate'])->name('admin.account.formUpdate');
         Route::post('/update/{id?}', [AccountController::class, 'update'])->name('admin.account.update');
+        Route::get('/role/{id?}', [AccountController::class, 'role'])->name('admin.account.role');
     });
 
     Route::prefix('role')->group(function(){
