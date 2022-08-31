@@ -125,7 +125,7 @@ class AccountController extends Controller
             return redirect(route('login'))->with('error', 'Tài khoản hoặc mật khẩu không đúng');
         } else {
 //            dd(array_search('admin', $this->accountService->getNameRole($account->roles)));
-            if (array_search('admin', $this->accountService->getNameRole($account->roles)))
+            if (array_search('admin', $this->accountService->getNameRole($account->roles)) !== false)
                 return redirect(route('admin.account.index'))->with('info', 'Đăng nhập admin thành công');
             else
                 return redirect(route('homeUser'))->with('info', 'Đăng nhập người dùng thành công');
