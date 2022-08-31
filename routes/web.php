@@ -37,7 +37,7 @@ Route::prefix('/')->group(function(){
 });
 
 // Routes admin
-Route::prefix('admin')->group(callback: function(){
+Route::prefix('admin')->middleware('CheckLoginAdmin')->group(callback: function(){
     Route::get('/', [HomeAdminController::class, 'index']);
 
     Route::prefix('account')->group(function(){

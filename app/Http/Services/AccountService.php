@@ -53,7 +53,15 @@ class AccountService
         $user = Cookie::get('username');
         $password = Cookie::get('password');
         $account = $this->checkLogin($user, $password);
-        return ($account == null) ? null : $account->role;
+        return ($account == null) ? null : $this->getNameRole($account->roles);
+    }
+
+    public function getNameRole($roles) {
+        $name_roles = [];
+        foreach ($roles as $role) {
+            array_push($name_roles, $role->role_name);
+        }
+        return $name_roles;
     }
 
     public function setCookie($username, $password) {
