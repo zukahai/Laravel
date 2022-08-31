@@ -7,7 +7,7 @@ use App\Models\Account;
 use App\Models\RoleAccount;
 use Cookie;
 
-class RoleAccountSeeder
+class RoleAccountService
 {
     public function __construct(RoleAccount $roleAccount)
     {

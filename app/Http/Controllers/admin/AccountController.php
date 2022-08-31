@@ -5,6 +5,9 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Services\AccountService;
+use App\Http\Services\RoleService;
+use App\Http\Controllers\admin\RoleAccountController;
+use App\Http\Services\RoleAccountService;
 use App\Models\Account;
 use Cookie;
 
@@ -14,9 +17,13 @@ class AccountController extends Controller
 
     protected $limit = 10;
 
-    public function __construct(AccountService $accountService)
+    public function __construct(AccountService $accountService,
+                                RoleService $roleService,
+                                RoleAccountController $roleAccountController)
     {
         $this->accountService = $accountService;
+        $this->roleAccountController = $roleAccountController;
+        $this->roleService = $roleService;
     }
 
     public function index(Request $request) {
@@ -24,6 +31,27 @@ class AccountController extends Controller
         $listAccount = $this->accountService->paginate($this->limit, $keywords);
         $this->data['accounts'] = $listAccount;
         return view('admin.pages.account.index', $this->data);
+    }
+
+    public function add(Request $request) {
+        $request->flash();
+        $this->validateForm($request);
+        $account = new Account();
+        $account->username = $request->username;
+        $account->password = $request->password;
+        $this->accountService->add($account);
+
+        $this->roleAccountController->create($account->id);
+
+
+//        for ($i=55; $i <= 555; $i++) {
+//            $account = new Account();
+//            $account->username = 'user_' . $i;
+//            $account->password = 'password_' . $i;
+//            $this->accountService->add($account);
+//        }
+
+        return redirect(route('admin.account.index'))->with('info', 'Thêm thành công');
     }
 
     public function delete($id=null) {
@@ -45,7 +73,7 @@ class AccountController extends Controller
         return view("admin.pages.account.edit", $this->data);
     }
 
-    public function update($id=null, Request $request) {
+    public function update($id, Request $request) {
         $request->validate(
             [
                 'password' => 'required|min:6',
@@ -80,26 +108,6 @@ class AccountController extends Controller
             ]
         );
     }
-
-    public function add(Request $request) {
-        $request->flash();
-        $this->validateForm($request);
-        $account = new Account();
-        $account->username = $request->username;
-        $account->password = $request->password;
-        $this->accountService->add($account);
-
-
-//        for ($i=55; $i <= 555; $i++) {
-//            $account = new Account();
-//            $account->username = 'user_' . $i;
-//            $account->password = 'password_' . $i;
-//            $this->accountService->add($account);
-//        }
-
-        return redirect(route('admin.account.index'))->with('info', 'Thêm thành công');
-    }
-
 
     public function destroy($id) {
         $this->accountService->destroy($id);

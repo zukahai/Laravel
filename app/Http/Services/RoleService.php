@@ -13,21 +13,12 @@ class RoleService
         $this->role = $role;
     }
 
-    public function getAll() {
-        return $this->role->orderBy('id','asc')->paginate();
+    public function findByRoleName($roleName){
+        return $this->role->where('role_name', '=', $roleName)->first();
     }
 
-    public function paginate($limit, $keywords){
-        $role = $this->role;
-        $role = $role->orderBy('id','asc');
-        if (!empty($keywords)) {
-            $role->where('id', 'like', '%'. $keywords.'%');
-            $role->orWhere('role_name', 'like', '%'. $keywords.'%');
-            $role->orWhere('description', 'like', '%'. $keywords.'%');
-            $role->orWhere('created_at', 'like', '%'. $keywords.'%');
-            $role->orWhere('updated_at', 'like', '%'. $keywords.'%');
-        }
-        return $role->paginate($limit)->withQueryString();
+    public function getAll() {
+        return $this->role->orderBy('id','asc')->paginate();
     }
 
     public function delete($id) {
