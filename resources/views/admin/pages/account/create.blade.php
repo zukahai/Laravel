@@ -1,6 +1,6 @@
 @extends('admin.layouts.main')
 @section('title_page')
-    Edit - Account - Admin - {{ config('app.name') }}
+    Create - Account - Admin - {{ config('app.name') }}
 @endsection
 @section('name_user')
 {{--    {{auth()->user()->name}}--}} HaiZuka
