@@ -55,12 +55,12 @@
                             <h3 class="mb-5">Sign in</h3>
 
                             <div class="form-outline mb-4">
-                                <input type="text" id="typeEmailX-2" class="form-control form-control-lg" name="username" />
+                                <input type="text" id="typeEmailX-2" class="form-control form-control-lg" name="username" {{old('username')}}/>
                                 <label class="form-label" for="typeEmailX-2">Username</label>
                             </div>
 
                             <div class="form-outline mb-4">
-                                <input type="password" id="typePasswordX-2" class="form-control form-control-lg" name="password"/>
+                                <input type="password" id="typePasswordX-2" class="form-control form-control-lg" name="password" {{old('username')}}/>
                                 <label class="form-label" for="typePasswordX-2">Password</label>
                             </div>
 

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\admin;
 
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Services\AccountService;
@@ -106,9 +108,9 @@ class AccountController extends Controller
         return $id;
     }
 
-    public function login($msg = 123) {
+    public function login() {
         $this->accountService->clearCookie();
-        return View('admin.pages.account.login')->with('msg', $msg);
+        return View('admin.pages.account.login');
     }
 
     public function checkLogin(Request $request) {
@@ -118,13 +120,18 @@ class AccountController extends Controller
 
         $account = $this->accountService->checkLogin($username, $password);
 
+        $user = User::find(1);
+
+        auth()->login($user);
+//        dd(auth()->user()->account->username);
+
+
         if ($account != null) {
             $this->accountService->setcookie($username, $password);
         }
         if ($account == null) {
             return redirect(route('login'))->with('error', 'Tài khoản hoặc mật khẩu không đúng');
         } else {
-//            dd(array_search('admin', $this->accountService->getNameRole($account->roles)));
             if (array_search('admin', $this->accountService->getNameRole($account->roles)) !== false)
                 return redirect(route('admin.account.index'))->with('info', 'Đăng nhập admin thành công');
             else if (array_search('staff', $this->accountService->getNameRole($account->roles)) !== false)

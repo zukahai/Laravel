@@ -1,10 +1,10 @@
 @extends('admin.layouts.main')
 @section('title_page')
-    Role - Admin - {{ config('app.name') }}
+    R333ole - Admin - {{ config('app.name') }}
 @endsection
 
 @section('name_user')
-{{--    {{auth()->user()->name}}--}} HaiZuka
+    {{(auth()->user()->account->username)}}
 
 @endsection
 @section('email_user')

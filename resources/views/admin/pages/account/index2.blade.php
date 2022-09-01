@@ -1,6 +1,6 @@
 @extends('admin.layouts.main')
 @section('title_page')
-    Account - Admin - {{ config('app.name') }}
+    Edit Account - Admin - {{ config('app.name') }}
 @endsection
 
 @section('name_user')
@@ -24,18 +24,18 @@
     @endphp
 @endsection
 @section('title_component')
-    Account
+    Accountvvvv
 @endsection
 @section('title_layout')
-    Account
+    Accountddd
 @endsection
 @section('actions_layout')
     <a href="{{route('admin.account.index')}}" class="btn btn-primary btn-sm mr-2 mb-2 mb-lg-0">
-        <i class="fa fa-list"></i> List Account
+        <i class="fa fa-list"></i> List Accountdd
     </a>
 @endsection
 @section('title_card')
-    List Account
+    Create Account
 @endsection
 
 @section('onload')

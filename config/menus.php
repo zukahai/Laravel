@@ -46,7 +46,7 @@ return [
 
     [
         'title' => 'Nhân viên',
-        'name' => 'role',
+        'name' => 'staff',
         'route' => 'admin.role.index',
         'children' => [
             [
@@ -61,7 +61,7 @@ return [
             ],
             [
                 'title' => 'Yêu cầu làm nhân viên',
-                'name' => 'create',
+                'name' => 'request',
                 'route' => 'admin.role.showcreate',
             ],
         ],
