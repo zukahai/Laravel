@@ -100,7 +100,7 @@
                     </a>
 
                     <span class="btn btn-icon btn-danger delete-btn btn-sm btn-icon-md btn-circle mx-1"
-                          data-toggle="tooltip" data-placement="top" data-id="${item.id}" title="Xóa">
+                          data-toggle="tooltip" data-placement="top" data-id="{{$item->id}}" title="Xóa">
                                     <i class="fa fa-trash"></i>
                                 </span>
                 </td>

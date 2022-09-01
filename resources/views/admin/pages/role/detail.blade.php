@@ -1,6 +1,6 @@
 @extends('admin.layouts.main')
 @section('title_page')
-    Detail role {{$roles_account[0]->role->role_name}} - Admin - {{ config('app.name') }}
+    Detail role {{(!$roles_account->isEmpty()) ?$roles_account[0]->role->role_name: ""}} - Admin - {{ config('app.name') }}
 @endsection
 @section('name_user')
 {{--    {{auth()->user()->name}}--}} HaiZuka
@@ -23,10 +23,10 @@
     @endphp
 @endsection
 @section('title_component')
-    Role: {{$roles_account[0]->role->role_name}}
+    Role: {{(!$roles_account->isEmpty()) ?$roles_account[0]->role->role_name: ""}}
 @endsection
 @section('title_layout')
-    Detail role {{$roles_account[0]->role->role_name}}
+    Detail role {{(!$roles_account->isEmpty()) ?$roles_account[0]->role->role_name: ""}}
 @endsection
 @section('actions_layout')
     <a href="{{route('admin.role.index')}}" class="btn btn-primary btn-sm mr-2 mb-2 mb-lg-0">
@@ -34,7 +34,7 @@
     </a>
 @endsection
 @section('title_card')
-    Role {{$roles_account[0]->role->role_name}}
+    Role {{(!$roles_account->isEmpty()) ?$roles_account[0]->role->role_name: ""}}
 @endsection
 
 @section('onload')
@@ -71,7 +71,7 @@
         </form>
     </div>
     <hr class="my-4">
-    <h3 class="text-center">Role {{$roles_account[0]->role->role_name}}</h3>
+    <h3 class="text-center">Role {{(!$roles_account->isEmpty()) ?$roles_account[0]->role->role_name: ""}}</h3>
 
     <table class="table search-table-outter">
         <thead>
@@ -81,7 +81,7 @@
                 <th class="text-center" scope="col">UserName</th>
                 <th class="text-center" scope="col">Roles</th>
                 <th class="text-center" scope="col">Created_at</th>
-                <th class="text-center" scope="col">AddRole_{{$roles_account[0]->role->role_name}}_at</th>
+                <th class="text-center" scope="col">AddRole_{{(!$roles_account->isEmpty()) ?$roles_account[0]->role->role_name: ""}}_at</th>
                 <th>&nbsp;</th>
             </tr>
         @endif
