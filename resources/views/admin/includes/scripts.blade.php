@@ -47,7 +47,7 @@
         }).then(function (result) {
             if (result.value) {
                 $.ajax({
-                    url: "/admin/account/delete/" + id,
+                    url: "/{{Route::current()->uri()}}/delete/" + id,
                     type: "GET",
                     success: function (result) {
                         if (result !== null) {
@@ -56,6 +56,9 @@
                         } else {
                             toastr.error("Xóa thất bại");
                         }
+                    },
+                    error: function (e) {
+                        toastr.error("Xóa thất bại");
                     }
                 })
             }

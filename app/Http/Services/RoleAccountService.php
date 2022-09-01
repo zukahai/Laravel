@@ -20,8 +20,8 @@ class RoleAccountService
 
 
     public function delete($id) {
-        $account = $this->roleAccount->find($id);
-        $account->delete();
+        $roleAccount = $this->roleAccount->find($id);
+        $roleAccount->delete();
     }
 
     public function update($id, $data) {
@@ -37,5 +37,9 @@ class RoleAccountService
 
     public function find($id) {
         return $this->roleAccount->find($id);
+    }
+
+    public function findByIdAccount($id_account) {
+        return $this->roleAccount->where('id_account', '=', $id_account)->get();
     }
 }

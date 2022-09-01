@@ -85,10 +85,10 @@
                 <td class="align-middle text-center">{{$item->created_at}}</td>
                 <td class="align-middle text-center">
                     @foreach($item->roles as $role)
-                    <span class="
+                    <span class=" my-1
                     badge {{($role->role_name == 'admin') ? 'badge-danger':
-    (($role->role_name == 'staff') ? 'badge-info':'badge-success')}}
-    "> {{$role->role_name}}</span> </span>
+                    (($role->role_name == 'staff') ? 'badge-info':'badge-success')}}
+                    "> {{$role->role_name}}</span><br>
                     @endforeach
                 </td>
 {{--                <td class="align-middle text-center"><span class="badge {{($item->role == 'admin') ? 'badge-danger': 'badge-success'}}"> {{$item->role}} </span></td>--}}

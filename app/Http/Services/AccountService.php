@@ -4,13 +4,15 @@ namespace App\Http\Services;
 
 
 use App\Models\Account;
+use App\Http\Services\RoleAccountService;
 use Cookie;
 
 class AccountService
 {
-    public function __construct(Account $account)
+    public function __construct(Account $account, RoleAccountService $roleAccountService)
     {
         $this->account = $account;
+        $this->roleAccountService = $roleAccountService;
     }
 
     public function getAll() {
@@ -31,6 +33,10 @@ class AccountService
 
     public function delete($id) {
         $account = $this->account->find($id);
+        $roleAccount = $this->roleAccountService->findByIdAccount($id);
+        foreach ($roleAccount as $role_account) {
+            $this->roleAccountService->delete($role_account->id);
+        }
         $account->delete();
     }
 

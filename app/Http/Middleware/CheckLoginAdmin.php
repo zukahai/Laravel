@@ -29,7 +29,7 @@ class CheckLoginAdmin
             return redirect(route('login'))->with('error', 'Bạn cần đăng nhập tài khoản admin');
         else if (array_search('admin', $this->isLoginAdmin()) === false)
             return redirect(route('homeUser'))->with('warning', 'Bạn không phải là admin');
-        
+
         return $next($request);
     }
 

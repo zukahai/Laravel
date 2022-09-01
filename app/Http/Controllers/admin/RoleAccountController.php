@@ -54,4 +54,8 @@ class RoleAccountController extends Controller
     {
         //
     }
+
+    public function findByIdAccount($id_account) {
+        return $this->roleAccountService->findByIdAccount($id_account);
+    }
 }
