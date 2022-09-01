@@ -8,6 +8,7 @@ use App\Http\Requests\UpdateRoleAccountRequest;
 use App\Models\RoleAccount;
 use App\Http\Services\RoleAccountService;
 use App\Http\Services\RoleService;
+use App\Http\Services\AccountService;
 use Illuminate\Http\Request;
 
 class RoleAccountController extends Controller
@@ -15,10 +16,11 @@ class RoleAccountController extends Controller
 
     public $data = [];
 
-    public function __construct(RoleAccountService $roleAccountService, RoleService $roleService)
+    public function __construct(RoleAccountService $roleAccountService, RoleService $roleService, AccountService $accountService)
     {
         $this->roleAccountService = $roleAccountService;
         $this->roleService = $roleService;
+        $this->accountService = $accountService;
     }
 
     public function index()
@@ -31,6 +33,15 @@ class RoleAccountController extends Controller
         $roleAccount->id_account = $id_account;
         $roleAccount->id_role = $this->roleService->findByRoleName('user')->id;
         $this->roleAccountService->add($roleAccount);
+    }
+
+    public function add(Request $request)
+    {
+        $roleAccount = new RoleAccount();
+        $roleAccount->id_account = $request->id_account;
+        $roleAccount->id_role = $request->id;
+        $this->roleAccountService->add($roleAccount);
+        return back()->with('info', 'Thêm thành công');
     }
 
     public function store(StoreRoleAccountRequest $request)
@@ -72,6 +83,7 @@ class RoleAccountController extends Controller
         $id_role = $request->id;
         $roles_account = $this->roleAccountService->findByIdRole($id_role);
         $this->data['roles_account'] = $roles_account;
+        $this->data['accounts'] = $this->accountService->getAll();
         return view('admin.pages.role.detail', $this->data);
     }
 }

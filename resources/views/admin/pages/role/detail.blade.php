@@ -47,11 +47,31 @@
 @endsection
 
 @section('content_card')
-    <h3 class="text-center">Role {{$roles_account[0]->role->role_name}}</h3>
-    <a href="{{route('admin.account.formAdd')}}" class="btn btn-primary mb-2">Thêm vai trò</a>
+
     @if(!empty($success))
         <h6 class="alert alert-info"> {{$success}}</h6>
     @endif
+
+    <div class="container">
+        <form action="" method="post">
+            @csrf
+            <div class="row my-5 mx-auto">
+                <div class="form-floating col col-6">
+                    <select class="form-select col col-8" data-control="select2" id="idTypeTable" name="id_account" data-placeholder="Select an option">
+                        @foreach($accounts as $account)
+                            <option value="{{$account->id}}">{{$account->id}} - {{$account->username}}</option>
+                        @endforeach
+                    </select>
+                    <label for="idTypeTable">Tài khoản</label>
+                </div>
+                <div class="form-floating col col-6 mx-auto">
+                    <input type="submit" class="btn btn-primary h-100" value="Thêm">
+                </div>
+            </div>
+        </form>
+    </div>
+    <hr class="my-4">
+    <h3 class="text-center">Role {{$roles_account[0]->role->role_name}}</h3>
 
     <table class="table search-table-outter">
         <thead>
