@@ -118,29 +118,25 @@ class AccountController extends Controller
         $request->flash();
         $username = $request->username;
         $password = $request->password;
-
         $account = $this->accountService->checkLogin($username, $password);
 
-        if(User::where('account_id', '=', $account->id)->first() == null) {
-            $user = new User();
-            $user->account_id = $account->id;
-            $user->save();
-        }
-        $user = $account->user;
-
-        auth()->login($user);
-//        dd(auth()->user()->account->username);
-
-
         if ($account != null) {
-            $this->accountService->setcookie($username, $password);
+            if(User::where('account_id', '=', $account->id)->first() == null) {
+                $user = new User();
+                $user->account_id = $account->id;
+                $user->save();
+            }
+            $user = $account->user;
+            auth()->login($user);
+//            $this->accountService->setcookie($username, $password);
         }
+
         if ($account == null) {
             return redirect(route('login'))->with('error', 'Tài khoản hoặc mật khẩu không đúng');
         } else {
-            if (array_search('admin', $this->accountService->getNameRole($account->roles)) !== false)
+            if (auth()->user()->account->roles->where('role_name', '=', 'admin')->count() > 0)
                 return redirect(route('admin.account.index'))->with('info', 'Đăng nhập admin thành công');
-            else if (array_search('staff', $this->accountService->getNameRole($account->roles)) !== false)
+            else if (auth()->user()->account->roles->where('role_name', '=', 'staff')->count() > 0)
                 return redirect(route('staff.index'))->with('info', 'Đăng nhập nhân viên thành công');
             else
                 return redirect(route('homeUser'))->with('info', 'Đăng nhập người dùng thành công');

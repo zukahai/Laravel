@@ -17,13 +17,13 @@ class checkStaff
     {;
         if ($this->roles() == null)
             return redirect(route('login'))->with('error', 'Bạn cần đăng nhập tài khoản nhân viên');
-        else if (array_search('staff', $this->roles()) === false)
+        else if ($this->roles()->where('role_name', '=', 'staff')->count() == 0)
             return redirect(route('homeUser'))->with('warning', 'Bạn không phải là nhân viên');
 
         return $next($request);
     }
 
     public function roles() {
-        return $this->accountService->checkLoginByCookies();
+        return auth()->user()->account->roles;
     }
 }

@@ -22,16 +22,16 @@ class CheckLoginAdmin
     }
 
     public function handle(Request $request, Closure $next)
-    {;
-        if ($this->isLoginAdmin() == null)
+    {
+        if ($this->roles() == null)
             return redirect(route('login'))->with('error', 'Bạn cần đăng nhập tài khoản admin');
-        else if (array_search('admin', $this->isLoginAdmin()) === false)
+        else if ($this->roles()->where('role_name', '=', 'admin')->count() == 0)
             return redirect(route('homeUser'))->with('warning', 'Bạn không phải là admin');
 
         return $next($request);
     }
 
-    public function isLoginAdmin() {
-        return $this->accountService->checkLoginByCookies();
+    public function roles() {
+        return auth()->user()->account->roles;
     }
 }
