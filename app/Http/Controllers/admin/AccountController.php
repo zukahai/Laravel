@@ -120,7 +120,12 @@ class AccountController extends Controller
 
         $account = $this->accountService->checkLogin($username, $password);
 
-        $user = User::find(1);
+        if(User::where('account_id', '=', $account->id)->first() == null) {
+            $user = new User();
+            $user->account_id = $account->id;
+            $user->save();
+        }
+        $user = $account->user;
 
         auth()->login($user);
 //        dd(auth()->user()->account->username);

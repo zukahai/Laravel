@@ -22,4 +22,8 @@ class Account extends Model
         return $this->belongsToMany(Role::class, 'role_accounts', 'id_account', 'id_role')
             ->orderBy('role_name', 'asc');
     }
+
+    public function user(){
+        return $this->hasOne(User::class, 'account_id', 'id');
+    }
 }

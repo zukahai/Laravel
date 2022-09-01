@@ -3,7 +3,7 @@
     Detail role {{(!$roles_account->isEmpty()) ?$roles_account[0]->role->role_name: ""}} - Admin - {{ config('app.name') }}
 @endsection
 @section('name_user')
-{{--    {{auth()->user()->name}}--}} HaiZuka
+    {{(auth()->user()->account->username)}}
 
 @endsection
 @section('email_user')
