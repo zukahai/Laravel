@@ -1,6 +1,6 @@
 @extends('admin.layouts.main')
 @section('title_page')
-    Role - Admin - {{ config('app.name') }}
+    Detail role {{$roles_account[0]->role->role_name}} - Admin - {{ config('app.name') }}
 @endsection
 @section('name_user')
 {{--    {{auth()->user()->name}}--}} HaiZuka
@@ -23,18 +23,18 @@
     @endphp
 @endsection
 @section('title_component')
-    Role
+    Role: {{$roles_account[0]->role->role_name}}
 @endsection
 @section('title_layout')
-    Role
+    Detail role {{$roles_account[0]->role->role_name}}
 @endsection
 @section('actions_layout')
-    <a href="{{route('admin.account.index')}}" class="btn btn-primary btn-sm mr-2 mb-2 mb-lg-0">
-        <i class="fa fa-list"></i> List Account
+    <a href="{{route('admin.role.index')}}" class="btn btn-primary btn-sm mr-2 mb-2 mb-lg-0">
+        <i class="fa fa-list"></i> List Role
     </a>
 @endsection
 @section('title_card')
-    Role
+    Role {{$roles_account[0]->role->role_name}}
 @endsection
 
 @section('onload')
@@ -59,7 +59,7 @@
     </form>
     </div>
 
-    <h5 class="text-center">Danh sách vài trò</h5>
+    <h3 class="text-center">Role {{$roles_account[0]->role->role_name}}</h3>
     <a href="{{route('admin.account.formAdd')}}" class="btn btn-primary mb-2">Thêm vai trò</a>
     @if(!empty($success))
         <h6 class="alert alert-info"> {{$success}}</h6>
@@ -67,21 +67,32 @@
 
     <table class="table search-table-outter">
         <thead>
-        @if(!$roles->isEmpty())
+        @if(!$roles_account->isEmpty())
             <tr>
                 <th class="text-center" scope="col">#</th>
-                <th class="text-center" scope="col">Role Name</th>
-                <th class="text-center" scope="col">Decription</th>
+                <th class="text-center" scope="col">UserName</th>
+                <th class="text-center" scope="col">Roles</th>
+                <th class="text-center" scope="col">Created_at</th>
+                <th class="text-center" scope="col">AddRole_{{$roles_account[0]->role->role_name}}_at</th>
                 <th>&nbsp;</th>
             </tr>
         @endif
         </thead>
         <tbody>
-        @forelse ($roles as $item)
+        @forelse ($roles_account as $item)
             <tr class="align-middle">
                 <th class="align-middle text-center" scope="row">{{$item->id}}</th>
-                <td class="align-middle text-center">{{$item->role_name}}</td>
-                <td class="align-middle text-center">{{$item->description}}</td>
+                <td class="align-middle text-center">{{$item->getAccount->username}}</td>
+                <td class="align-middle text-center">
+                    @foreach($item->getAccount->roles as $role)
+                        <span class=" my-1 text-center
+                    badge {{($role->role_name == 'admin') ? 'badge-danger':
+                    (($role->role_name == 'staff') ? 'badge-info':'badge-success')}}
+                    "> {{$role->role_name}}</span>
+                    @endforeach
+                </td>
+                <td class="align-middle text-center">{{$item->getAccount->created_at}}</td>
+                <td class="align-middle text-center">{{$item->created_at}}</td>
                 <td class="align-center justify-content-center">
 
                     <a href="{{route('admin.role.detail', ['id' => $item->id])}}" class="btn btn-icon btn-info btn-sm btn-icon-md btn-circle mx-1"
@@ -107,7 +118,7 @@
         </tbody>
     </table>
     <div class="d-flex justify-content-center text-dark">
-        {{$roles->links()}}
+        {{$roles_account->links()}}
     </div>
 @endsection
 

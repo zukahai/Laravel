@@ -31,4 +31,12 @@ class RoleController extends Controller
         $this->roleService->delete($id);
         return $id;
     }
+
+    public function accounts(Request $request){
+        $id = $request->id;
+        if ($id == null)
+            return false;
+        $role =$this->roleService->find($id);
+        dd($role->accounts()->get());
+    }
 }

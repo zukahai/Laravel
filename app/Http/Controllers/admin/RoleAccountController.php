@@ -8,9 +8,12 @@ use App\Http\Requests\UpdateRoleAccountRequest;
 use App\Models\RoleAccount;
 use App\Http\Services\RoleAccountService;
 use App\Http\Services\RoleService;
+use Illuminate\Http\Request;
 
 class RoleAccountController extends Controller
 {
+
+    public $data = [];
 
     public function __construct(RoleAccountService $roleAccountService, RoleService $roleService)
     {
@@ -57,5 +60,12 @@ class RoleAccountController extends Controller
 
     public function findByIdAccount($id_account) {
         return $this->roleAccountService->findByIdAccount($id_account);
+    }
+
+    public function findByIdRole(Request $request) {
+        $id_role = $request->id;
+        $roles_account = $this->roleAccountService->findByIdRole($id_role);
+        $this->data['roles_account'] = $roles_account;
+        return view('admin.pages.role.detail', $this->data);
     }
 }

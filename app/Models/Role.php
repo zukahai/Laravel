@@ -11,7 +11,7 @@ class Role extends Model
     use HasFactory;
 //    use SoftDeletes;
 
-    public function accouts()
+    public function accounts()
     {
         return $this->belongsToMany(Account::class, 'role_accounts', 'id_role', 'id_account');
     }

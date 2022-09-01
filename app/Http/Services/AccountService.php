@@ -25,7 +25,6 @@ class AccountService
         if (!empty($keywords)) {
             $user->where('username', 'like', '%'. $keywords.'%');
             $user->orWhere('id', 'like', '%'. $keywords.'%');
-            $user->orWhere('role', 'like', '%'. $keywords.'%');
             $user->orWhere('created_at', 'like', '%'. $keywords.'%');
         }
         return $user->paginate($limit)->withQueryString();

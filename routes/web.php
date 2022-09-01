@@ -49,12 +49,12 @@ Route::prefix('admin')->middleware('CheckLoginAdmin')->group(callback: function(
         Route::get('/update/{id?}', [AccountController::class, 'formUpdate'])->name('admin.account.formUpdate');
         Route::post('/update/{id?}', [AccountController::class, 'update'])->name('admin.account.update');
         Route::get('/role/{id?}', [AccountController::class, 'role'])->name('admin.account.role');
-        Route::get('/roleAccount/{id?}', [RoleAccountController::class, 'findByIdAccount'])->name('admin.account.roleAccount');
     });
 
     Route::prefix('role')->group(function(){
         Route::get('/', [RoleController::class, 'index'])->name('admin.role.index');
         Route::get('/delete/{id?}', [RoleController::class, 'delete'])->name('admin.role.delete');
+        Route::get('/detail', [RoleAccountController::class, 'findByIdRole'])->name('admin.role.detail');
     });
 
 
