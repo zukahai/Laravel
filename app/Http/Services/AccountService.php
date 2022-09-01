@@ -40,7 +40,6 @@ class AccountService
     }
 
     public function update($id, $data) {
-
         $this->account->where('id', $id)->update($data);
         return $this->account->find($id);
     }

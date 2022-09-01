@@ -68,4 +68,16 @@ class RoleController extends Controller
     public function showCreate() {
         return view('admin.pages.role.create');
     }
+
+    public function showEdit($id) {
+        $this->data['role'] = $this->roleService->find($id);
+        return view('admin.pages.role.edit', $this->data);
+    }
+
+    public function edit($id, Request $request) {
+        $data = ['role_name'=>$request->role_name, 'description'=>$request->description, 'color'=>$request->color];
+        $this->roleService->update($id, $data);
+
+        return redirect(route('admin.role.index'))->with('info', 'Cập nhật thành công');
+    }
 }

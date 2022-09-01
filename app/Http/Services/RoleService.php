@@ -27,7 +27,6 @@ class RoleService
     }
 
     public function update($id, $data) {
-
         $this->role->where('id', $id)->update($data);
         return $this->role->find($id);
     }

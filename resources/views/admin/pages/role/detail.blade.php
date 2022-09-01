@@ -101,11 +101,6 @@
                 <td class="align-middle text-center">{{$item->created_at}}</td>
                 <td class="align-center justify-content-center">
 
-                    <a href="{{route('admin.role.detail', ['id' => $item->id])}}" class="btn btn-icon btn-info btn-sm btn-icon-md btn-circle mx-1"
-                       title="Chi tiết">
-                        <i class="fa fa-asterisk"></i>
-                    </a>
-
                     <span class="btn btn-icon btn-danger delete-btn btn-sm btn-icon-md btn-circle mx-1"
                           data-toggle="tooltip" data-placement="top" data-id="{{$item->id}}" title="Xóa">
                                     <i class="fa fa-trash"></i>

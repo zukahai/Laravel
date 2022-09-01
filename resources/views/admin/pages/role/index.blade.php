@@ -94,7 +94,7 @@
                         <i class="fa fa-asterisk"></i>
                     </a>
 
-                    <a href="admin/groupTable/edit/" class="btn btn-icon btn-success btn-sm btn-icon-md btn-circle mx-1"
+                    <a href="{{route('admin.role.showedit')}}/{{$item->id}}" class="btn btn-icon btn-success btn-sm btn-icon-md btn-circle mx-1"
                        title="Sửa">
                         <i class="fa fa-edit"></i>
                     </a>
