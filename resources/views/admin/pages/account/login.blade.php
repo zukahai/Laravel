@@ -7,7 +7,7 @@
 
 @endsection
 @section('email_user')
-{{--    {{auth()->user()->email}}--}} haizuka@gmail.com
+{{--    {{(auth()->user()->account->roles[0]->description)}}--}}
 @endsection
 @section('css_custom')
     <link href="{{asset('/admin/assets/plugins/global/plugins.bundle.css')}}" rel="stylesheet" type="text/css"/>

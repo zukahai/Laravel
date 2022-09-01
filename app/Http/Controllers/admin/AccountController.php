@@ -109,6 +109,7 @@ class AccountController extends Controller
     }
 
     public function login() {
+        auth()->logout();
         $this->accountService->clearCookie();
         return View('admin.pages.account.login');
     }

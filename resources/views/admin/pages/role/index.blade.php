@@ -7,9 +7,17 @@
     {{(auth()->user()->account->username)}}
 
 @endsection
+
 @section('email_user')
 {{--    {{auth()->user()->email}}--}} haizuka@gmail.com
 @endsection
+
+@section('role_user')
+    @foreach(auth()->user()->account->roles->take(4) as $role)
+        <span class="badge badge-light-{{$role->color}} fw-bold fs-8 py-1 mx-auto">{{$role->role_name}}</span>
+    @endforeach
+@endsection
+
 @section('css_custom')
     <link href="{{asset('/admin/assets/plugins/global/plugins.bundle.css')}}" rel="stylesheet" type="text/css"/>
 @endsection

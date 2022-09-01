@@ -2,37 +2,51 @@
 @section('title_page')
     Trang chủ - {{ config('app.name') }}
 @endsection
+
 @section('name_user')
     {{(auth()->user()->account->username)}}
+@endsection
 
-@endsection
 @section('email_user')
-{{--    {{auth()->user()->email}}--}} haizuka@gmail.com
+    {{(auth()->user()->account->roles[0]->description)}}
 @endsection
+
+@section('role_user')
+    @foreach(auth()->user()->account->roles->take(4) as $role)
+        <span class="badge badge-light-{{$role->color}} fw-bold fs-8 py-1 mx-auto">{{$role->role_name}}</span>
+    @endforeach
+@endsection
+
 @section('css_custom')
     <link href="{{asset('/admin/assets/plugins/global/plugins.bundle.css')}}" rel="stylesheet" type="text/css"/>
 @endsection
+
 @section('js_custom')
     <script src="{{asset('/admin/assets/plugins/global/plugins.bundle.js')}}"></script>
 
 @endsection
+
 @section('menu')
     @php
         $menu_parent = 'account';
         $menu_child = 'index';
     @endphp
 @endsection
+
 @section('title_component')
     Home
 @endsection
+
 @section('title_layout')
     Home
 @endsection
+
 @section('actions_layout')
     <a href="{{route('admin.account.index')}}" class="btn btn-primary btn-sm mr-2 mb-2 mb-lg-0">
         <i class="fa fa-list"></i> List Account
     </a>
 @endsection
+
 @section('title_card')
     Home user
 @endsection
@@ -54,8 +68,8 @@
 @endsection
 
 @section('footer_card')
-
 @endsection
+
 @section('content_layout')
     <!--begin::Card-->
     <div class="card shadow-sm card-bordered">

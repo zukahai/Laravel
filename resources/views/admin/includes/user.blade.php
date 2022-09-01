@@ -11,7 +11,12 @@
             <!--begin::Username-->
             <div class="d-flex flex-column">
                 <div class="fw-bold d-flex align-items-center fs-5">@yield('name_user')
-                    <span class="badge badge-light-success fw-bold fs-8 px-2 py-1 ms-2">Pro</span></div>
+
+                </div>
+                <div class="fw-bold d-flex align-items-center fs-5 my-2">
+                    @yield('role_user')
+                </div>
+
                 <a href="#" class="fw-semibold text-muted text-hover-primary fs-7">@yield('email_user')</a>
             </div>
             <!--end::Username-->
