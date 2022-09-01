@@ -39,4 +39,33 @@ class RoleController extends Controller
         $role =$this->roleService->find($id);
         dd($role->accounts()->get());
     }
+
+    public function create(Request $request) {
+        $request->validate(
+            [
+                'role_name' => 'required|unique:roles|max:15|alpha_dash',
+                'description' => 'required|min:6',
+            ],
+            [
+                'role_name.required' => 'Vui lòng nhập tên chức vụ',
+                'role_name.unique' => 'Quyền này đã tồn tại',
+                'role_name.max' => 'Không được quá 15 ký tự',
+                'role_name.alpha_dash' => 'Không chứa ký tự đặc biệt',
+                'description.required' => 'Vui lòng nhập mô tả',
+                'description.min' => 'Mô tả ít nhất phải 6 ký tự',
+            ]
+        );
+        $data = new Role();
+        $data->role_name = $request->role_name;
+        $data->description = $request->description;
+        $data->color = $request->color;
+
+        $this->roleService->add($data);
+
+        return redirect(route('admin.role.index'))->with('info', 'Thêm role thành công');
+    }
+
+    public function showCreate() {
+        return view('admin.pages.role.create');
+    }
 }

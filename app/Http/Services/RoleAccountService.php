@@ -9,6 +9,7 @@ use Cookie;
 
 class RoleAccountService
 {
+    public $limit = 10;
     public function __construct(RoleAccount $roleAccount)
     {
         $this->roleAccount = $roleAccount;
@@ -46,7 +47,7 @@ class RoleAccountService
     public function findByIdRole($id_role) {
         $accounts = $this->roleAccount;
         $accounts = $accounts->where('id_role', '=', $id_role);
-        $accounts = $accounts->paginate();
+        $accounts = $accounts->paginate($this->limit)->withQueryString();
         return $accounts;
     }
 }

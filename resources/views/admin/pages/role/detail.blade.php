@@ -94,9 +94,7 @@
                 <td class="align-middle text-center">
                     @foreach($item->getAccount->roles as $role)
                         <span class=" my-1 text-center
-                    badge {{($role->role_name == 'admin') ? 'badge-danger':
-                    (($role->role_name == 'staff') ? 'badge-info':'badge-success')}}
-                    "> {{$role->role_name}}</span>
+                    badge badge-{{$role->color}}"> {{$role->role_name}}</span>
                     @endforeach
                 </td>
                 <td class="align-middle text-center">{{$item->getAccount->created_at}}</td>

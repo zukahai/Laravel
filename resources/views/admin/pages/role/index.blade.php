@@ -60,7 +60,7 @@
     </div>
 
     <h5 class="text-center">Danh sách vài trò</h5>
-    <a href="{{route('admin.account.formAdd')}}" class="btn btn-primary mb-2">Thêm vai trò</a>
+    <a href="{{route('admin.role.showcreate')}}" class="btn btn-primary mb-2">Thêm vai trò</a>
     @if(!empty($success))
         <h6 class="alert alert-info"> {{$success}}</h6>
     @endif
@@ -83,9 +83,7 @@
                 <th class="align-middle text-center" scope="row">{{$item->id}}</th>
                 <td class="align-middle text-center">
                     <span class=" my-1 text-center
-                    badge {{($item->role_name == 'admin') ? 'badge-danger':
-                    (($item->role_name == 'staff') ? 'badge-info':'badge-success')}}
-                    "> {{$item->role_name}}</span>
+                    badge badge-{{$item->color}}"> {{$item->role_name}}</span>
                 </td>
                 <td class="align-middle text-center">{{$item->description}}</td>
                 <td class="align-middle text-center">{{count($item->accounts)}}</td>

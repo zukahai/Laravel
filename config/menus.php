@@ -33,12 +33,12 @@ return [
                 'route' => 'admin.role.index',
             ],
             [
-                'title' => 'Create Account',
+                'title' => 'Create Role',
                 'name' => 'create',
-                'route' => 'admin.account.add',
+                'route' => 'admin.role.showcreate',
             ],
             [
-                'title' => 'Edit User',
+                'title' => 'Edit Role',
                 'name' => 'edit',
             ]
         ],

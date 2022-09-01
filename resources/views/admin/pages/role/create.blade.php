@@ -1,6 +1,6 @@
 @extends('admin.layouts.main')
 @section('title_page')
-    Edit - Role - Admin - {{ config('app.name') }}
+    Create - Role - Admin - {{ config('app.name') }}
 @endsection
 @section('name_user')
 {{--    {{auth()->user()->name}}--}} HaiZuka
@@ -18,7 +18,7 @@
 @endsection
 @section('menu')
     @php
-        $menu_parent = 'account';
+        $menu_parent = 'role';
         $menu_child = 'create';
     @endphp
 @endsection
@@ -29,15 +29,15 @@
     Create Role
 @endsection
 @section('actions_layout')
-    <a href="{{route('admin.account.index')}}" class="btn btn-primary btn-sm mr-2 mb-2 mb-lg-0">
-        <i class="fa fa-list"></i> List Account
+    <a href="{{route('admin.role.index')}}" class="btn btn-primary btn-sm mr-2 mb-2 mb-lg-0">
+        <i class="fa fa-list"></i> List Role
     </a>
 @endsection
 @section('title_card')
-    Create Account
+    Create Role
 @endsection
 @section('content_card')
-    <form action="{{route('admin.account.add')}}" method="post">
+    <form action="" method="post">
         @csrf
         @if($errors->any())
             <div class="alert alert-warning d-flex align-items-center">
@@ -48,22 +48,57 @@
             </div>
         @endif
         <div class="form-group my-2">
-            <label for="username">Tên tài khoản</label>
-            <input type="text" class="form-control" id="username" name="username" placeholder="Tên tài khoản">
-            @error('username')
+            <label for="username">Tên Role</label>
+            <input type="text" class="form-control" id="role_name" name="role_name" placeholder="Tên Role">
+            @error('role_name')
             <span class="text-bold text-italic text-danger">{{$message}}</span>
             @enderror
         </div>
+
         <div class="form-group my-2">
-            <label for="password">Password</label>
-            <input type="password" class="form-control" id="password" name="password" placeholder="Mật khẩu">
-            @error('password')
+            <label for="username">Mô tả</label>
+            <input type="text" class="form-control" id="description" name="description" placeholder="Mô tả" value="Đây là mô tả">
+            @error('description')
             <span class="text-bold text-italic text-danger">{{$message}}</span>
             @enderror
         </div>
-        {{--        <input type="hidden" name="_token" value="<?php echo csrf_token()?>">--}}
+
+        <div class="form-group row">
+            <label class="col-sm-2">Màu sắc: </label>
+            <div class="col-sm-10">
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="color" id="inlineRadio1" value="danger" checked>
+                    <label class="form-check-label" for="inlineRadio1"><span class="badge badge-danger">danger</span></label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="color" id="inlineRadio1" value="warning">
+                    <label class="form-check-label" for="inlineRadio1"><span class="badge badge-warning">warning</span></label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="color" id="inlineRadio1" value="primary">
+                    <label class="form-check-label" for="inlineRadio1"><span class="badge badge-primary">primary</span></label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="color" id="inlineRadio1" value="success">
+                    <label class="form-check-label" for="inlineRadio1"><span class="badge badge-success">success</span></label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="color" id="inlineRadio1" value="info">
+                    <label class="form-check-label" for="inlineRadio1"><span class="badge badge-info">info</span></label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="color" id="inlineRadio1" value="dark">
+                    <label class="form-check-label" for="inlineRadio1"><span class="badge badge-dark">dark</span></label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="color" id="inlineRadio1" value="light">
+                    <label class="form-check-label" for="inlineRadio1"><span class="badge badge-light">light</span></label>
+                </div>
+            </div>
+        </div>
+
         <div class="justify-content-center d-flex my-5">
-            <button type="submit" class="btn btn-primary">Thêm tài khoản</button>
+            <button type="submit" class="btn btn-primary">Thêm</button>
         </div>
     </form>
 @endsection

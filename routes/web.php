@@ -53,6 +53,8 @@ Route::prefix('admin')->middleware('CheckLoginAdmin')->group(callback: function(
 
     Route::prefix('role')->group(function(){
         Route::get('/', [RoleController::class, 'index'])->name('admin.role.index');
+        Route::get('/create', [RoleController::class, 'showCreate'])->name('admin.role.showcreate');
+        Route::post('/create', [RoleController::class, 'create'])->name('admin.role.create');
         Route::get('/delete/{id?}', [RoleController::class, 'delete'])->name('admin.role.delete');
         Route::get('/detail', [RoleAccountController::class, 'findByIdRole'])->name('admin.role.detail');
         Route::post('/detail', [RoleAccountController::class, 'add'])->name('admin.role.detail.add');

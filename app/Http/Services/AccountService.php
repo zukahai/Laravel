@@ -16,7 +16,7 @@ class AccountService
     }
 
     public function getAll() {
-        return $this->account->orderBy('created_at','desc')->get();
+        return $this->account->orderBy('username','asc')->get();
     }
 
     public function paginate($limit, $keywords){
