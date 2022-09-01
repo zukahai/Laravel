@@ -72,6 +72,7 @@
                 <th class="text-center" scope="col">#</th>
                 <th class="text-center" scope="col">Role Name</th>
                 <th class="text-center" scope="col">Decription</th>
+                <th class="text-center" scope="col">Quantity</th>
                 <th>&nbsp;</th>
             </tr>
         @endif
@@ -80,8 +81,14 @@
         @forelse ($roles as $item)
             <tr class="align-middle">
                 <th class="align-middle text-center" scope="row">{{$item->id}}</th>
-                <td class="align-middle text-center">{{$item->role_name}}</td>
+                <td class="align-middle text-center">
+                    <span class=" my-1 text-center
+                    badge {{($item->role_name == 'admin') ? 'badge-danger':
+                    (($item->role_name == 'staff') ? 'badge-info':'badge-success')}}
+                    "> {{$item->role_name}}</span>
+                </td>
                 <td class="align-middle text-center">{{$item->description}}</td>
+                <td class="align-middle text-center">{{count($item->accounts)}}</td>
                 <td class="align-center justify-content-center">
 
                     <a href="{{route('admin.role.detail', ['id' => $item->id])}}" class="btn btn-icon btn-info btn-sm btn-icon-md btn-circle mx-1"

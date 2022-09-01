@@ -93,8 +93,14 @@
                 </td>
 {{--                <td class="align-middle text-center"><span class="badge {{($item->role == 'admin') ? 'badge-danger': 'badge-success'}}"> {{$item->role}} </span></td>--}}
                 <td class="align-center justify-content-center">
-                    <a href="{{route('admin.account.update')}}/{{$item->id}}" class="btn btn-success m mx-1 my-1">Sửa</a>
-                    <span data-id="{{$item->id}}" class="btn btn-danger mx-1 delete-btn my-1">Xoá</span>
+                    <a href="{{route('admin.account.update')}}/{{$item->id}}" class="btn btn-icon btn-success btn-sm btn-icon-md btn-circle mx-1"
+                       title="Sửa">
+                        <i class="fa fa-edit"></i>
+                    </a>
+                    <span class="btn btn-icon btn-danger delete-btn btn-sm btn-icon-md btn-circle mx-1"
+                          data-toggle="tooltip" data-placement="top" data-id="{{$item->id}}" title="Xóa">
+                                    <i class="fa fa-trash"></i>
+                    </span>
                 </td>
             </tr>
         @empty

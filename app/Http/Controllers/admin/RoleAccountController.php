@@ -43,6 +43,12 @@ class RoleAccountController extends Controller
         //
     }
 
+    public function delete($id)
+    {
+        $this->roleAccountService->delete($id);
+        return $id;
+    }
+
     public function edit(RoleAccount $roleAccount)
     {
         //

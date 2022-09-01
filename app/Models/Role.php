@@ -15,4 +15,5 @@ class Role extends Model
     {
         return $this->belongsToMany(Account::class, 'role_accounts', 'id_role', 'id_account');
     }
+
 }

@@ -44,6 +44,9 @@ class RoleAccountService
     }
 
     public function findByIdRole($id_role) {
-        return $this->roleAccount->where('id_role', '=', $id_role)->paginate();
+        $accounts = $this->roleAccount;
+        $accounts = $accounts->where('id_role', '=', $id_role);
+        $accounts = $accounts->paginate();
+        return $accounts;
     }
 }

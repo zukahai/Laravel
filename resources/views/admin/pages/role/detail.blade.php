@@ -47,18 +47,6 @@
 @endsection
 
 @section('content_card')
-    <div>
-    <form method="get" action="">
-        <div class="input-group mb-5">
-            <input type="text" class="form-control" name="keywords" placeholder="Từ khoá tìm kiếm"
-                   value="{{request()->keywords}}">
-            <div class="input-group-append">
-                <button class="btn btn-outline-secondary" type="submit">Search</button>
-            </div>
-        </div>
-    </form>
-    </div>
-
     <h3 class="text-center">Role {{$roles_account[0]->role->role_name}}</h3>
     <a href="{{route('admin.account.formAdd')}}" class="btn btn-primary mb-2">Thêm vai trò</a>
     @if(!empty($success))
@@ -100,15 +88,10 @@
                         <i class="fa fa-asterisk"></i>
                     </a>
 
-                    <a href="admin/groupTable/edit/" class="btn btn-icon btn-success btn-sm btn-icon-md btn-circle mx-1"
-                       title="Sửa">
-                        <i class="fa fa-edit"></i>
-                    </a>
-
                     <span class="btn btn-icon btn-danger delete-btn btn-sm btn-icon-md btn-circle mx-1"
-                          data-toggle="tooltip" data-placement="top" data-id="${item.id}" title="Xóa">
+                          data-toggle="tooltip" data-placement="top" data-id="{{$item->id}}" title="Xóa">
                                     <i class="fa fa-trash"></i>
-                                </span>
+                    </span>
                 </td>
             </tr>
         @empty
