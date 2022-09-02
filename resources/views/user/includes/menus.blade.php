@@ -1,7 +1,7 @@
 <div class="menu menu-column menu-rounded menu-sub-indention px-3" id="#kt_app_sidebar_menu" data-kt-menu="true"
      data-kt-menu-expand="false">
     @php
-        $menus = config('menu_staff');
+        $menus = config('menu_user');
     @endphp
     @foreach ($menus as $menu)
         <div data-kt-menu-trigger="click" class="menu-item menu-accordion @if( $menu_parent == $menu['name']) hover show  @endif ">

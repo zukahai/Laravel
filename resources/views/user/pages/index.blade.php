@@ -1,4 +1,4 @@
-@extends('staff.layouts.main')
+@extends('user.layouts.main')
 @section('title_page')
     Trang chủ - {{ config('app.name') }}
 @endsection
@@ -34,7 +34,7 @@
     </a>
 @endsection
 @section('title_card')
-    Home staff
+    Home user
 @endsection
 
 @section('onload')

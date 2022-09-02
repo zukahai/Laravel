@@ -360,7 +360,7 @@
                          data-kt-scroll-wrappers="#kt_app_sidebar_menu" data-kt-scroll-offset="5px"
                          data-kt-scroll-save-state="true">
                         <!--begin::Menu-->
-                        @include('staff.includes.menus')
+                        @include('user.includes.menus')
                         <!--end::Menu-->
                     </div>
                     <!--end::Menu wrapper-->
