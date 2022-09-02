@@ -83,7 +83,14 @@ class RoleAccountController extends Controller
         $id_role = $request->id;
         $roles_account = $this->roleAccountService->findByIdRole($id_role);
         $this->data['roles_account'] = $roles_account;
-        $this->data['accounts'] = $this->accountService->getAll();
+        $accounts = $this->accountService->getAll();
+        $this->data['accounts'] = $accounts;
+
+        $role = $this->roleService->find($id_role);
+        $accounts_role = $role->accounts;
+
+        $accounts = $accounts->diff($accounts_role);
+        $this->data['accounts'] = $accounts;
         return view('admin.pages.role.detail', $this->data);
     }
 }

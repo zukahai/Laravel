@@ -52,6 +52,7 @@
         <h6 class="alert alert-info"> {{$success}}</h6>
     @endif
 
+    @if(!$accounts->isEmpty())
     <div class="container">
         <form action="" method="post">
             @csrf
@@ -70,6 +71,7 @@
             </div>
         </form>
     </div>
+    @endif
     <hr class="my-4">
     <h3 class="text-center">Role {{(!$roles_account->isEmpty()) ?$roles_account[0]->role->role_name: ""}}</h3>
 
