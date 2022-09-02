@@ -38,9 +38,7 @@ Route::prefix('/')->group(function(){
 });
 
 // Routes admin
-Route::prefix('admin')->middleware('CheckLoginAdmin')->group(callback: function(){
-    Route::get('/', [HomeAdminController::class, 'index']);
-
+Route::prefix('admin')->middleware('CheckLoginAdmin')->group(function(){
     Route::prefix('account')->group(function(){
         Route::get('/', [AccountController::class, 'index'])->name('admin.account.index');
         Route::get('/add', [AccountController::class, 'formAdd'])->name('admin.account.formAdd');
