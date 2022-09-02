@@ -6,6 +6,9 @@ use App\Http\Controllers\admin\HomeAdminController;
 use App\Http\Controllers\admin\AccountController;
 use App\Http\Controllers\admin\RoleController;
 use App\Http\Controllers\admin\RoleAccountController;
+
+use App\Http\Controllers\staff\HomeStaffController;
+
 use App\Http\Controllers\user\HomeUserController;
 use App\Http\Controllers\user\ProductController;
 
@@ -17,19 +20,6 @@ use GuzzleHttp\Psr7\Request;
 Route::prefix('/')->group(function(){
     Route::get('/', [HomeUserController::class, 'index'])->name('homeUser');
 
-    Route::get('/page/{page?}', [HomeUserController::class, 'page'])->where([
-        'page'=>"[0-9]+"
-    ])->name('pagehome');
-
-    Route::get('/form', [HomeUserController::class, 'viewform'])->name('formne');
-
-    Route::get('/view', [HomeUserController::class, 'view']);
-
-    Route::get('/product', [ProductController::class, 'home']);
-
-    Route::post('/form', [HomeUserController::class, 'getForm']);
-
-
     Route::prefix('/login')->group(function(){
         Route::get('/', [AccountController::class, 'login'])->name('login');
         Route::post('/', [AccountController::class, 'checkLogin'])->name('checkLogin');
@@ -38,7 +28,7 @@ Route::prefix('/')->group(function(){
 });
 
 // Routes admin
-Route::prefix('admin')->middleware('CheckLoginAdmin')->group(function(){
+Route::prefix('admin')->middleware('checkLoginAdmin')->group(function(){
     Route::prefix('account')->group(function(){
         Route::get('/', [AccountController::class, 'index'])->name('admin.account.index');
         Route::get('/add', [AccountController::class, 'formAdd'])->name('admin.account.formAdd');
@@ -63,4 +53,9 @@ Route::prefix('admin')->middleware('CheckLoginAdmin')->group(function(){
 
 
     Route::get('/user', [AccountController::class, 'index']);
+});
+
+
+Route::prefix('staff')->middleware('checkStaff')->group(function(){
+    Route::get('/', [HomeStaffController::class, 'index'])->name('staff.index');
 });

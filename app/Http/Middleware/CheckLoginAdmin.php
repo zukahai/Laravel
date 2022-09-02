@@ -22,9 +22,7 @@ class CheckLoginAdmin
     }
 
     public function handle(Request $request, Closure $next)
-    {
-//        dd(array_search('admin', $this->isLoginAdmin()));
-//        echo  "Check login admin Middleware"."<br>";
+    {;
         if ($this->isLoginAdmin() == null)
             return redirect(route('login'))->with('error', 'Bạn cần đăng nhập tài khoản admin');
         else if (array_search('admin', $this->isLoginAdmin()) === false)

@@ -135,6 +135,8 @@ class AccountController extends Controller
 //            dd(array_search('admin', $this->accountService->getNameRole($account->roles)));
             if (array_search('admin', $this->accountService->getNameRole($account->roles)) !== false)
                 return redirect(route('admin.account.index'))->with('info', 'Đăng nhập admin thành công');
+            else if (array_search('staff', $this->accountService->getNameRole($account->roles)) !== false)
+                return redirect(route('staff.index'))->with('info', 'Đăng nhập nhân viên thành công');
             else
                 return redirect(route('homeUser'))->with('info', 'Đăng nhập người dùng thành công');
         }
