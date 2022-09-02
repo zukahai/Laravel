@@ -6,6 +6,7 @@ use App\Http\Controllers\admin\HomeAdminController;
 use App\Http\Controllers\admin\AccountController;
 use App\Http\Controllers\admin\RoleController;
 use App\Http\Controllers\admin\RoleAccountController;
+use App\Http\Controllers\admin\StatusStaffController;
 
 use App\Http\Controllers\staff\HomeStaffController;
 
@@ -51,8 +52,9 @@ Route::prefix('admin')->middleware('checkLoginAdmin')->group(function(){
         Route::get('/detail/delete/{id}', [RoleAccountController::class, 'delete'])->name('admin.role.detail.detete');
     });
 
-
-    Route::get('/user', [AccountController::class, 'index']);
+    Route::prefix('staff')->group(function(){
+        Route::get('/', [StatusStaffController::class, 'index'])->name('admin.staff.index');
+    });
 });
 
 

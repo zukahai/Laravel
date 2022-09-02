@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\admin;
 
-use App\Models\StatusRequestStaff;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreStatusRequestStaffRequest;
 use App\Http\Requests\UpdateStatusRequestStaffRequest;
+use App\Models\StatusRequestStaff;
 
 class StatusRequestStaffController extends Controller
 {

@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\admin;
 
-use App\Models\StatusStaff;
-use App\Http\Requests\StoreStatusStaffRequest;
-use App\Http\Requests\UpdateStatusStaffRequest;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreRequestStaffRequest;
+use App\Http\Requests\UpdateRequestStaffRequest;
+use App\Models\RequestStaff;
 
-class StatusStaffController extends Controller
+class RequestStaffController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -31,10 +32,10 @@ class StatusStaffController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreStatusStaffRequest  $request
+     * @param  \App\Http\Requests\StoreRequestStaffRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreStatusStaffRequest $request)
+    public function store(StoreRequestStaffRequest $request)
     {
         //
     }
@@ -42,10 +43,10 @@ class StatusStaffController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\StatusStaff  $statusStaff
+     * @param  \App\Models\RequestStaff  $requestStaff
      * @return \Illuminate\Http\Response
      */
-    public function show(StatusStaff $statusStaff)
+    public function show(RequestStaff $requestStaff)
     {
         //
     }
@@ -53,10 +54,10 @@ class StatusStaffController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\StatusStaff  $statusStaff
+     * @param  \App\Models\RequestStaff  $requestStaff
      * @return \Illuminate\Http\Response
      */
-    public function edit(StatusStaff $statusStaff)
+    public function edit(RequestStaff $requestStaff)
     {
         //
     }
@@ -64,11 +65,11 @@ class StatusStaffController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateStatusStaffRequest  $request
-     * @param  \App\Models\StatusStaff  $statusStaff
+     * @param  \App\Http\Requests\UpdateRequestStaffRequest  $request
+     * @param  \App\Models\RequestStaff  $requestStaff
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateStatusStaffRequest $request, StatusStaff $statusStaff)
+    public function update(UpdateRequestStaffRequest $request, RequestStaff $requestStaff)
     {
         //
     }
@@ -76,10 +77,10 @@ class StatusStaffController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\StatusStaff  $statusStaff
+     * @param  \App\Models\RequestStaff  $requestStaff
      * @return \Illuminate\Http\Response
      */
-    public function destroy(StatusStaff $statusStaff)
+    public function destroy(RequestStaff $requestStaff)
     {
         //
     }
