@@ -2,6 +2,7 @@
 @section('title_page')
     Role - Admin - {{ config('app.name') }}
 @endsection
+
 @section('name_user')
 {{--    {{auth()->user()->name}}--}} HaiZuka
 

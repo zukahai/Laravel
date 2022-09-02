@@ -43,4 +43,27 @@ return [
             ]
         ],
     ],
+
+    [
+        'title' => 'Nhân viên',
+        'name' => 'role',
+        'route' => 'admin.role.index',
+        'children' => [
+            [
+                'title' => 'Danh sách nhân viên',
+                'name' => 'index',
+                'route' => 'admin.role.index',
+            ],
+            [
+                'title' => 'Thêm nhân viên',
+                'name' => 'create',
+                'route' => 'admin.role.showcreate',
+            ],
+            [
+                'title' => 'Yêu cầu làm nhân viên',
+                'name' => 'create',
+                'route' => 'admin.role.showcreate',
+            ],
+        ],
+    ],
 ];

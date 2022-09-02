@@ -29,10 +29,7 @@ class RoleAccountController extends Controller
     }
     public function create($id_account)
     {
-        $roleAccount = new RoleAccount();
-        $roleAccount->id_account = $id_account;
-        $roleAccount->id_role = $this->roleService->findByRoleName('user')->id;
-        $this->roleAccountService->add($roleAccount);
+        $this->roleService->create($id_account, 'user');
     }
 
     public function add(Request $request)

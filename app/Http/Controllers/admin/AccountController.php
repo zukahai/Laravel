@@ -40,16 +40,8 @@ class AccountController extends Controller
         $account->username = $request->username;
         $account->password = $request->password;
         $this->accountService->add($account);
-
+        // Them luon role 'user' khi tao tai khoan
         $this->roleAccountController->create($account->id);
-
-
-//        for ($i=55; $i <= 555; $i++) {
-//            $account = new Account();
-//            $account->username = 'user_' . $i;
-//            $account->password = 'password_' . $i;
-//            $this->accountService->add($account);
-//        }
 
         return redirect(route('admin.account.index'))->with('info', 'Thêm thành công');
     }

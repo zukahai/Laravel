@@ -4,6 +4,7 @@ namespace App\Http\Services;
 
 
 use App\Models\Role;
+use App\Models\RoleAccount;
 use Cookie;
 
 class RoleService
@@ -34,6 +35,13 @@ class RoleService
     public function add($data) {
         $role = $data;
         $role->save();
+    }
+
+    public function create($id_account, $role_name) {
+        $roleAccount = new RoleAccount();
+        $roleAccount->id_account = $id_account;
+        $roleAccount->id_role = $this->findByRoleName($role_name)->id;
+        $roleAccount->save();
     }
 
     public function find($id) {

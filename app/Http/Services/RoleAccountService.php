@@ -5,14 +5,16 @@ namespace App\Http\Services;
 
 use App\Models\Account;
 use App\Models\RoleAccount;
+use App\Http\Services\RoleService;
 use Cookie;
 
 class RoleAccountService
 {
     public $limit = 10;
-    public function __construct(RoleAccount $roleAccount)
+    public function __construct(RoleAccount $roleAccount, RoleService $roleService)
     {
         $this->roleAccount = $roleAccount;
+        $this->roleService = $roleService;
     }
 
     public function getAll() {

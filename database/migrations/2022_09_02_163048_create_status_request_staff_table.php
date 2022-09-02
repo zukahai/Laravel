@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('status_request_staff', function (Blueprint $table) {
             $table->id();
             $table->string('status_name');
+            $table->string('color');
             $table->timestamps();
         });
     }
