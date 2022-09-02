@@ -15,6 +15,13 @@ return new class extends Migration
     {
         Schema::create('staff', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('account_id');
+            $table->unsignedBigInteger('status_id');
+            $table->string('link_facebook');
+
+            $table->foreign('account_id')->references('id')->on('accounts');
+            $table->foreign('status_id')->references('id')->on('status_staff');
+
             $table->timestamps();
         });
     }
