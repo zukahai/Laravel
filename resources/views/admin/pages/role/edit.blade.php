@@ -65,42 +65,25 @@
             @enderror
         </div>
 
+        @php
+        $color = ['danger', 'success', 'warning', 'info', 'dark', 'light', 'primary'];
+        @endphp
+
         <div class="form-group row">
+
             <label class="col-sm-2">Màu sắc: </label>
             <div class="col-sm-10">
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="color" id="inlineRadio1" value="danger" {{$role->color == 'danger' ? 'checked' : ''}}>
-                    <label class="form-check-label" for="inlineRadio1"><span class="badge badge-danger">danger</span></label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="color" id="inlineRadio1" value="warning" {{$role->color == 'warning' ? 'checked' : ''}}>
-                    <label class="form-check-label" for="inlineRadio1"><span class="badge badge-warning">warning</span></label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="color" id="inlineRadio1" value="primary" {{$role->color == 'primary' ? 'checked' : ''}}>
-                    <label class="form-check-label" for="inlineRadio1"><span class="badge badge-primary">primary</span></label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="color" id="inlineRadio1" value="success" {{$role->color == 'success' ? 'checked' : ''}}>
-                    <label class="form-check-label" for="inlineRadio1"><span class="badge badge-success">success</span></label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="color" id="inlineRadio1" value="info" {{$role->color == 'info' ? 'checked' : ''}}>
-                    <label class="form-check-label" for="inlineRadio1"><span class="badge badge-info">info</span></label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="color" id="inlineRadio1" value="dark" {{$role->color == 'dark' ? 'checked' : ''}}>
-                    <label class="form-check-label" for="inlineRadio1"><span class="badge badge-dark">dark</span></label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="color" id="inlineRadio1" value="light" {{$role->color == 'light' ? 'checked' : ''}}>
-                    <label class="form-check-label" for="inlineRadio1"><span class="badge badge-light">light</span></label>
-                </div>
+                @foreach($color as $item)
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="color" id="inlineRadio1" value="{{$item}}" {{$item == $role->color ? 'checked' : ''}}>
+                        <label class="form-check-label" for="inlineRadio1"><span class="badge badge-{{$item}}">{{$item}}</span></label>
+                    </div>
+                @endforeach
             </div>
         </div>
 
         <div class="justify-content-center d-flex my-5">
-            <button type="submit" class="btn btn-primary">Thêm</button>
+            <button type="submit" class="btn btn-primary">Cập nhật</button>
         </div>
     </form>
 @endsection
