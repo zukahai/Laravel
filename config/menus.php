@@ -62,7 +62,7 @@ return [
             [
                 'title' => 'Yêu cầu làm nhân viên',
                 'name' => 'request',
-                'route' => 'admin.role.showcreate',
+                'route' => 'admin.account.requestStaff',
             ],
         ],
     ],

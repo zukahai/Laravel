@@ -5,18 +5,31 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreRequestStaffRequest;
 use App\Http\Requests\UpdateRequestStaffRequest;
+use App\Http\Services\RequestStaffService;
 use App\Models\RequestStaff;
+use Illuminate\Http\Request;
 
 class RequestStaffController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    public $data = [];
+    protected $limit = 10;
+
+    public function __construct(RequestStaff $requestStaff, RequestStaffService $requestStaffService)
     {
-        //
+        $this->requestStaff = $requestStaff;
+        $this->requestStaffService = $requestStaffService;
+    }
+
+    public function index(Request $request)
+    {
+        $keywords = $request->keywords;
+        $this->data['requets'] = $this->requestStaffService->paginate($this->limit, $keywords);
+        return view('admin.pages.staff.list_request_staff', $this->data);
+    }
+
+    public function delete($id) {
+        $this->requestStaffService->delete($id);
+        return $id;
     }
 
     /**

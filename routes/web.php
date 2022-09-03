@@ -7,7 +7,7 @@ use App\Http\Controllers\admin\AccountController;
 use App\Http\Controllers\admin\RoleController;
 use App\Http\Controllers\admin\RoleAccountController;
 use App\Http\Controllers\admin\StatusStaffController;
-
+use App\Http\Controllers\admin\RequestStaffController;
 use App\Http\Controllers\staff\HomeStaffController;
 
 use App\Http\Controllers\user\HomeUserController;
@@ -55,6 +55,8 @@ Route::prefix('admin')->middleware('checkLoginAdmin')->group(function(){
 
     Route::prefix('staff')->group(function(){
         Route::get('/', [StatusStaffController::class, 'index'])->name('admin.staff.index');
+        Route::get('/request_staff', [RequestStaffController::class, 'index'])->name('admin.account.requestStaff');
+        Route::get('/request_staff/delete/{id?}', [RequestStaffController::class, 'delete'])->name('admin.account.requestStaff.delete');
     });
 });
 

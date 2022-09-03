@@ -12,4 +12,8 @@ class RequestStaff extends Model
     public function status(){
         return $this->hasOne(StatusRequestStaff::class, 'id', 'status_id');
     }
+
+    public function account(){
+        return $this->hasOne(Account::class, 'id', 'account_id');
+    }
 }

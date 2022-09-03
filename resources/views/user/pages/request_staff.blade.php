@@ -62,7 +62,7 @@
                 <div class="card-body">
                     <h2 class="card-title">Yêu cầu của bạn</h2>
                     <h6>Tôi của bạn: {{auth()->user()->account->requestStaff->fullname}}</h6>
-                    <h6>Ngày sinh: {{auth()->user()->account->requestStaff->birthday}}</h6>
+                    <h6>Ngày sinh: {{date('d-m-Y', strtotime(auth()->user()->account->requestStaff->birthday))}}</h6>
                     <h6>Tin nhắn: {{auth()->user()->account->requestStaff->message}}</h6>
                     <h6>Yêu cầu được tạo lúc: {{auth()->user()->account->requestStaff->updated_at}}</h6>
                     <h6>Trạng thái:
@@ -75,6 +75,8 @@
             </div>
         </div>
     @endif
+
+    @if(empty(auth()->user()->account->requestStaff))
     <form action="" method="post" class="py-5">
         <h3>Điền thông tin</h3>
         @csrf
@@ -119,6 +121,7 @@
             <button type="submit" class="btn btn-primary">Gửi yêu cầu</button>
         </div>
     </form>
+    @endif
 @endsection
 @section('footer_card')
 

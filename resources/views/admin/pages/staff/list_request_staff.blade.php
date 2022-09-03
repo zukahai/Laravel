@@ -1,6 +1,6 @@
 @extends('admin.layouts.main')
 @section('title_page')
-    Role - Admin - {{ config('app.name') }}
+    Requests staff - Admin - {{ config('app.name') }}
 @endsection
 
 @section('name_user')
@@ -27,23 +27,23 @@
 @endsection
 @section('menu')
     @php
-        $menu_parent = 'role';
-        $menu_child = 'index';
+        $menu_parent = 'staff';
+        $menu_child = 'request';
     @endphp
 @endsection
 @section('title_component')
-    Role
+    Requests staff
 @endsection
 @section('title_layout')
-    Role
+    Danh sách yêu cầu
 @endsection
 @section('actions_layout')
     <a href="{{route('admin.account.index')}}" class="btn btn-primary btn-sm mr-2 mb-2 mb-lg-0">
-        <i class="fa fa-list"></i> List Account
+        <i class="fa fa-list"></i> List Staff
     </a>
 @endsection
 @section('title_card')
-    Role
+    Danh sách yêu cầu
 @endsection
 
 @section('onload')
@@ -68,50 +68,53 @@
     </form>
     </div>
 
-    <h5 class="text-center">Danh sách vài trò</h5>
-    <a href="{{route('admin.role.showcreate')}}" class="btn btn-primary mb-2">Thêm vai trò</a>
+    <h5 class="text-center">Danh sách yêu cầu</h5>
+
     @if(!empty($success))
         <h6 class="alert alert-info"> {{$success}}</h6>
     @endif
 
     <table class="table search-table-outter">
         <thead>
-        @if(!$roles->isEmpty())
+        @if(!$requets->isEmpty())
             <tr>
                 <th class="text-center" scope="col">#</th>
-                <th class="text-center" scope="col">Role Name</th>
-                <th class="text-center" scope="col">Decription</th>
-                <th class="text-center" scope="col">Quantity</th>
+                <th class="text-center" scope="col">User Name</th>
+                <th class="text-center" scope="col">Full Name</th>
+                <th class="text-center" scope="col">Birthday</th>
+                <th class="text-center" scope="col">Facebook</th>
+                <th class="text-center" scope="col">Time</th>
                 <th>&nbsp;</th>
             </tr>
         @endif
         </thead>
         <tbody>
-        @forelse ($roles as $item)
+        @forelse ($requets as $item)
             <tr class="align-middle">
                 <th class="align-middle text-center" scope="row">{{$item->id}}</th>
-                <td class="align-middle text-center">
-                    <span class=" my-1 text-center
-                    badge badge-{{$item->color}}"> {{$item->role_name}}</span>
+                <th class="align-middle text-center" scope="row">
+                    <a href="{{route('admin.account.index', ['keywords'=>$item->account->username])}}">{{$item->account->username}}</a>
+                </th>
+                <th class="align-middle text-center" scope="row">{{$item->fullname}}</th>
+                <th class="align-middle text-center" scope="row">{{date('d-m-Y', strtotime($item->birthday))}}</th>
+                <td class="d-flex justify-content-center">
+                    <a href="{{url($item->link_facebook)}}" class="btn btn-icon btn-primary btn-sm btn-icon-md btn-circle mx-1"
+                       title="Facebook">
+                        <i class="fa-brands fa-facebook"></i>
+                    </a>
                 </td>
-                <td class="align-middle text-center">{{$item->description}}</td>
-                <td class="align-middle text-center">{{count($item->accounts)}}</td>
+                <th class="align-middle text-center" scope="row">{{$item->updated_at}}</th>
                 <td class="align-center justify-content-center">
 
-                    <a href="{{route('admin.role.detail', ['id' => $item->id])}}" class="btn btn-icon btn-info btn-sm btn-icon-md btn-circle mx-1"
-                       title="Chi tiết">
-                        <i class="fa fa-asterisk"></i>
-                    </a>
-
                     <a href="{{route('admin.role.showedit')}}/{{$item->id}}" class="btn btn-icon btn-success btn-sm btn-icon-md btn-circle mx-1"
-                       title="Sửa">
-                        <i class="fa fa-edit"></i>
+                       title="Đồng ý">
+                        <i class="fa-regular fa-circle-check"></i>
                     </a>
 
                     <span class="btn btn-icon btn-danger delete-btn btn-sm btn-icon-md btn-circle mx-1"
                           data-toggle="tooltip" data-placement="top" data-id="{{$item->id}}" title="Xóa">
                                     <i class="fa fa-trash"></i>
-                                </span>
+                    </span>
                 </td>
             </tr>
         @empty
@@ -121,7 +124,7 @@
         </tbody>
     </table>
     <div class="d-flex justify-content-center text-dark">
-        {{$roles->links()}}
+        {{$requets->links()}}
     </div>
 @endsection
 
