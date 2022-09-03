@@ -15,6 +15,8 @@ return new class extends Migration
     {
         Schema::create('reset_ranks', function (Blueprint $table) {
             $table->id();
+            $table->string('rank');
+            $table->string('newrank');
             $table->timestamps();
         });
     }

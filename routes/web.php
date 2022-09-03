@@ -9,10 +9,9 @@ use App\Http\Controllers\admin\RoleAccountController;
 use App\Http\Controllers\admin\StatusStaffController;
 use App\Http\Controllers\admin\RequestStaffController;
 use App\Http\Controllers\admin\RankController;
+use App\Http\Controllers\admin\ResetRankController;
 use App\Http\Controllers\staff\HomeStaffController;
-
 use App\Http\Controllers\user\HomeUserController;
-use App\Http\Controllers\user\ProductController;
 
 
 use App\Models\User;
@@ -29,6 +28,9 @@ Route::prefix('/')->group(function(){
     });
     Route::prefix('/plow')->group(function(){
         Route::get('/price', [HomeUserController::class, 'price'])->name('user.plow.price');;
+    });
+    Route::prefix('/info')->group(function(){
+        Route::get('/reset_rank', [ResetRankController::class, 'index'])->name('user.info.reset_rank');
     });
 
 });

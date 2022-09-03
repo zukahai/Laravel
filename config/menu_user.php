@@ -39,4 +39,16 @@ return [
             ],
         ],
     ],
+    [
+        'title' => 'Thông tin thêm',
+        'name' => 'info',
+        'route' => 'user.info.reset_rank',
+        'children' => [
+            [
+                'title' => 'Bảng reset rank',
+                'name' => 'reset',
+                'route' => 'user.info.reset_rank',
+            ]
+        ],
+    ],
 ];
