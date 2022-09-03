@@ -16,6 +16,8 @@ return new class extends Migration
         Schema::create('request_staff', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('account_id');
+            $table->string('fullname');
+            $table->dateTime('birthday');
             $table->unsignedBigInteger('status_id');
             $table->string('link_facebook');
             $table->string('message');

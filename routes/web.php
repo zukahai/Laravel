@@ -20,7 +20,8 @@ use GuzzleHttp\Psr7\Request;
 // Routes user
 Route::prefix('/')->group(function(){
     Route::get('/', [HomeUserController::class, 'index'])->name('homeUser')->middleware('auth');
-
+    Route::get('/request_staff', [HomeUserController::class, 'formRequestStaff'])->name('user.formRequestStaff');
+    Route::post('/request_staff', [HomeUserController::class, 'requestStaff'])->name('user.requestStaff');
     Route::prefix('/login')->group(function(){
         Route::get('/', [AccountController::class, 'login'])->name('login');
         Route::post('/', [AccountController::class, 'checkLogin'])->name('checkLogin');
