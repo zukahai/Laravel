@@ -46,7 +46,7 @@ class SubRankService
     public function paginate($limit, $keywords){
         $subRank = $this->subRank;
         $subRank = $subRank->orderBy('value','desc');
-        if (!empty($keywords)) {
+        if (!empty($keywords) && $keywords != 'all') {
             $subRank->where('rank_id', '=', $keywords);
         }
         return $subRank->paginate($limit)->withQueryString();

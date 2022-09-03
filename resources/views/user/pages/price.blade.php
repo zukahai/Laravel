@@ -67,6 +67,7 @@
             <div class="row my-5 mx-auto">
                 <div class="form-floating col col-8">
                     <select class="form-select col col-8" data-control="select2" id="idTypeTable" name="rank_id" data-placeholder="Select an option">
+                        <option value="all">Tất cả</option>
                         @foreach($ranks as $item)
                             <option value="{{$item->id}}">{{$item->rank_name}}</option>
                         @endforeach
