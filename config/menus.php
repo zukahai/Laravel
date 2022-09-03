@@ -55,11 +55,6 @@ return [
                 'route' => 'admin.role.index',
             ],
             [
-                'title' => 'Thêm nhân viên',
-                'name' => 'create',
-                'route' => 'admin.role.showcreate',
-            ],
-            [
                 'title' => 'Yêu cầu làm nhân viên',
                 'name' => 'request',
                 'route' => 'admin.account.requestStaff',
