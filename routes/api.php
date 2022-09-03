@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\api\ProductController;
+use App\Http\Controllers\admin\ResetRankController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,4 +21,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('/product', [ProductController::class, 'getAll']);
+
+Route::get('/reset', [\App\Http\Controllers\admin\ResetRankController::class, 'getResetRankAPI']);
 

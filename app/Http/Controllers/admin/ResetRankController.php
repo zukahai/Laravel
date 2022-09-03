@@ -7,6 +7,7 @@ use App\Http\Requests\StoreResetRankRequest;
 use App\Http\Requests\UpdateResetRankRequest;
 use App\Http\Services\ResetRankService;
 use App\Models\ResetRank;
+use Illuminate\Http\Response;
 
 class ResetRankController extends Controller
 {
@@ -23,11 +24,12 @@ class ResetRankController extends Controller
         return view('user.pages.reset_rank', $this->data);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function getResetRankAPI() {
+        return response()->json([
+            "data" => $this->resetRankService->getAll()
+        ], Response::HTTP_OK);
+    }
+
     public function create()
     {
         //

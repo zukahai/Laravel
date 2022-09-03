@@ -16,7 +16,7 @@ class AuthAPI
      */
     public function handle(Request $request, Closure $next)
     {
-        echo "API middleware";
+        echo "API middleware<br>";
         return $next($request);
     }
 }
