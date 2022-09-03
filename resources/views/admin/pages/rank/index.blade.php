@@ -62,6 +62,7 @@
 @endsection
 
 @section('content_card')
+    <div class="table-responsive">
     <table class="table search-table-outter">
         <thead>
         @if(!$ranks->isEmpty())
@@ -96,6 +97,7 @@
 
         </tbody>
     </table>
+    </div>
 @endsection
 @section('footer_card')
 

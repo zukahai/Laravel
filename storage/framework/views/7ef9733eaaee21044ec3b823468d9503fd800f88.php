@@ -64,6 +64,7 @@
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('content_card'); ?>
+    <div class="table-responsive">
     <table class="table search-table-outter">
         <thead>
         <?php if(!$ranks->isEmpty()): ?>
@@ -98,6 +99,7 @@
 
         </tbody>
     </table>
+    </div>
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('footer_card'); ?>
 
