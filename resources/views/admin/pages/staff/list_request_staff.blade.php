@@ -106,7 +106,7 @@
                 <th class="align-middle text-center" scope="row">{{$item->updated_at}}</th>
                 <td class="align-center justify-content-center">
 
-                    <a href="{{route('admin.role.showedit')}}/{{$item->id}}" class="btn btn-icon btn-success btn-sm btn-icon-md btn-circle mx-1"
+                    <a href="{{route('admin.account.requestStaff.accept')}}/{{$item->id}}" class="btn btn-icon btn-success btn-sm btn-icon-md btn-circle mx-1"
                        title="Đồng ý">
                         <i class="fa-regular fa-circle-check"></i>
                     </a>

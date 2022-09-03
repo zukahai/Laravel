@@ -1,16 +1,15 @@
 <?php $__env->startSection('title_page'); ?>
-    Requests staff - Admin - <?php echo e(config('app.name')); ?>
+    Detail role <?php echo e((!$roles_account->isEmpty()) ?$roles_account[0]->role->role_name: ""); ?> - Admin - <?php echo e(config('app.name')); ?>
 
 <?php $__env->stopSection(); ?>
-
 <?php $__env->startSection('name_user'); ?>
     <?php echo e((auth()->user()->account->username)); ?>
 
 
 <?php $__env->stopSection(); ?>
-
 <?php $__env->startSection('email_user'); ?>
- haizuka@gmail.com
+    <?php echo e((auth()->user()->account->roles[0]->description)); ?>
+
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('role_user'); ?>
@@ -28,23 +27,26 @@
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('menu'); ?>
     <?php
-        $menu_parent = 'staff';
-        $menu_child = 'request';
+        $menu_parent = 'role';
+        $menu_child = 'index';
     ?>
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('title_component'); ?>
-    Requests staff
+    Role: <?php echo e((!$roles_account->isEmpty()) ?$roles_account[0]->role->role_name: ""); ?>
+
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('title_layout'); ?>
-    Danh sách yêu cầu
+    Detail role <?php echo e((!$roles_account->isEmpty()) ?$roles_account[0]->role->role_name: ""); ?>
+
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('actions_layout'); ?>
-    <a href="<?php echo e(route('admin.account.index')); ?>" class="btn btn-primary btn-sm mr-2 mb-2 mb-lg-0">
-        <i class="fa fa-list"></i> List Staff
+    <a href="<?php echo e(route('admin.role.index')); ?>" class="btn btn-primary btn-sm mr-2 mb-2 mb-lg-0">
+        <i class="fa fa-list"></i> List Role
     </a>
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('title_card'); ?>
-    Danh sách yêu cầu
+    Role <?php echo e((!$roles_account->isEmpty()) ?$roles_account[0]->role->role_name: ""); ?>
+
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('onload'); ?>
@@ -57,60 +59,61 @@
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('content_card'); ?>
-    <div>
-    <form method="get" action="">
-        <div class="input-group mb-5">
-            <input type="text" class="form-control" name="keywords" placeholder="Từ khoá tìm kiếm"
-                   value="<?php echo e(request()->keywords); ?>">
-            <div class="input-group-append">
-                <button class="btn btn-outline-secondary" type="submit">Search</button>
-            </div>
-        </div>
-    </form>
-    </div>
-
-    <h5 class="text-center">Danh sách yêu cầu</h5>
 
     <?php if(!empty($success)): ?>
         <h6 class="alert alert-info"> <?php echo e($success); ?></h6>
     <?php endif; ?>
 
+    <?php if(!$accounts->isEmpty()): ?>
+    <div class="container">
+        <form action="" method="post">
+            <?php echo csrf_field(); ?>
+            <div class="row my-5 mx-auto">
+                <div class="form-floating col col-6">
+                    <select class="form-select col col-8" data-control="select2" id="idTypeTable" name="id_account" data-placeholder="Select an option">
+                        <?php $__currentLoopData = $accounts; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $account): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <option value="<?php echo e($account->id); ?>"><?php echo e($account->id); ?> - <?php echo e($account->username); ?></option>
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                    </select>
+                    <label for="idTypeTable">Tài khoản</label>
+                </div>
+                <div class="form-floating col col-6 mx-auto">
+                    <input type="submit" class="btn btn-primary h-100" value="Thêm">
+                </div>
+            </div>
+        </form>
+    </div>
+    <?php endif; ?>
+    <hr class="my-4">
+    <h3 class="text-center">Role <?php echo e((!$roles_account->isEmpty()) ?$roles_account[0]->role->role_name: ""); ?></h3>
+
     <table class="table search-table-outter">
         <thead>
-        <?php if(!$requets->isEmpty()): ?>
+        <?php if(!$roles_account->isEmpty()): ?>
             <tr>
                 <th class="text-center" scope="col">#</th>
-                <th class="text-center" scope="col">User Name</th>
-                <th class="text-center" scope="col">Full Name</th>
-                <th class="text-center" scope="col">Birthday</th>
-                <th class="text-center" scope="col">Facebook</th>
-                <th class="text-center" scope="col">Time</th>
+                <th class="text-center" scope="col">UserName</th>
+                <th class="text-center" scope="col">Roles</th>
+                <th class="text-center" scope="col">Created_at</th>
+                <th class="text-center" scope="col">AddRole_<?php echo e((!$roles_account->isEmpty()) ?$roles_account[0]->role->role_name: ""); ?>_at</th>
                 <th>&nbsp;</th>
             </tr>
         <?php endif; ?>
         </thead>
         <tbody>
-        <?php $__empty_1 = true; $__currentLoopData = $requets; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
+        <?php $__empty_1 = true; $__currentLoopData = $roles_account; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
             <tr class="align-middle">
                 <th class="align-middle text-center" scope="row"><?php echo e($item->id); ?></th>
-                <th class="align-middle text-center" scope="row">
-                    <a href="<?php echo e(route('admin.account.index', ['keywords'=>$item->account->username])); ?>"><?php echo e($item->account->username); ?></a>
-                </th>
-                <th class="align-middle text-center" scope="row"><?php echo e($item->fullname); ?></th>
-                <th class="align-middle text-center" scope="row"><?php echo e(date('d-m-Y', strtotime($item->birthday))); ?></th>
-                <td class="d-flex justify-content-center">
-                    <a href="<?php echo e(url($item->link_facebook)); ?>" class="btn btn-icon btn-primary btn-sm btn-icon-md btn-circle mx-1"
-                       title="Facebook">
-                        <i class="fa-brands fa-facebook"></i>
-                    </a>
+                <td class="align-middle text-center"><?php echo e($item->getAccount->username); ?></td>
+                <td class="align-middle text-center">
+                    <?php $__currentLoopData = $item->getAccount->roles; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $role): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <span class=" my-1 text-center
+                    badge badge-<?php echo e($role->color); ?>"> <?php echo e($role->role_name); ?></span>
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </td>
-                <th class="align-middle text-center" scope="row"><?php echo e($item->updated_at); ?></th>
+                <td class="align-middle text-center"><?php echo e($item->getAccount->created_at); ?></td>
+                <td class="align-middle text-center"><?php echo e($item->created_at); ?></td>
                 <td class="align-center justify-content-center">
-
-                    <a href="<?php echo e(route('admin.account.requestStaff.accept')); ?>/<?php echo e($item->id); ?>" class="btn btn-icon btn-success btn-sm btn-icon-md btn-circle mx-1"
-                       title="Đồng ý">
-                        <i class="fa-regular fa-circle-check"></i>
-                    </a>
 
                     <span class="btn btn-icon btn-danger delete-btn btn-sm btn-icon-md btn-circle mx-1"
                           data-toggle="tooltip" data-placement="top" data-id="<?php echo e($item->id); ?>" title="Xóa">
@@ -125,7 +128,7 @@
         </tbody>
     </table>
     <div class="d-flex justify-content-center text-dark">
-        <?php echo e($requets->links()); ?>
+        <?php echo e($roles_account->links()); ?>
 
     </div>
 <?php $__env->stopSection(); ?>
@@ -158,4 +161,4 @@
 <?php $__env->stopSection(); ?>
 
 
-<?php echo $__env->make('admin.layouts.main', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH G:\Laravel\resources\views/admin/pages/staff/list_request_staff.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('admin.layouts.main', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH G:\Laravel\resources\views/admin/pages/role/detail.blade.php ENDPATH**/ ?>

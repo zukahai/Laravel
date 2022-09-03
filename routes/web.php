@@ -57,6 +57,7 @@ Route::prefix('admin')->middleware('checkLoginAdmin')->group(function(){
         Route::get('/', [StatusStaffController::class, 'index'])->name('admin.staff.index');
         Route::get('/request_staff', [RequestStaffController::class, 'index'])->name('admin.account.requestStaff');
         Route::get('/request_staff/delete/{id?}', [RequestStaffController::class, 'delete'])->name('admin.account.requestStaff.delete');
+        Route::get('/request_staff/accept/{id?}', [RequestStaffController::class, 'accept'])->name('admin.account.requestStaff.accept');
     });
 });
 

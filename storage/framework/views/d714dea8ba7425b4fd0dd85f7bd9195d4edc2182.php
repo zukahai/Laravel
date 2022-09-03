@@ -1,5 +1,5 @@
 <?php $__env->startSection('title_page'); ?>
-    R333ole - Admin - <?php echo e(config('app.name')); ?>
+    Role - Admin - <?php echo e(config('app.name')); ?>
 
 <?php $__env->stopSection(); ?>
 

@@ -19,6 +19,7 @@ class RequestStaffService
 
     public function paginate($limit, $keywords){
         $requestStaff = $this->requestStaff;
+        $requestStaff = $requestStaff->where('status_id', '=', 1);
         $requestStaff = $requestStaff->orderBy('created_at','desc');
         if (!empty($keywords)) {
             $requestStaff->where('id', 'like', '%'. $keywords.'%');
