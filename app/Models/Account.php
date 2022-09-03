@@ -26,4 +26,8 @@ class Account extends Model
     public function user(){
         return $this->hasOne(User::class, 'account_id', 'id');
     }
+
+    public function requestStaff(){
+        return $this->hasOne(RequestStaff::class, 'account_id', 'id');
+    }
 }

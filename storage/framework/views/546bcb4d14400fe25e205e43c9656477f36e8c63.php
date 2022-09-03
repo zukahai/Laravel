@@ -27,26 +27,54 @@
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('menu'); ?>
     <?php
-        $menu_parent = 'account';
-        $menu_child = 'create';
+        $menu_parent = 'contact';
+        $menu_child = 'request';
     ?>
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('title_component'); ?>
     Request
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('title_layout'); ?>
+    request_staff
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('actions_layout'); ?>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('title_card'); ?>
     Yêu cầu làm nhân viên
 <?php $__env->stopSection(); ?>
-<?php $__env->startSection('actions_layout'); ?>
-    <a href="<?php echo e(route('admin.account.index')); ?>" class="btn btn-primary btn-sm mr-2 mb-2 mb-lg-0">
-        <i class="fa fa-list"></i> List Account
-    </a>
+
+<?php $__env->startSection('onload'); ?>
+    <?php if($message = Session::get('info')): ?>
+        onload="abc('<?php echo e($message); ?>' , 'success')"
+    <?php endif; ?>
+    <?php if($message = Session::get('error')): ?>
+        onload="abc('<?php echo e($message); ?>' , 'danger')"
+    <?php endif; ?>
+    <?php if($message = Session::get('warning')): ?>
+        onload="abc('<?php echo e($message); ?>' , 'warning')"
+    <?php endif; ?>
 <?php $__env->stopSection(); ?>
-<?php $__env->startSection('title_card'); ?>
-    Điền thông tin
-<?php $__env->stopSection(); ?>
+
 <?php $__env->startSection('content_card'); ?>
-    <form action="<?php echo e(route('admin.account.add')); ?>" method="post">
+    <?php if(!empty(auth()->user()->account->requestStaff)): ?>
+        <div class="row justify-content-center">
+            <div class="card bg-info mb-5 col col-lg-6">
+                <div class="card-body">
+                    <h2 class="card-title">Yêu cầu của bạn</h2>
+                    <h6>Tôi của bạn: <?php echo e(auth()->user()->account->requestStaff->fullname); ?></h6>
+                    <h6>Ngày sinh: <?php echo e(auth()->user()->account->requestStaff->birthday); ?></h6>
+                    <h6>Tin nhắn: <?php echo e(auth()->user()->account->requestStaff->message); ?></h6>
+                    <h6>Yêu cầu được tạo lúc: <?php echo e(auth()->user()->account->requestStaff->updated_at); ?></h6>
+                    <h6>Trạng thái</h6>
+                    <a href="#" class="btn btn-primary">Sửa yêu cầu</a>
+                </div>
+            </div>
+        </div>
+    <?php endif; ?>
+    <form action="" method="post" class="py-5">
+        <h3>Điền thông tin</h3>
         <?php echo csrf_field(); ?>
         <?php if($errors->any()): ?>
             <div class="alert alert-warning d-flex align-items-center">
@@ -57,9 +85,9 @@
             </div>
         <?php endif; ?>
         <div class="form-group my-2">
-            <label for="username">Tên tài khoản</label>
-            <input type="text" class="form-control" id="username" name="username" placeholder="Tên tài khoản">
-            <?php $__errorArgs = ['username'];
+            <label for="fullname">Họ và tên</label>
+            <input type="text" class="form-control" id="fullname" name="fullname" placeholder="Họ và tên">
+            <?php $__errorArgs = ['fullname'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
@@ -71,9 +99,9 @@ endif;
 unset($__errorArgs, $__bag); ?>
         </div>
         <div class="form-group my-2">
-            <label for="password">Password</label>
-            <input type="password" class="form-control" id="password" name="password" placeholder="Mật khẩu">
-            <?php $__errorArgs = ['password'];
+            <label for="birthday">Ngày sinh</label>
+            <input type="date" class="form-control" id="birthday" name="birthday" placeholder="Ngày sinh">
+            <?php $__errorArgs = ['birthday'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
@@ -84,9 +112,37 @@ if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>
         </div>
-        
+        <div class="form-group my-2">
+            <label for="link_facebook">Link facebook</label>
+            <input type="text" class="form-control" id="link_facebook" name="link_facebook" placeholder="https://www.facebook.com/username">
+            <?php $__errorArgs = ['link_facebook'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+            <span class="text-bold text-italic text-danger"><?php echo e($message); ?></span>
+            <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+        </div>
+
+        <div class="form-group my-2">
+            <label for="message">Lời nhắn</label>
+            <input type="text" class="form-control" id="message" name="message" placeholder="Xin chào admin">
+            <?php $__errorArgs = ['message'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+            <span class="text-bold text-italic text-danger"><?php echo e($message); ?></span>
+            <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+        </div>
         <div class="justify-content-center d-flex my-5">
-            <button type="submit" class="btn btn-primary">Thêm tài khoản</button>
+            <button type="submit" class="btn btn-primary">Gửi yêu cầu</button>
         </div>
     </form>
 <?php $__env->stopSection(); ?>
@@ -118,4 +174,4 @@ unset($__errorArgs, $__bag); ?>
 <?php $__env->stopSection(); ?>
 
 
-<?php echo $__env->make('admin.layouts.main', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH G:\Laravel\resources\views/user/pages/request_staff.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('user.layouts.main', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH G:\Laravel\resources\views/user/pages/request_staff.blade.php ENDPATH**/ ?>

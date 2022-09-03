@@ -24,18 +24,18 @@ return [
     ],
     [
         'title' => 'Cộng tác',
-        'name' => 'task',
+        'name' => 'contact',
         'route' => 'admin.account.index',
         'children' => [
             [
-                'title' => 'Bảng xếp hạnh nhân viên',
+                'title' => 'Nhân viên chuyên cần',
                 'name' => 'index',
                 'route' => 'admin.account.index',
             ],
             [
-                'title' => 'Yêu cầu làm nha viên',
-                'name' => 'create',
-                'route' => 'admin.account.add',
+                'title' => 'Yêu cầu làm nhân viên',
+                'name' => 'request',
+                'route' => 'user.formRequestStaff',
             ],
         ],
     ],

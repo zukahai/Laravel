@@ -1,4 +1,4 @@
-@extends('admin.layouts.main')
+@extends('user.layouts.main')
 @section('title_page')
     Request staff - {{ config('app.name') }}
 @endsection
@@ -25,26 +25,54 @@
 @endsection
 @section('menu')
     @php
-        $menu_parent = 'account';
-        $menu_child = 'create';
+        $menu_parent = 'contact';
+        $menu_child = 'request';
     @endphp
 @endsection
 @section('title_component')
     Request
 @endsection
 @section('title_layout')
+    request_staff
+@endsection
+
+@section('actions_layout')
+@endsection
+
+@section('title_card')
     Yêu cầu làm nhân viên
 @endsection
-@section('actions_layout')
-    <a href="{{route('admin.account.index')}}" class="btn btn-primary btn-sm mr-2 mb-2 mb-lg-0">
-        <i class="fa fa-list"></i> List Account
-    </a>
+
+@section('onload')
+    @if ($message = Session::get('info'))
+        onload="abc('{{$message}}' , 'success')"
+    @endif
+    @if ($message = Session::get('error'))
+        onload="abc('{{$message}}' , 'danger')"
+    @endif
+    @if ($message = Session::get('warning'))
+        onload="abc('{{$message}}' , 'warning')"
+    @endif
 @endsection
-@section('title_card')
-    Điền thông tin
-@endsection
+
 @section('content_card')
-    <form action="{{route('admin.account.add')}}" method="post">
+    @if(!empty(auth()->user()->account->requestStaff))
+        <div class="row justify-content-center">
+            <div class="card bg-info mb-5 col col-lg-6">
+                <div class="card-body">
+                    <h2 class="card-title">Yêu cầu của bạn</h2>
+                    <h6>Tôi của bạn: {{auth()->user()->account->requestStaff->fullname}}</h6>
+                    <h6>Ngày sinh: {{auth()->user()->account->requestStaff->birthday}}</h6>
+                    <h6>Tin nhắn: {{auth()->user()->account->requestStaff->message}}</h6>
+                    <h6>Yêu cầu được tạo lúc: {{auth()->user()->account->requestStaff->updated_at}}</h6>
+                    <h6>Trạng thái</h6>
+                    <a href="#" class="btn btn-primary">Sửa yêu cầu</a>
+                </div>
+            </div>
+        </div>
+    @endif
+    <form action="" method="post" class="py-5">
+        <h3>Điền thông tin</h3>
         @csrf
         @if($errors->any())
             <div class="alert alert-warning d-flex align-items-center">
@@ -55,22 +83,36 @@
             </div>
         @endif
         <div class="form-group my-2">
-            <label for="username">Tên tài khoản</label>
-            <input type="text" class="form-control" id="username" name="username" placeholder="Tên tài khoản">
-            @error('username')
+            <label for="fullname">Họ và tên</label>
+            <input type="text" class="form-control" id="fullname" name="fullname" placeholder="Họ và tên">
+            @error('fullname')
             <span class="text-bold text-italic text-danger">{{$message}}</span>
             @enderror
         </div>
         <div class="form-group my-2">
-            <label for="password">Password</label>
-            <input type="password" class="form-control" id="password" name="password" placeholder="Mật khẩu">
-            @error('password')
+            <label for="birthday">Ngày sinh</label>
+            <input type="date" class="form-control" id="birthday" name="birthday" placeholder="Ngày sinh">
+            @error('birthday')
             <span class="text-bold text-italic text-danger">{{$message}}</span>
             @enderror
         </div>
-        {{--        <input type="hidden" name="_token" value="<?php echo csrf_token()?>">--}}
+        <div class="form-group my-2">
+            <label for="link_facebook">Link facebook</label>
+            <input type="text" class="form-control" id="link_facebook" name="link_facebook" placeholder="https://www.facebook.com/username">
+            @error('link_facebook')
+            <span class="text-bold text-italic text-danger">{{$message}}</span>
+            @enderror
+        </div>
+
+        <div class="form-group my-2">
+            <label for="message">Lời nhắn</label>
+            <input type="text" class="form-control" id="message" name="message" placeholder="Xin chào admin">
+            @error('message')
+            <span class="text-bold text-italic text-danger">{{$message}}</span>
+            @enderror
+        </div>
         <div class="justify-content-center d-flex my-5">
-            <button type="submit" class="btn btn-primary">Thêm tài khoản</button>
+            <button type="submit" class="btn btn-primary">Gửi yêu cầu</button>
         </div>
     </form>
 @endsection

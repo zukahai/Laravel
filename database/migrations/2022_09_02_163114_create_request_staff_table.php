@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('request_staff', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('account_id');
+            $table->unsignedBigInteger('account_id')->unique();
             $table->string('fullname');
             $table->dateTime('birthday');
             $table->unsignedBigInteger('status_id');
