@@ -1,6 +1,6 @@
-@extends('admin.layouts.main')
+@extends('user.layouts.main')
 @section('title_page')
-    Detail Rank - {{ config('app.name') }}
+    Price - {{ config('app.name') }}
 @endsection
 @section('name_user')
     {{(auth()->user()->account->username)}}
@@ -31,21 +31,18 @@
 @endsection
 @section('menu')
     @php
-        $menu_parent = 'rank';
-        $menu_child = 'subrank';
+        $menu_parent = 'plow';
+        $menu_child = 'price';
     @endphp
 @endsection
 @section('title_component')
-    Rank
+    Price
 @endsection
 @section('title_layout')
-    Rank
+    Price
 @endsection
 
 @section('actions_layout')
-    <a href="{{route('admin.subrank.create')}}" class="btn btn-primary btn-sm mr-2 mb-2 mb-lg-0">
-        <i class="fa fa-list"></i> Thêm chi tiết rank
-    </a>
 @endsection
 
 @section('title_card')
@@ -65,6 +62,23 @@
 @endsection
 
 @section('content_card')
+    <div class="container">
+        <form action="" method="get">
+            <div class="row my-5 mx-auto">
+                <div class="form-floating col col-8">
+                    <select class="form-select col col-8" data-control="select2" id="idTypeTable" name="rank_id" data-placeholder="Select an option">
+                        @foreach($ranks as $item)
+                            <option value="{{$item->id}}">{{$item->rank_name}}</option>
+                        @endforeach
+                    </select>
+                    <label for="idTypeTable">Rank</label>
+                </div>
+                <div class="form-floating col col-4 mx-auto">
+                    <input type="submit" class="btn btn-primary h-100" value="Tìm kiếm">
+                </div>
+            </div>
+        </form>
+    </div>
     <div class="table-responsive">
     <table class="table search-table-outter">
         <thead>
@@ -74,7 +88,6 @@
                 <th class="text-center" scope="col">Image</th>
                 <th class="text-center" scope="col">SubRank Name</th>
                 <th class="text-center" scope="col">Price (VND)</th>
-                <th>&nbsp;</th>
             </tr>
         @endif
         </thead>
@@ -90,12 +103,6 @@
                 </td>
                 <td class="align-middle text-center">{{$item->sub_rank_name}}</td>
                 <td class="align-middle text-center">{{number_format($item->price, 0, '', ',')}}</td>
-                <td class="align-center justify-content-center">
-                    <span class="btn btn-icon btn-danger delete-btn btn-sm btn-icon-md btn-circle mx-1"
-                          data-toggle="tooltip" data-placement="top" data-id="{{$item->id}}" title="Xóa">
-                                    <i class="fa fa-trash"></i>
-                    </span>
-                </td>
             </tr>
         @empty
             <h1 class="text-light text-center">Không có dữ liệu</h1>

@@ -27,6 +27,9 @@ Route::prefix('/')->group(function(){
         Route::get('/', [AccountController::class, 'login'])->name('login');
         Route::post('/', [AccountController::class, 'checkLogin'])->name('checkLogin');
     });
+    Route::prefix('/plow')->group(function(){
+        Route::get('/price', [HomeUserController::class, 'price'])->name('user.plow.price');;
+    });
 
 });
 

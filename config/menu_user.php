@@ -2,7 +2,7 @@
 return [
     [
         'title' => 'Cày thuê',
-        'name' => 'role',
+        'name' => 'plow',
         'route' => 'admin.role.index',
         'children' => [
             [
@@ -11,14 +11,14 @@ return [
                 'route' => 'admin.role.index',
             ],
             [
-                'title' => 'Tiê trình của bạn',
+                'title' => 'Tiến trình của bạn',
                 'name' => 'index',
                 'route' => 'admin.role.index',
             ],
             [
                 'title' => 'Giá thành',
-                'name' => 'create',
-                'route' => 'admin.role.showcreate',
+                'name' => 'price',
+                'route' => 'user.plow.price',
             ]
         ],
     ],

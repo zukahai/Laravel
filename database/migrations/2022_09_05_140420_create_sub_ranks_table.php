@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('sub_rank_name');
             $table->unsignedBigInteger('rank_id');
             $table->unsignedBigInteger('price');
+            $table->unsignedBigInteger('star');
             $table->unsignedBigInteger('value');
             $table->timestamps();
             $table->foreign('rank_id')->references('id')->on('ranks');

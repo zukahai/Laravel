@@ -1,5 +1,5 @@
 <?php $__env->startSection('title_page'); ?>
-    Detail Rank - <?php echo e(config('app.name')); ?>
+    Price - <?php echo e(config('app.name')); ?>
 
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('name_user'); ?>
@@ -33,21 +33,18 @@
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('menu'); ?>
     <?php
-        $menu_parent = 'rank';
-        $menu_child = 'subrank';
+        $menu_parent = 'plow';
+        $menu_child = 'price';
     ?>
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('title_component'); ?>
-    Rank
+    Price
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('title_layout'); ?>
-    Rank
+    Price
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('actions_layout'); ?>
-    <a href="<?php echo e(route('admin.subrank.create')); ?>" class="btn btn-primary btn-sm mr-2 mb-2 mb-lg-0">
-        <i class="fa fa-list"></i> Thêm chi tiết rank
-    </a>
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('title_card'); ?>
@@ -67,6 +64,23 @@
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('content_card'); ?>
+    <div class="container">
+        <form action="" method="get">
+            <div class="row my-5 mx-auto">
+                <div class="form-floating col col-8">
+                    <select class="form-select col col-8" data-control="select2" id="idTypeTable" name="rank_id" data-placeholder="Select an option">
+                        <?php $__currentLoopData = $ranks; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <option value="<?php echo e($item->id); ?>"><?php echo e($item->rank_name); ?></option>
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                    </select>
+                    <label for="idTypeTable">Rank</label>
+                </div>
+                <div class="form-floating col col-4 mx-auto">
+                    <input type="submit" class="btn btn-primary h-100" value="Tìm kiếm">
+                </div>
+            </div>
+        </form>
+    </div>
     <div class="table-responsive">
     <table class="table search-table-outter">
         <thead>
@@ -76,7 +90,6 @@
                 <th class="text-center" scope="col">Image</th>
                 <th class="text-center" scope="col">SubRank Name</th>
                 <th class="text-center" scope="col">Price (VND)</th>
-                <th>&nbsp;</th>
             </tr>
         <?php endif; ?>
         </thead>
@@ -92,12 +105,6 @@
                 </td>
                 <td class="align-middle text-center"><?php echo e($item->sub_rank_name); ?></td>
                 <td class="align-middle text-center"><?php echo e(number_format($item->price, 0, '', ',')); ?></td>
-                <td class="align-center justify-content-center">
-                    <span class="btn btn-icon btn-danger delete-btn btn-sm btn-icon-md btn-circle mx-1"
-                          data-toggle="tooltip" data-placement="top" data-id="<?php echo e($item->id); ?>" title="Xóa">
-                                    <i class="fa fa-trash"></i>
-                    </span>
-                </td>
             </tr>
         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
             <h1 class="text-light text-center">Không có dữ liệu</h1>
@@ -135,4 +142,4 @@
 <?php $__env->stopSection(); ?>
 
 
-<?php echo $__env->make('admin.layouts.main', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH G:\Laravel\resources\views/admin/pages/subRank/index.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('user.layouts.main', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH G:\Laravel\resources\views/user/pages/price.blade.php ENDPATH**/ ?>

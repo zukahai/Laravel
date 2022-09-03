@@ -47,7 +47,7 @@ class SubRankService
         $subRank = $this->subRank;
         $subRank = $subRank->orderBy('value','desc');
         if (!empty($keywords)) {
-            $subRank->where('sub_rank_name', 'like', '%'. $keywords.'%');
+            $subRank->where('rank_id', '=', $keywords);
         }
         return $subRank->paginate($limit)->withQueryString();
     }
