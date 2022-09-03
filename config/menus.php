@@ -61,4 +61,22 @@ return [
             ],
         ],
     ],
+
+    [
+        'title' => 'Hạng game',
+        'name' => 'rank',
+        'route' => 'admin.rank.index',
+        'children' => [
+            [
+                'title' => 'Danh sách hạng',
+                'name' => 'index',
+                'route' => 'admin.rank.index',
+            ],
+            [
+                'title' => 'Thêm hạng',
+                'name' => 'create',
+                'route' => 'admin.rank.create',
+            ],
+        ],
+    ],
 ];

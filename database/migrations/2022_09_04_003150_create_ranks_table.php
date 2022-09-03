@@ -15,6 +15,8 @@ return new class extends Migration
     {
         Schema::create('ranks', function (Blueprint $table) {
             $table->id();
+            $table->string('rank_name');
+            $table->string('url_image');
             $table->timestamps();
         });
     }

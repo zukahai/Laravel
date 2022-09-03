@@ -8,6 +8,7 @@ use App\Http\Controllers\admin\RoleController;
 use App\Http\Controllers\admin\RoleAccountController;
 use App\Http\Controllers\admin\StatusStaffController;
 use App\Http\Controllers\admin\RequestStaffController;
+use App\Http\Controllers\admin\RankController;
 use App\Http\Controllers\staff\HomeStaffController;
 
 use App\Http\Controllers\user\HomeUserController;
@@ -58,6 +59,13 @@ Route::prefix('admin')->middleware('checkLoginAdmin')->group(function(){
         Route::get('/request_staff', [RequestStaffController::class, 'index'])->name('admin.account.requestStaff');
         Route::get('/request_staff/delete/{id?}', [RequestStaffController::class, 'delete'])->name('admin.account.requestStaff.delete');
         Route::get('/request_staff/accept/{id?}', [RequestStaffController::class, 'accept'])->name('admin.account.requestStaff.accept');
+    });
+
+    Route::prefix('rank')->group(function(){
+        Route::get('/', [RankController::class, 'index'])->name('admin.rank.index');
+        Route::get('/create', [RankController::class, 'create'])->name('admin.rank.create');
+        Route::post('/create', [RankController::class, 'solveFormCreate'])->name('admin.rank.solveFormCreate');
+        Route::get('/delete/{id?}', [RankController::class, 'delete'])->name('admin.rank.delete');
     });
 });
 

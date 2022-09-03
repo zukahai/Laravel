@@ -5,36 +5,51 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreRankRequest;
 use App\Http\Requests\UpdateRankRequest;
+use App\Http\Services\RankService;
 use App\Models\Rank;
+use Illuminate\Http\Request;
 
 class RankController extends Controller
 {
+    protected $data = [];
+
+    public function __construct(RankService $rankService)
+    {
+        $this->rankService = $rankService;
+    }
 
     public function index()
     {
-        //
+        $this->data['ranks'] = $this->rankService->getAll();
+        return view('admin.pages.rank.index', $this->data);
     }
 
-    public function getForm(Request $request) {
-        $allData = $request->all();
-        // Kết hợp với old() để lưu dữ liệu cũ
-        $request->flash();
-        echo $request->file;
-        if ($request->hasFile('file')) {
-            $file = $request->file;
-            $file_name = $file->getclientOriginalName();
-            $file->move(public_path('images'), $file_name);
-            dd($file_name);
+    public function solveFormCreate(Request $request) {
+
+        if ($request->hasFile('image')) {
+            $file = $request->image;
+            $path = $file->store('images');
+            $file->move(public_path('images'), $path);
         } else {
             return "Vui long chon file";
         }
+        $data = new Rank();
+        $data->rank_name = $request->rank_name;
+        $data->url_image = $path;
+        $this->rankService->create($data);
 
-        return redirect(route('honeUser'));
+        return redirect(route('admin.rank.index'));
     }
 
     public function create()
     {
-        //
+        return view('admin.pages.rank.create');
+    }
+
+    public function delete($id)
+    {
+        $this->rankService->delete($id);
+        return $id;
     }
 
     public function store(StoreRankRequest $request)
