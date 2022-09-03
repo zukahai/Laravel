@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class RequestStaff extends Model
 {
     use HasFactory;
+
+    public function status(){
+        return $this->hasOne(StatusRequestStaff::class, 'id', 'status_id');
+    }
 }

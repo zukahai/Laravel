@@ -67,7 +67,12 @@
                     <h6>Ngày sinh: <?php echo e(auth()->user()->account->requestStaff->birthday); ?></h6>
                     <h6>Tin nhắn: <?php echo e(auth()->user()->account->requestStaff->message); ?></h6>
                     <h6>Yêu cầu được tạo lúc: <?php echo e(auth()->user()->account->requestStaff->updated_at); ?></h6>
-                    <h6>Trạng thái</h6>
+                    <h6>Trạng thái:
+                        <span class="badge badge-<?php echo e(auth()->user()->account->requestStaff->status->color); ?>">
+                            <?php echo e(auth()->user()->account->requestStaff->status->status_name); ?>
+
+                        </span>
+                    </h6>
                     <a href="#" class="btn btn-primary">Sửa yêu cầu</a>
                 </div>
             </div>
