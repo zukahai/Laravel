@@ -91,6 +91,15 @@ if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>
         </div>
+        <div class="form-group">
+            <label for="idTypeTable">Số sao lớn nhất</label>
+            <select class="form-select col col-8" data-control="select2" id="idTypeTable" name="star" data-placeholder="Select an option">
+                <?php for($i = 1; $i < 100; $i++): ?>
+                    <option value="<?php echo e($i); ?>" <?php echo e($i==5?"selected":""); ?>><?php echo e($i); ?> Sao</option>
+
+                <?php endfor; ?>
+            </select>
+        </div>
         <div class="form-group my-2">
             <label for="price">Giá</label>
             <input type="number" class="form-control" id="value" name="price" placeholder="Giá">

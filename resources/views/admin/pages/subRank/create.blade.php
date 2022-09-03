@@ -85,9 +85,10 @@
         <div class="form-group">
             <label for="idTypeTable">Số sao lớn nhất</label>
             <select class="form-select col col-8" data-control="select2" id="idTypeTable" name="star" data-placeholder="Select an option">
-                @for($i = 1; $i < 100; $i++ as $item)
-                    <option value="{{$item->id}}">{{$item->rank_name}}</option>
-                @endforeach
+                @for($i = 1; $i < 100; $i++)
+                    <option value="{{$i}}" {{$i==5?"selected":""}}>{{$i}} Sao</option>
+
+                @endfor
             </select>
         </div>
         <div class="form-group my-2">

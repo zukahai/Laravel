@@ -45,6 +45,7 @@ class SubRankController extends Controller
         $subRank->sub_rank_name = $request->sub_rank_name;
         $subRank->rank_id = $request->rank_id;
         $subRank->price = $request->price;
+        $subRank->star = $request->star;
         $subRank->value = $request->value + 1;
         $this->subRankService->updateValue($subRank->value);
         $this->subRankService->create($subRank);
