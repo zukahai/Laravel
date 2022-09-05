@@ -25,7 +25,16 @@ class RankController extends Controller
     }
 
     public function solveFormCreate(Request $request) {
-
+        $request->validate(
+            [
+                'rank_name' => 'required',
+                'image' => 'required',
+            ],
+            [
+                'rank_name.required' => 'Vui lòng nhập tên rank',
+                'image.required' => 'Vui lòng chọn ảnh',
+            ]
+        );
         if ($request->hasFile('image')) {
             $file = $request->image;
             $path = $file->store('images');
