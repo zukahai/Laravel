@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\admin\HomeAdminController;
+use App\Http\Controllers\admin\SubRankController;
 use App\Http\Controllers\admin\AccountController;
 use App\Http\Controllers\admin\RoleController;
 use App\Http\Controllers\admin\RoleAccountController;
@@ -66,6 +66,11 @@ Route::prefix('admin')->middleware('checkLoginAdmin')->group(function(){
         Route::get('/create', [RankController::class, 'create'])->name('admin.rank.create');
         Route::post('/create', [RankController::class, 'solveFormCreate'])->name('admin.rank.solveFormCreate');
         Route::get('/delete/{id?}', [RankController::class, 'delete'])->name('admin.rank.delete');
+    });
+
+    Route::prefix('subrank')->group(function(){
+        Route::get('/', [SubRankController::class, 'index'])->name('admin.subrank.index');
+        Route::get('/create', [SubRankController::class, 'create'])->name('admin.subrank.create');
     });
 });
 

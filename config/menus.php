@@ -73,9 +73,19 @@ return [
                 'route' => 'admin.rank.index',
             ],
             [
+                'title' => 'Danh sách chi tiết hạng',
+                'name' => 'subrank',
+                'route' => 'admin.subrank.index',
+            ],
+            [
                 'title' => 'Thêm hạng',
                 'name' => 'create',
                 'route' => 'admin.rank.create',
+            ],
+            [
+                'title' => 'Thêm chi tiết hạng',
+                'name' => 'createsubrank',
+                'route' => 'admin.subrank.create',
             ],
         ],
     ],
