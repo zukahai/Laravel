@@ -520,7 +520,7 @@
 				<text x="78.93" y="1142.56" class="st4" v:langID="3081"><v:paragraph v:horizAlign="1"/><v:tabList/>ranks</text>			</g>
 			<g id="shape220-88" v:mID="220" v:groupContext="groupContent"/>
 		</g>
-		<g id="group247-89" transform="translate(907.087,-792.923)" v:mID="247" v:groupContext="group">
+		<g id="group247-89" transform="translate(907.087,-764.919)" v:mID="247" v:groupContext="group">
 			<v:userDefs>
 				<v:ud v:nameU="msvStructureType" v:prompt="" v:val="VT4(List)"/>
 				<v:ud v:nameU="msvSDContainerResize" v:prompt="" v:val="VT0(2):26"/>
@@ -546,7 +546,7 @@
 				<v:ud v:nameU="EntityNameSpace" v:prompt="" v:val="VT4(sub_ranks)"/>
 			</v:userDefs>
 			<title>Entity.247</title>
-			<g id="shape248-90" v:mID="248" v:groupContext="shape" transform="translate(0,-199.203)">
+			<g id="shape248-90" v:mID="248" v:groupContext="shape" transform="translate(0,-227.207)">
 				<title>Sheet.248</title>
 				<v:userDefs>
 					<v:ud v:nameU="EmblOffset" v:prompt="" v:val="VT0(0):26"/>
@@ -555,9 +555,9 @@
 			</g>
 			<g id="shape249-92" v:mID="249" v:groupContext="shape">
 				<title>Sheet.249</title>
-				<rect x="0" y="955.348" width="184.252" height="199.203" class="st2"/>
+				<rect x="0" y="927.345" width="184.252" height="227.207" class="st2"/>
 			</g>
-			<g id="shape250-94" v:mID="250" v:groupContext="shape" transform="translate(1287.78,986.529) rotate(90)">
+			<g id="shape250-94" v:mID="250" v:groupContext="shape" transform="translate(1287.78,958.526) rotate(90)">
 				<title>Sheet.250</title>
 				<v:userDefs>
 					<v:ud v:nameU="ContainerMargin" v:prompt="" v:val="VT0(0):24"/>
@@ -565,7 +565,7 @@
 					<v:ud v:nameU="ControlsX" v:prompt="" v:val="VT0(1.8503937007874):24"/>
 				</v:userDefs>
 			</g>
-			<g id="shape251-96" v:mID="251" v:groupContext="shape" transform="translate(0,-168.022)">
+			<g id="shape251-96" v:mID="251" v:groupContext="shape" transform="translate(0,-196.025)">
 				<title>Sheet.251</title>
 				<desc>sub_ranks</desc>
 				<v:userDefs>
@@ -3780,7 +3780,7 @@
 				<v:textRect cx="14.8168" cy="1146.05" width="12.63" height="12.0036"/>
 			</g>
 		</g>
-		<g id="group261-580" transform="translate(907.087,-820.927)" v:mID="261" v:groupContext="group">
+		<g id="group261-580" transform="translate(907.087,-792.923)" v:mID="261" v:groupContext="group">
 			<v:custProps>
 				<v:cp v:nameU="Row_1" v:lbl="" v:prompt="" v:type="0" v:format="" v:sortKey="" v:invis="false" v:ask="false"
 						v:langID="1033" v:cal="0" v:val="VT0(0):26"/>
@@ -3810,7 +3810,7 @@
 				<v:ud v:nameU="DarkColor" v:prompt="" v:val="VT5(#4672c4)"/>
 				<v:ud v:nameU="BackFillColor" v:prompt="" v:val="VT5(#4672c4)"/>
 				<v:ud v:nameU="BackLineColor" v:prompt="" v:val="VT5(#c8c8c8)"/>
-				<v:ud v:nameU="ItemIndex" v:prompt="" v:val="VT0(6):26"/>
+				<v:ud v:nameU="ItemIndex" v:prompt="" v:val="VT0(7):26"/>
 				<v:ud v:nameU="ShowType" v:prompt="" v:val="VT0(0):5"/>
 				<v:ud v:nameU="ListDivLoc" v:prompt="" v:val="VT0(1.8503937007874):24"/>
 			</v:userDefs>
@@ -3841,7 +3841,7 @@
 				<v:textRect cx="14.8168" cy="1146.05" width="12.63" height="12.0036"/>
 			</g>
 		</g>
-		<g id="group265-588" transform="translate(907.087,-792.923)" v:mID="265" v:groupContext="group">
+		<g id="group265-588" transform="translate(907.087,-764.919)" v:mID="265" v:groupContext="group">
 			<v:custProps>
 				<v:cp v:nameU="Row_1" v:lbl="" v:prompt="" v:type="0" v:format="" v:sortKey="" v:invis="false" v:ask="false"
 						v:langID="1033" v:cal="0" v:val="VT0(0):26"/>
@@ -3871,7 +3871,7 @@
 				<v:ud v:nameU="DarkColor" v:prompt="" v:val="VT5(#4672c4)"/>
 				<v:ud v:nameU="BackFillColor" v:prompt="" v:val="VT5(#4672c4)"/>
 				<v:ud v:nameU="BackLineColor" v:prompt="" v:val="VT5(#c8c8c8)"/>
-				<v:ud v:nameU="ItemIndex" v:prompt="" v:val="VT0(7):26"/>
+				<v:ud v:nameU="ItemIndex" v:prompt="" v:val="VT0(8):26"/>
 				<v:ud v:nameU="ShowType" v:prompt="" v:val="VT0(0):5"/>
 				<v:ud v:nameU="ListDivLoc" v:prompt="" v:val="VT0(1.8503937007874):24"/>
 			</v:userDefs>
@@ -4047,6 +4047,67 @@
 				<v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
 			</v:userDefs>
 			<path d="M0 1154.55 L12.67 1154.55 L12.67 1098.54 L78 1098.54" class="st10"/>
+		</g>
+		<g id="group278-620" transform="translate(907.087,-820.927)" v:mID="278" v:groupContext="group">
+			<v:custProps>
+				<v:cp v:nameU="Row_1" v:lbl="" v:prompt="" v:type="0" v:format="" v:sortKey="" v:invis="false" v:ask="false"
+						v:langID="1033" v:cal="0" v:val="VT0(0):26"/>
+			</v:custProps>
+			<v:userDefs>
+				<v:ud v:nameU="msvShapeCategories" v:prompt="" v:val="VT4(Database;DbAttribute;DbListItem)"/>
+				<v:ud v:nameU="AttributeName" v:prompt="" v:val="VT4(attribute name)"/>
+				<v:ud v:nameU="PrimaryKey" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="ForeignKey" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="Required" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="ContainerMargin" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="WidthMin" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="UserWidth" v:prompt="" v:val="VT0(1.875):24"/>
+				<v:ud v:nameU="DarkerColor" v:prompt="" v:val="VT5(#000000)"/>
+				<v:ud v:nameU="DarkColor" v:prompt="" v:val="VT5(#000000)"/>
+				<v:ud v:nameU="BackFillColor" v:prompt="" v:val="VT5(1)"/>
+				<v:ud v:nameU="BackLineColor" v:prompt="" v:val="VT5(#000000)"/>
+				<v:ud v:nameU="ItemIndex" v:prompt="" v:val="VT0(-1):26"/>
+				<v:ud v:nameU="EmblOffset" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="Spacer" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="ShowType" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="ListDivLoc" v:prompt="" v:val="VT0(1.40625):24"/>
+				<v:ud v:nameU="AttributeName" v:prompt="" v:val="VT4(value)"/>
+				<v:ud v:nameU="ContainerMargin" v:prompt="" v:val="VT0(0):24"/>
+				<v:ud v:nameU="WidthMin" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="DarkerColor" v:prompt="" v:val="VT5(#4672c4)"/>
+				<v:ud v:nameU="DarkColor" v:prompt="" v:val="VT5(#4672c4)"/>
+				<v:ud v:nameU="BackFillColor" v:prompt="" v:val="VT5(#4672c4)"/>
+				<v:ud v:nameU="BackLineColor" v:prompt="" v:val="VT5(#c8c8c8)"/>
+				<v:ud v:nameU="ItemIndex" v:prompt="" v:val="VT0(6):26"/>
+				<v:ud v:nameU="ShowType" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="ListDivLoc" v:prompt="" v:val="VT0(1.8503937007874):24"/>
+			</v:userDefs>
+			<title>Attribute.278</title>
+			<desc>value</desc>
+			<g id="shape278-621" v:mID="278" v:groupContext="groupContent">
+				<v:textBlock v:margins="rect(8,8,8,30)" v:tabSpace="42.5197"/>
+				<v:textRect cx="92.126" cy="1140.55" width="184.26" height="28.0036"/>
+				<text x="30" y="1143.55" class="st5" v:langID="3081"><v:paragraph/><v:tabList/>value</text>			</g>
+			<g id="shape279-624" v:mID="279" v:groupContext="shape" transform="translate(133.228,0)">
+				<title>Sheet.279</title>
+				<desc>int</desc>
+				<v:userDefs>
+					<v:ud v:nameU="PrimaryKey" v:prompt="" v:val="VT0(0):5"/>
+					<v:ud v:nameU="ShowType" v:prompt="" v:val="VT0(1):5"/>
+				</v:userDefs>
+				<v:textBlock v:margins="rect(8,15,8,8)" v:tabSpace="42.5197"/>
+				<v:textRect cx="25.5118" cy="1140.55" width="51.03" height="28.0036"/>
+			</g>
+			<g id="shape280-626" v:mID="280" v:groupContext="shape" transform="translate(4.25197,-5.49788)">
+				<title>Attribute.5</title>
+				<desc>PK</desc>
+				<v:userDefs>
+					<v:ud v:nameU="PrimaryKey" v:prompt="" v:val="VT0(0):5"/>
+					<v:ud v:nameU="ForeignKey" v:prompt="" v:val="VT0(0):5"/>
+				</v:userDefs>
+				<v:textBlock v:margins="rect(0,0,0,0)" v:tabSpace="42.5197"/>
+				<v:textRect cx="14.8168" cy="1146.05" width="12.63" height="12.0036"/>
+			</g>
 		</g>
 	</g>
 </svg>
