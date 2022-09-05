@@ -4,7 +4,7 @@ namespace App\Http\Services;
 
 
 use App\Models\SubRank;
-use Cookie;
+use DB;
 
 class SubRankService
 {
@@ -14,11 +14,12 @@ class SubRankService
     }
 
     public function getAll() {
-        return $this->subRank->orderBy('id','asc')->paginate();
+        return $this->subRank->orderBy('value','desc')->paginate();
     }
 
     public function delete($id) {
         $subRank = $this->subRank->find($id);
+        DB::update('UPDATE sub_ranks SET value = value - 1 WHERE value > '.$subRank->value);
         $subRank->delete();
     }
 
@@ -30,6 +31,10 @@ class SubRankService
     public function create($data) {
         $subRank = $data;
         $subRank->save();
+    }
+
+    public function updateValue($value){
+        DB::update('UPDATE sub_ranks SET value = value + 1 WHERE value >= '.$value);
     }
 
 

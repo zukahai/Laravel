@@ -8,6 +8,7 @@ use App\Http\Requests\UpdateSubRankRequest;
 use App\Http\Services\RankService;
 use App\Http\Services\SubRankService;
 use App\Models\SubRank;
+use Illuminate\Http\Request;
 
 class SubRankController extends Controller
 {
@@ -34,18 +35,26 @@ class SubRankController extends Controller
     public function create()
     {
         $this->data['ranks'] = $this->rankService->getAll();
+        $this->data['subRanks'] = $this->subRankService->getAll();
         return view('admin.pages.subRank.create', $this->data);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \App\Http\Requests\StoreSubRankRequest  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(StoreSubRankRequest $request)
+    public function solveFormCreate(Request $request) {
+//        dd($request->all());
+        $subRank = new SubRank();
+        $subRank->sub_rank_name = $request->sub_rank_name;
+        $subRank->rank_id = $request->rank_id;
+        $subRank->price = $request->price;
+        $subRank->value = $request->value + 1;
+        $this->subRankService->updateValue($subRank->value);
+        $this->subRankService->create($subRank);
+        return redirect(route('admin.subrank.index'))->with('info', 'Thêm thành công');
+    }
+
+
+    public function delete($id)
     {
-        //
+        $this->subRankService->delete($id);
     }
 
     /**

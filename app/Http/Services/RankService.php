@@ -14,8 +14,8 @@ class RankService
         $this->rank = $rank;
     }
 
-    public function getAll() {
-        return $this->rank->orderBy('id','asc')->paginate();
+    public function getAll($sort = 'asc') {
+        return $this->rank->orderBy('id',$sort)->paginate();
     }
 
     public function delete($id) {

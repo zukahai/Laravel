@@ -71,6 +71,8 @@ Route::prefix('admin')->middleware('checkLoginAdmin')->group(function(){
     Route::prefix('subrank')->group(function(){
         Route::get('/', [SubRankController::class, 'index'])->name('admin.subrank.index');
         Route::get('/create', [SubRankController::class, 'create'])->name('admin.subrank.create');
+        Route::post('/create', [SubRankController::class, 'solveFormCreate'])->name('admin.subrank.solveFormCreate');
+        Route::get('/delete/{id?}', [SubRankController::class, 'delete'])->name('admin.subrank.delete');
     });
 });
 

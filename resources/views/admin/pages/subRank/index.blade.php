@@ -43,6 +43,9 @@
 @endsection
 
 @section('actions_layout')
+    <a href="{{route('admin.subrank.create')}}" class="btn btn-primary btn-sm mr-2 mb-2 mb-lg-0">
+        <i class="fa fa-list"></i> Thêm chi tiết rank
+    </a>
 @endsection
 
 @section('title_card')

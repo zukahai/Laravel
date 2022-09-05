@@ -71,7 +71,7 @@
         <?php endif; ?>
         <div class="form-group">
             <label for="idTypeTable">Rank</label>
-            <select class="form-select col col-8" data-control="select2" id="idTypeTable" name="id_account" data-placeholder="Select an option">
+            <select class="form-select col col-8" data-control="select2" id="idTypeTable" name="rank_id" data-placeholder="Select an option">
                     <?php $__currentLoopData = $ranks; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <option value="<?php echo e($item->id); ?>"><?php echo e($item->rank_name); ?></option>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -80,7 +80,7 @@
         <div class="form-group my-2">
             <label for="sub_rank_name">Tên rank</label>
             <input type="text" class="form-control" id="sub_rank_name" name="sub_rank_name" placeholder="Tên rank">
-            <?php $__errorArgs = ['image'];
+            <?php $__errorArgs = ['sub_rank_name'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
@@ -93,8 +93,8 @@ unset($__errorArgs, $__bag); ?>
         </div>
         <div class="form-group my-2">
             <label for="price">Giá</label>
-            <input type="number" class="form-control" id="price" name="price" placeholder="Giá">
-            <?php $__errorArgs = ['image'];
+            <input type="number" class="form-control" id="value" name="price" placeholder="Giá">
+            <?php $__errorArgs = ['price'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
@@ -104,6 +104,14 @@ $message = $__bag->first($__errorArgs[0]); ?>
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>
+        </div>
+        <div class="form-group">
+            <label for="value">Vị trí: lớn hơn</label>
+            <select class="form-select col col-8" data-control="select2" id="value" name="value" data-placeholder="Select an option">
+                <?php $__currentLoopData = $subRanks; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                    <option value="<?php echo e($item->value); ?>"><?php echo e($item->sub_rank_name); ?></option>
+                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+            </select>
         </div>
 
         <div class="justify-content-center d-flex my-5">

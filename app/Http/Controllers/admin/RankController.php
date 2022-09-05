@@ -20,7 +20,7 @@ class RankController extends Controller
 
     public function index()
     {
-        $this->data['ranks'] = $this->rankService->getAll();
+        $this->data['ranks'] = $this->rankService->getAll('desc');
         return view('admin.pages.rank.index', $this->data);
     }
 

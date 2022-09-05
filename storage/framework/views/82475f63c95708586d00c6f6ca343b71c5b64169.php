@@ -45,6 +45,9 @@
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('actions_layout'); ?>
+    <a href="<?php echo e(route('admin.subrank.create')); ?>" class="btn btn-primary btn-sm mr-2 mb-2 mb-lg-0">
+        <i class="fa fa-list"></i> Thêm chi tiết rank
+    </a>
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('title_card'); ?>
