@@ -1,13 +1,12 @@
 <?php $__env->startSection('title_page'); ?>
-    Account - Admin - <?php echo e(config('app.name')); ?>
+    Order - <?php echo e(config('app.name')); ?>
 
 <?php $__env->stopSection(); ?>
-
 <?php $__env->startSection('name_user'); ?>
     <?php echo e((auth()->user()->account->username)); ?>
 
-<?php $__env->stopSection(); ?>
 
+<?php $__env->stopSection(); ?>
 <?php $__env->startSection('email_user'); ?>
     Tài khoản: <?php echo e(number_format(auth()->user()->money, 0, '', ',')); ?> VND
 <?php $__env->stopSection(); ?>
@@ -23,27 +22,35 @@
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('js_custom'); ?>
     <script src="<?php echo e(asset('/admin/assets/plugins/global/plugins.bundle.js')); ?>"></script>
-
+    <style>
+        img{
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+        }
+    </style>
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('menu'); ?>
     <?php
-        $menu_parent = 'account';
-        $menu_child = 'index';
+        $menu_parent = 'plow';
+        $menu_child = 'myOrder';
     ?>
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('title_component'); ?>
-    Account
+    Order
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('title_layout'); ?>
-    Account
+    Order
 <?php $__env->stopSection(); ?>
+
 <?php $__env->startSection('actions_layout'); ?>
-    <a href="<?php echo e(route('admin.account.index')); ?>" class="btn btn-primary btn-sm mr-2 mb-2 mb-lg-0">
-        <i class="fa fa-list"></i> List Account
+    <a href="<?php echo e(route('admin.subrank.create')); ?>" class="btn btn-primary btn-sm mr-2 mb-2 mb-lg-0">
+        <i class="fa fa-list"></i> Thêm chi tiết rank
     </a>
 <?php $__env->stopSection(); ?>
+
 <?php $__env->startSection('title_card'); ?>
-    List Account
+    List Your Order
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('onload'); ?>
@@ -53,62 +60,43 @@
     <?php if($message = Session::get('error')): ?>
         onload="abc('<?php echo e($message); ?>' , 'danger')"
     <?php endif; ?>
+    <?php if($message = Session::get('warning')): ?>
+        onload="abc('<?php echo e($message); ?>' , 'warning')"
+    <?php endif; ?>
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('content_card'); ?>
-    <div>
-        <form method="get" action="">
-            <div class="input-group mb-5">
-                <input type="text" class="form-control" name="keywords" placeholder="Từ khoá tìm kiếm"
-                       value="<?php echo e(request()->keywords); ?>">
-                <div class="input-group-append">
-                    <button class="btn btn-outline-secondary" type="submit">Search</button>
-                </div>
-            </div>
-        </form>
-    </div>
-
-    <h5 class="text-center">Danh sách tài khoản</h5>
-    <a href="<?php echo e(route('admin.account.formAdd')); ?>" class="btn btn-primary mb-2">Thêm tài khoản</a>
-    <?php if(!empty($success)): ?>
-        <h6 class="alert alert-info"> <?php echo e($success); ?></h6>
-    <?php endif; ?>
-
+    <div class="table-responsive">
     <table class="table search-table-outter">
         <thead>
-        <?php if(!$accounts->isEmpty()): ?>
+        <?php if(!$orders->isEmpty()): ?>
             <tr>
                 <th class="text-center" scope="col">#</th>
-                <th class="text-center" scope="col">UserName</th>
-                <th class="text-center" scope="col">Created_at</th>
-                <th class="text-center" scope="col">Role</th>
-                <th>&nbsp;</th>
+                <th class="text-center" scope="col"></th>
+                <th class="text-center" scope="col">Rank lúc đầu</th>
+                <th class="text-center" scope="col"></th>
+                <th class="text-center" scope="col">Rank mong muốn</th>
+                <th class="text-center" scope="col">Tổng tiền (VND)</th>
             </tr>
         <?php endif; ?>
         </thead>
         <tbody>
-        <?php $__empty_1 = true; $__currentLoopData = $accounts; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
+        <?php
+            $index = 1;
+        ?>
+        <?php $__empty_1 = true; $__currentLoopData = $orders; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
             <tr class="align-middle">
-                <th class="align-middle text-center" scope="row"><?php echo e($item->id); ?></th>
-                <td class="align-middle text-center"><?php echo e($item->username); ?></td>
-                <td class="align-middle text-center"><?php echo e($item->created_at); ?></td>
+                <th class="align-middle text-center" scope="row"><?php echo e($index++); ?></th>
                 <td class="align-middle text-center">
-                    <?php $__currentLoopData = $item->roles; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $role): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                        <span class=" my-1 text-center
-                    badge badge-<?php echo e($role->color); ?>"> <?php echo e($role->role_name); ?></span>
-                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                    <img src="<?php echo e(url($item->rank1->rank->url_image)); ?>" alt="..." class="rounded mx-auto d-block">
                 </td>
-                
-                <td class="align-center justify-content-center">
-                    <a href="<?php echo e(route('admin.account.update')); ?>/<?php echo e($item->id); ?>" class="btn btn-icon btn-success btn-sm btn-icon-md btn-circle mx-1"
-                       title="Sửa">
-                        <i class="fa fa-edit"></i>
-                    </a>
-                    <span class="btn btn-icon btn-danger delete-btn btn-sm btn-icon-md btn-circle mx-1"
-                          data-toggle="tooltip" data-placement="top" data-id="<?php echo e($item->id); ?>" title="Xóa">
-                                    <i class="fa fa-trash"></i>
-                    </span>
+                <td class="align-middle text-center"><?php echo e($item->rank1->sub_rank_name); ?> <?php echo e($item->star1); ?> Sao</td>
+                <td class="align-middle text-center">
+                    <img src="<?php echo e(url($item->rank2->rank->url_image)); ?>" alt="..." class="rounded mx-auto d-block">
                 </td>
+                <td class="align-middle text-center"><?php echo e($item->rank2->sub_rank_name); ?> <?php echo e($item->star2); ?> Sao</td>
+                <td class="align-middle text-center"><?php echo e(number_format($item->totalMoney, 0, '', ',')); ?></td>
+
             </tr>
         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
             <h1 class="text-light text-center">Không có dữ liệu</h1>
@@ -116,12 +104,8 @@
 
         </tbody>
     </table>
-    <div class="d-flex justify-content-center text-dark">
-        <?php echo e($accounts->links()); ?>
-
     </div>
 <?php $__env->stopSection(); ?>
-
 <?php $__env->startSection('footer_card'); ?>
 
 <?php $__env->stopSection(); ?>
@@ -150,4 +134,4 @@
 <?php $__env->stopSection(); ?>
 
 
-<?php echo $__env->make('admin.layouts.main', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH G:\Laravel\resources\views/admin/pages/account/index.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('user.layouts.main', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH G:\Laravel\resources\views/user/pages/plow/index.blade.php ENDPATH**/ ?>

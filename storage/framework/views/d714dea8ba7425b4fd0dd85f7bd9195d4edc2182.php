@@ -10,7 +10,7 @@
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('email_user'); ?>
- haizuka@gmail.com
+    Tài khoản: <?php echo e(number_format(auth()->user()->money, 0, '', ',')); ?> VND
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('role_user'); ?>

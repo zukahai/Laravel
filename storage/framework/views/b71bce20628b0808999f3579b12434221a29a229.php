@@ -99,13 +99,17 @@
                 <tr class="align-middle">
                     <td class="align-middle text-center" colspan="4">Tổng tiền</td>
                     <td class="text-danger text-bold align-middle text-center"><?php echo e(number_format($money['totalMoney'], 0, '', ',')); ?></td>
-
-
-
                 </tr>
 
                 </tbody>
             </table>
+        </div>
+        <div class="form-group>">
+            <form action="" method="post">
+                <?php echo csrf_field(); ?>
+                <input type="hidden" name="totalMoney" value="<?php echo e($money['totalMoney']); ?>">
+                <input type="submit" class="btn btn-primary"  value="Đặt đơn hàng">
+            </form>
         </div>
     <?php endif; ?>
     <?php if(empty($money)): ?>

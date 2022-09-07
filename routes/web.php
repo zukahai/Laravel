@@ -9,6 +9,7 @@ use App\Http\Controllers\admin\RoleAccountController;
 use App\Http\Controllers\admin\StatusStaffController;
 use App\Http\Controllers\admin\RequestStaffController;
 use App\Http\Controllers\admin\RankController;
+use App\Http\Controllers\admin\OrderController;
 use App\Http\Controllers\admin\ResetRankController;
 use App\Http\Controllers\staff\HomeStaffController;
 use App\Http\Controllers\user\HomeUserController;
@@ -27,8 +28,10 @@ Route::prefix('/')->group(function(){
         Route::post('/', [AccountController::class, 'checkLogin'])->name('checkLogin');
     });
     Route::prefix('/plow')->group(function(){
+        Route::get('/', [OrderController::class, 'myOrder'])->name('user.plow.index');
         Route::get('/price', [HomeUserController::class, 'price'])->name('user.plow.price');
-        Route::get('/create', [HomeUserController::class, 'create'])->name('user.plow.create');;
+        Route::get('/create', [OrderController::class, 'create'])->name('user.plow.create');
+        Route::post('/create', [OrderController::class, 'solveFormCreate'])->name('user.plow.solveFormCreate');
     });
     Route::prefix('/info')->group(function(){
         Route::get('/reset_rank', [ResetRankController::class, 'index'])->name('user.info.reset_rank');

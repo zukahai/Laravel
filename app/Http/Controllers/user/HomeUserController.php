@@ -47,16 +47,4 @@ class HomeUserController extends Controller
         return redirect()->back()->with('info', 'Đã gửi yêu cầu, vui lòng chờ');
     }
 
-    public function create(Request $request){
-//        dd($request->star1);
-        if (!empty($request->rank1) && !empty($request->rank2)) {
-            $this->data['money'] = $this->subRankService->calulateMony($request);
-            if (!empty($this->data['money']['error']))
-                return redirect()->back()->with('error', 'Rank hiện tại phải thấp hơn rank muốn cày');
-        }
-
-        $this->data['subranks'] = $this->subRankService->paginate(1000, $request->rank_id);
-        return view('user.pages.plow.create', $this->data);
-    }
-
 }

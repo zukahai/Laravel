@@ -12,8 +12,8 @@ return [
             ],
             [
                 'title' => 'Tiến trình của bạn',
-                'name' => 'index',
-                'route' => 'admin.role.index',
+                'name' => 'myOrder',
+                'route' => 'user.plow.index',
             ],
             [
                 'title' => 'Giá thành',
