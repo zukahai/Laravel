@@ -7,7 +7,7 @@
 
 @endsection
 @section('email_user')
-    {{(auth()->user()->account->roles[0]->description)}}
+    Tài khoản: {{number_format(auth()->user()->money, 0, '', ',')}} VND
 @endsection
 
 @section('role_user')

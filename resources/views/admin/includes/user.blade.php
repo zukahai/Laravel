@@ -17,7 +17,7 @@
                     @yield('role_user')
                 </div>
 
-                <a href="#" class="fw-semibold text-muted text-hover-primary fs-7">@yield('email_user')</a>
+                <a href="#" class="fw-semibold fs-7 text-bold text-danger">@yield('email_user')</a>
             </div>
             <!--end::Username-->
         </div>

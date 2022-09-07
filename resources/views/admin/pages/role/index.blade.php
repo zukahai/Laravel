@@ -9,7 +9,7 @@
 @endsection
 
 @section('email_user')
-{{--    {{auth()->user()->email}}--}} haizuka@gmail.com
+    Tài khoản: {{number_format(auth()->user()->money, 0, '', ',')}} VND
 @endsection
 
 @section('role_user')

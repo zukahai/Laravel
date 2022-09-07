@@ -17,7 +17,7 @@
                     <?php echo $__env->yieldContent('role_user'); ?>
                 </div>
 
-                <a href="#" class="fw-semibold text-muted text-hover-primary fs-7"><?php echo $__env->yieldContent('email_user'); ?></a>
+                <a href="#" class="fw-semibold fs-7 text-bold text-danger"><?php echo $__env->yieldContent('email_user'); ?></a>
             </div>
             <!--end::Username-->
         </div>
