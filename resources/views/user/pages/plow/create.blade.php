@@ -18,6 +18,13 @@
 
 @section('css_custom')
     <link href="{{asset('/admin/assets/plugins/global/plugins.bundle.css')}}" rel="stylesheet" type="text/css"/>
+    <style>
+        img{
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+        }
+    </style>
 @endsection
 @section('js_custom')
     <script src="{{asset('/admin/assets/plugins/global/plugins.bundle.js')}}"></script>
@@ -57,9 +64,48 @@
 
 @section('content_card')
     @if (!empty($money))
-        @foreach($money['data'] as $item)
-            <h1>{{$item->id}}  - {{$item->name}}</h1>
-        @endforeach
+        <h4>Tiến trình</h4>
+        <div class="table-responsive">
+            <table class="table search-table-outter table-striped">
+                <thead>
+                    <tr>
+                        <th class="text-center" scope="col">#</th>
+                        <th class="text-center" scope="col">Hình ảnh</th>
+                        <th class="text-center" scope="col">Tên rank</th>
+                        <th class="text-center" scope="col">Số sao</th>
+                        <th class="text-center" scope="col">Giá thành</th>
+                    </tr>
+                </thead>
+                <tbody>
+                @php
+                    $index = 0;
+                @endphp
+                @forelse ($money['data'] as $item)
+                    <tr class="align-middle">
+                        <th class="align-middle text-center" scope="row">{{++$index}}</th>
+                        <td class="align-middle text-center">
+                            <img src="{{url($item->subRank->rank->url_image)}}" alt="..." class="rounded mx-auto d-block">
+                        </td>
+                        <td class="align-middle text-center">{{$item->subRank->sub_rank_name}}</td>
+                        <td class="align-middle text-center">{{$item->star}}</td>
+                        <td class="align-middle text-center">{{number_format($item->subRank->price, 0, '', ',')}}</td>
+{{--                        <td class="align-middle text-center">{{$item->id}}</td>--}}
+
+                    </tr>
+                @empty
+                    <h1 class="text-light text-center">Không có dữ liệu</h1>
+                @endforelse
+                <tr class="align-middle">
+                    <td class="align-middle text-center" colspan="4">Tổng tiền</td>
+                    <td class="text-danger text-bold align-middle text-center">{{number_format($money['totalMoney'], 0, '', ',')}}</td>
+
+
+
+                </tr>
+
+                </tbody>
+            </table>
+        </div>
     @endif
     @if (empty($money))
     <form action="" method="get" class="py-5" >
@@ -75,7 +121,7 @@
             <div class="form-group col-6">
                 <label for="star1">Số sao
                 <select class="form-select col col-8" data-control="select2" id="star1" name="star1" data-placeholder="Select an option">
-                    @for($i = 0; $i <= 100; $i++)
+                    @for($i = 1; $i <= 100; $i++)
                         <option value="{{$i}}">{{$i}}</option>
                     @endfor
                 </select>
@@ -95,7 +141,7 @@
             <div class="form-group col-6">
                 <label for="star2">Số sao
                 <select class="form-select col col-8" data-control="select2" id="star2" name="star2" data-placeholder="Select an option">
-                    @for($i = 0; $i <= 100; $i++)
+                    @for($i = 1; $i <= 100; $i++)
                         <option value="{{$i}}">{{$i}}</option>
                     @endfor
                 </select>

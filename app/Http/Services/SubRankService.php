@@ -59,21 +59,30 @@ class SubRankService
     public function calulateMony($request) {
         $rank1 = $request->rank1;
         $rank2 = $request->rank2;
-        $star1 = $request->star1;
+        $star1 = $request->star1 + 1;
         $star2 = $request->star2;
 
         $data = [];
+        $totalMoney = 0;
 
         while ($rank1 <= $rank2) {
             $subRank = $this->findByvalue($rank1);
-//            dd($subRank);
-            array_push($data, (object)[
-                'id' => $rank1,
-                'name' => $subRank->sub_rank_name,
-            ]);
+            while($star1 <= $subRank->star) {
+                array_push($data, (object)[
+                    'id' => $rank1,
+                    'subRank' => $subRank,
+                    'star' => $star1,
+                ]);
+                $totalMoney += $subRank->price;
+                $star1++;
+                if ($rank1 == $rank2 && $star1 > $star2)
+                    break;
+            }
+
             $rank1++;
+            $star1 = 1;
         }
-        return ['data' => $data];
+        return ['data' => $data, 'totalMoney'=>$totalMoney];
     }
 
 }

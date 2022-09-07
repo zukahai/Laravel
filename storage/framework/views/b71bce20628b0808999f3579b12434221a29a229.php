@@ -19,6 +19,13 @@
 
 <?php $__env->startSection('css_custom'); ?>
     <link href="<?php echo e(asset('/admin/assets/plugins/global/plugins.bundle.css')); ?>" rel="stylesheet" type="text/css"/>
+    <style>
+        img{
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+        }
+    </style>
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('js_custom'); ?>
     <script src="<?php echo e(asset('/admin/assets/plugins/global/plugins.bundle.js')); ?>"></script>
@@ -58,9 +65,48 @@
 
 <?php $__env->startSection('content_card'); ?>
     <?php if(!empty($money)): ?>
-        <?php $__currentLoopData = $money['data']; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-            <h1><?php echo e($item->id); ?>  - <?php echo e($item->name); ?></h1>
-        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+        <h4>Tiến trình</h4>
+        <div class="table-responsive">
+            <table class="table search-table-outter table-striped">
+                <thead>
+                    <tr>
+                        <th class="text-center" scope="col">#</th>
+                        <th class="text-center" scope="col">Hình ảnh</th>
+                        <th class="text-center" scope="col">Tên rank</th>
+                        <th class="text-center" scope="col">Số sao</th>
+                        <th class="text-center" scope="col">Giá thành</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <?php
+                    $index = 0;
+                ?>
+                <?php $__empty_1 = true; $__currentLoopData = $money['data']; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
+                    <tr class="align-middle">
+                        <th class="align-middle text-center" scope="row"><?php echo e(++$index); ?></th>
+                        <td class="align-middle text-center">
+                            <img src="<?php echo e(url($item->subRank->rank->url_image)); ?>" alt="..." class="rounded mx-auto d-block">
+                        </td>
+                        <td class="align-middle text-center"><?php echo e($item->subRank->sub_rank_name); ?></td>
+                        <td class="align-middle text-center"><?php echo e($item->star); ?></td>
+                        <td class="align-middle text-center"><?php echo e(number_format($item->subRank->price, 0, '', ',')); ?></td>
+
+
+                    </tr>
+                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
+                    <h1 class="text-light text-center">Không có dữ liệu</h1>
+                <?php endif; ?>
+                <tr class="align-middle">
+                    <td class="align-middle text-center" colspan="4">Tổng tiền</td>
+                    <td class="text-danger text-bold align-middle text-center"><?php echo e(number_format($money['totalMoney'], 0, '', ',')); ?></td>
+
+
+
+                </tr>
+
+                </tbody>
+            </table>
+        </div>
     <?php endif; ?>
     <?php if(empty($money)): ?>
     <form action="" method="get" class="py-5" >
@@ -76,7 +122,7 @@
             <div class="form-group col-6">
                 <label for="star1">Số sao
                 <select class="form-select col col-8" data-control="select2" id="star1" name="star1" data-placeholder="Select an option">
-                    <?php for($i = 0; $i <= 100; $i++): ?>
+                    <?php for($i = 1; $i <= 100; $i++): ?>
                         <option value="<?php echo e($i); ?>"><?php echo e($i); ?></option>
                     <?php endfor; ?>
                 </select>
@@ -96,7 +142,7 @@
             <div class="form-group col-6">
                 <label for="star2">Số sao
                 <select class="form-select col col-8" data-control="select2" id="star2" name="star2" data-placeholder="Select an option">
-                    <?php for($i = 0; $i <= 100; $i++): ?>
+                    <?php for($i = 1; $i <= 100; $i++): ?>
                         <option value="<?php echo e($i); ?>"><?php echo e($i); ?></option>
                     <?php endfor; ?>
                 </select>
