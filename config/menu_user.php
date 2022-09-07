@@ -7,8 +7,8 @@ return [
         'children' => [
             [
                 'title' => 'Tạo yêu cầu',
-                'name' => 'index',
-                'route' => 'admin.role.index',
+                'name' => 'create',
+                'route' => 'user.plow.create',
             ],
             [
                 'title' => 'Tiến trình của bạn',

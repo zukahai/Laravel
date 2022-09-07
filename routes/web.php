@@ -27,7 +27,8 @@ Route::prefix('/')->group(function(){
         Route::post('/', [AccountController::class, 'checkLogin'])->name('checkLogin');
     });
     Route::prefix('/plow')->group(function(){
-        Route::get('/price', [HomeUserController::class, 'price'])->name('user.plow.price');;
+        Route::get('/price', [HomeUserController::class, 'price'])->name('user.plow.price');
+        Route::get('/create', [HomeUserController::class, 'create'])->name('user.plow.create');;
     });
     Route::prefix('/info')->group(function(){
         Route::get('/reset_rank', [ResetRankController::class, 'index'])->name('user.info.reset_rank');

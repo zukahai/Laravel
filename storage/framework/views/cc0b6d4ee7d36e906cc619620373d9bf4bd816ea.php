@@ -142,4 +142,4 @@
 <?php $__env->stopSection(); ?>
 
 
-<?php echo $__env->make('user.layouts.main', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH G:\Laravel\resources\views/user/pages/price.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('user.layouts.main', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH G:\Laravel\resources\views/user/pages/plow/price.blade.php ENDPATH**/ ?>

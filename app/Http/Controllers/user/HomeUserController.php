@@ -32,7 +32,7 @@ class HomeUserController extends Controller
     public function price(Request $request){
         $this->data['subranks'] = $this->subRankService->paginate(1000, $request->rank_id);
         $this->data['ranks'] = $this->rankService->paginate(1000, null);
-        return view('user.pages.price', $this->data);
+        return view('user.pages.plow.price', $this->data);
     }
 
     public function requestStaff(Request $request) {
@@ -45,6 +45,16 @@ class HomeUserController extends Controller
         $request_staff->status_id = 1;
         $this->requestStaffService->add($request_staff);
         return redirect()->back()->with('info', 'Đã gửi yêu cầu, vui lòng chờ');
+    }
+
+    public function create(Request $request){
+//        dd($request->star1);
+        if (!empty($request->rank1) && !empty($request->rank2)) {
+            $this->data['money'] = $this->subRankService->calulateMony($request);
+        }
+
+        $this->data['subranks'] = $this->subRankService->paginate(1000, $request->rank_id);
+        return view('user.pages.plow.create', $this->data);
     }
 
 }

@@ -42,6 +42,10 @@ class SubRankService
         return $this->subRank->find($id);
     }
 
+    public function findByvalue($value) {
+        return $this->subRank->where('value', '=', $value)->first();
+    }
+
 
     public function paginate($limit, $keywords){
         $subRank = $this->subRank;
@@ -50,6 +54,26 @@ class SubRankService
             $subRank->where('rank_id', '=', $keywords);
         }
         return $subRank->paginate($limit)->withQueryString();
+    }
+
+    public function calulateMony($request) {
+        $rank1 = $request->rank1;
+        $rank2 = $request->rank2;
+        $star1 = $request->star1;
+        $star2 = $request->star2;
+
+        $data = [];
+
+        while ($rank1 <= $rank2) {
+            $subRank = $this->findByvalue($rank1);
+//            dd($subRank);
+            array_push($data, (object)[
+                'id' => $rank1,
+                'name' => $subRank->sub_rank_name,
+            ]);
+            $rank1++;
+        }
+        return ['data' => $data];
     }
 
 }
