@@ -62,6 +62,10 @@ class SubRankService
         $star1 = $request->star1 + 1;
         $star2 = $request->star2;
 
+        if ($rank1 > $rank2 || (($rank1 == $rank2) && ($star1 > $star2))) {
+            return ['error' => 'rank1 > rank 2'];
+        }
+
         $data = [];
         $totalMoney = 0;
 

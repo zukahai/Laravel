@@ -51,6 +51,8 @@ class HomeUserController extends Controller
 //        dd($request->star1);
         if (!empty($request->rank1) && !empty($request->rank2)) {
             $this->data['money'] = $this->subRankService->calulateMony($request);
+            if (!empty($this->data['money']['error']))
+                return redirect()->back()->with('error', 'Rank hiện tại phải thấp hơn rank muốn cày');
         }
 
         $this->data['subranks'] = $this->subRankService->paginate(1000, $request->rank_id);
