@@ -63,7 +63,11 @@ class SubRankService
         $star2 = $request->star2;
 
         if ($rank1 > $rank2 || (($rank1 == $rank2) && ($star1 > $star2))) {
-            return ['error' => 'rank1 > rank 2'];
+            return ['error' => 'Rank hiện tại phải thấp hơn rank muốn cày'];
+        }
+
+        if ($star1 > $this->findByvalue($rank1)->star || $star2 > $this->findByvalue($rank2)->star) {
+            return ['error' => 'Số sao không hợp lệ'];
         }
 
         $data = [];
