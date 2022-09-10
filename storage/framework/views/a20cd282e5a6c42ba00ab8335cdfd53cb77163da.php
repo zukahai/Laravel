@@ -36,6 +36,19 @@
 <?php $__env->startSection('title_layout'); ?>
     Payment
 <?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('onload'); ?>
+    <?php if($message = Session::get('info')): ?>
+        onload="abc('<?php echo e($message); ?>' , 'success')"
+    <?php endif; ?>
+    <?php if($message = Session::get('error')): ?>
+        onload="abc('<?php echo e($message); ?>' , 'danger')"
+    <?php endif; ?>
+    <?php if($message = Session::get('warning')): ?>
+        onload="abc('<?php echo e($message); ?>' , 'warning')"
+    <?php endif; ?>
+<?php $__env->stopSection(); ?>
+
 <?php $__env->startSection('actions_layout'); ?>
 
 <?php $__env->stopSection(); ?>

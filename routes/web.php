@@ -15,13 +15,9 @@ use App\Http\Controllers\admin\PaymentController;
 use App\Http\Controllers\staff\HomeStaffController;
 use App\Http\Controllers\user\HomeUserController;
 
-
-use App\Models\User;
-use GuzzleHttp\Psr7\Request;
-
 // Routes user
 Route::prefix('/')->group(function(){
-    Route::get('/', [HomeUserController::class, 'index'])->name('homeUser')->middleware('auth');
+    Route::get('/', [HomeUserController::class, 'index'])->name('homeUser');
     Route::get('/request_staff', [HomeUserController::class, 'formRequestStaff'])->name('user.formRequestStaff');
     Route::post('/request_staff', [HomeUserController::class, 'requestStaff'])->name('user.requestStaff');
     Route::prefix('/login')->group(function(){
@@ -38,8 +34,10 @@ Route::prefix('/')->group(function(){
         Route::get('/reset_rank', [ResetRankController::class, 'index'])->name('user.info.reset_rank');
     });
     Route::prefix('/payment')->group(function(){
-        Route::get('/create', [PaymentController::class, 'create'])->name('user.payment.create');
-        Route::post('/create', [PaymentController::class, 'solveFormCreate'])->name('user.payment.solveFormCreate');
+        Route::get('/', [PaymentController::class, 'index'])->name('user.payment.index')->middleware('auth');
+        Route::get('/create', [PaymentController::class, 'create'])->name('user.payment.create')->middleware('auth');
+        Route::post('/create', [PaymentController::class, 'solveFormCreate'])->name('user.payment.solveFormCreate')->middleware('auth');
+        Route::get('/comfirm/{code?}', [PaymentController::class, 'comfirm'])->name('user.payment.comfirm');
     });
 });
 

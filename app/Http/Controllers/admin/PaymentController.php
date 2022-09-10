@@ -8,9 +8,12 @@ use App\Http\Requests\UpdatePaymentRequest;
 use App\Http\Services\PaymentService;
 use App\Models\Payment;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class PaymentController extends Controller
 {
+    protected $data = [];
+
     public function __construct(PaymentService $paymentService)
     {
         $this->paymentService = $paymentService;
@@ -18,14 +21,21 @@ class PaymentController extends Controller
 
     public function index()
     {
-        //
+        return redirect(route('user.payment.create'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function comfirm($code = null)
+    {
+        $payment = $this->paymentService->findByCode($code);
+        if ($payment !== null) {
+            $this->paymentService->updateMoney($payment);
+            return redirect(route('homeUser'))
+                ->with('info', 'Nạp tiền thành công '.$payment->money.' Cho tài khoản '.$payment->account->username);
+        }
+        return redirect(route('homeUser'))
+            ->with('error', 'Nạp tiền không thành công');
+    }
+
     public function create()
     {
         return view('user.pages.payment.create');
@@ -36,8 +46,13 @@ class PaymentController extends Controller
         $data = new Payment();
         $data->account_id = auth()->user()->account_id;
         $data->money = $request->money;
+        $data->status = 0;
+        $data->code = Str::random(50);
         $this->paymentService->add($data);
-        return redirect(route('homeUser'))->with('info', "Nạp thành công");
+
+        $this->data['code'] = $data->code;
+        $this->data['textQRcode'] = route('user.payment.comfirm').'/'.$data->code;
+        return view('user.pages.payment.comfirm', $this->data);
     }
 
     /**

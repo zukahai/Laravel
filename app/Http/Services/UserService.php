@@ -9,9 +9,10 @@ use Cookie;
 
 class UserService
 {
-    public function __construct(User $user)
+    public function __construct(User $user, AccountService $accountService)
     {
         $this->user = $user;
+        $this->accountService = $accountService;
     }
 
     public function getAll($sort = 'asc') {
@@ -54,6 +55,17 @@ class UserService
         if ($newMoney < 0)
             return false;
         $this->update(auth()->user()->id, ['money' => $newMoney]);
+        return true;
+    }
+
+    public function updateMoneyById($id, $money){
+        $account = $this->accountService->find($id);
+        $user = $account->user;
+        $currentMoney = $user->money;
+        $newMoney = $currentMoney + $money;
+        if ($newMoney < 0)
+            return false;
+        $this->update($user->id, ['money' => $newMoney]);
         return true;
     }
 

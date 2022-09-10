@@ -61,7 +61,7 @@ class OrderController extends Controller
             return redirect(route('user.plow.index'))->with('info', 'Mua thành công');
         }
 
-        return redirect(route('user.plow.index'))->with('error', 'Mua thất bại do không đủ tiền');
+        return redirect(route('user.payment.create'))->with('error', 'Mua thất bại do không đủ tiền');
     }
 
     /**

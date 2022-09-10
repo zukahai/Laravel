@@ -4,17 +4,23 @@
 @endsection
 
 @section('name_user')
-    {{(auth()->user()->account->username)}}
+    @if(auth()->user() != null)
+        {{(auth()->user()->account->username)}}
+    @endif
 @endsection
 
 @section('email_user')
-    Tài khoản: {{number_format(auth()->user()->money, 0, '', ',')}} VND
+    @if(auth()->user() != null)
+        Tài khoản: {{number_format(auth()->user()->money, 0, '', ',')}} VND
+    @endif
 @endsection
 
 @section('role_user')
-    @foreach(auth()->user()->account->roles->take(4) as $role)
-        <span class="badge badge-light-{{$role->color}} fw-bold fs-8 py-1 mx-auto">{{$role->role_name}}</span>
-    @endforeach
+    @if(auth()->user() != null)
+        @foreach(auth()->user()->account->roles->take(4) as $role)
+            <span class="badge badge-light-{{$role->color}} fw-bold fs-8 py-1 mx-auto">{{$role->role_name}}</span>
+        @endforeach
+    @endif
 @endsection
 
 @section('css_custom')

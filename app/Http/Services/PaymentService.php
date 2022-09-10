@@ -9,9 +9,10 @@ use Cookie;
 
 class PaymentService
 {
-    public function __construct(Payment  $payment)
+    public function __construct(Payment  $payment, UserService $userService)
     {
         $this->payment = $payment;
+        $this->userService = $userService;
     }
 
     public function getAll() {
@@ -37,6 +38,12 @@ class PaymentService
         return $this->payment->find($id);
     }
 
+    public function updateMoney($payment) {
+        $data = ['status' => 1];
+        $this->update($payment->id, $data);
+        $this->userService->updateMoneyById($payment->account_id, $payment->money);
+    }
+
     public function add($data) {
         $payment = $data;
         $payment->save();
@@ -46,4 +53,7 @@ class PaymentService
         return $this->payment->find($id);
     }
 
+    public function  findByCode($code) {
+        return $this->payment->where('code', $code)->where('status', 0)->first();
+    }
 }
