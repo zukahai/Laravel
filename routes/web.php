@@ -11,6 +11,7 @@ use App\Http\Controllers\admin\RequestStaffController;
 use App\Http\Controllers\admin\RankController;
 use App\Http\Controllers\admin\OrderController;
 use App\Http\Controllers\admin\ResetRankController;
+use App\Http\Controllers\admin\PaymentController;
 use App\Http\Controllers\staff\HomeStaffController;
 use App\Http\Controllers\user\HomeUserController;
 
@@ -36,7 +37,10 @@ Route::prefix('/')->group(function(){
     Route::prefix('/info')->group(function(){
         Route::get('/reset_rank', [ResetRankController::class, 'index'])->name('user.info.reset_rank');
     });
-
+    Route::prefix('/payment')->group(function(){
+        Route::get('/create', [PaymentController::class, 'create'])->name('user.payment.create');
+        Route::post('/create', [PaymentController::class, 'solveFormCreate'])->name('user.payment.solveFormCreate');
+    });
 });
 
 // Routes admin

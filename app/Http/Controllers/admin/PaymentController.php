@@ -1,18 +1,21 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\admin;
 
-use App\Models\Payment;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\StorePaymentRequest;
 use App\Http\Requests\UpdatePaymentRequest;
+use App\Http\Services\PaymentService;
+use App\Models\Payment;
+use Illuminate\Http\Request;
 
 class PaymentController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function __construct(PaymentService $paymentService)
+    {
+        $this->paymentService = $paymentService;
+    }
+
     public function index()
     {
         //
@@ -25,18 +28,16 @@ class PaymentController extends Controller
      */
     public function create()
     {
-        //
+        return view('user.pages.payment.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \App\Http\Requests\StorePaymentRequest  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(StorePaymentRequest $request)
+    public function solveFormCreate(Request $request)
     {
-        //
+        $data = new Payment();
+        $data->account_id = auth()->user()->account_id;
+        $data->money = $request->money;
+        $this->paymentService->add($data);
+        return redirect(route('homeUser'))->with('info', "Nạp thành công");
     }
 
     /**

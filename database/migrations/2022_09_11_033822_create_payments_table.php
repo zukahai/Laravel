@@ -17,6 +17,8 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('account_id');
             $table->unsignedBigInteger('money');
+            $table->string('code');
+            $table->unsignedBigInteger('status');
             $table->timestamps();
 
             $table->foreign('account_id')->references('id')->on('accounts');

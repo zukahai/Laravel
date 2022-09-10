@@ -40,6 +40,18 @@ return [
         ],
     ],
     [
+        'title' => 'Nạp tiền',
+        'name' => 'payment',
+        'route' => 'user.payment.create',
+        'children' => [
+            [
+                'title' => 'Nạp tiền',
+                'name' => 'create',
+                'route' => 'user.payment.create',
+            ]
+        ],
+    ],
+    [
         'title' => 'Thông tin thêm',
         'name' => 'info',
         'route' => 'user.info.reset_rank',
