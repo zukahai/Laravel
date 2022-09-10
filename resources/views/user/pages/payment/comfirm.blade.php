@@ -44,6 +44,7 @@
 @section('content_card')
     <h4>{{$textQRcode}}</h4>
     <h2><a href="{{route('user.payment.comfirm')}}/{{$code}}">Xác nhận</a></h2>
+    {!! QrCode::generate('Welcome to kerneldev.com!'); !!}
 @endsection
 @section('footer_card')
 

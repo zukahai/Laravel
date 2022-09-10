@@ -24,3 +24,7 @@ Là dạng số nhiều, ví dụ users, accounts,
 
 Hoặc quy ước bằng code:
 protected $table = "accounts";
+
+-----------------------------------------------------------------------------
+Lỗi QR code:
+https://stackoverflow.com/questions/69442658/laravel-error-when-installing-simple-qrcode-library
