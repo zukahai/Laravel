@@ -8,8 +8,7 @@
 
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('email_user'); ?>
-    <?php echo e((auth()->user()->account->roles[0]->description)); ?>
-
+    Tài khoản: <?php echo e(number_format(auth()->user()->money, 0, '', ',')); ?> VND
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('role_user'); ?>
