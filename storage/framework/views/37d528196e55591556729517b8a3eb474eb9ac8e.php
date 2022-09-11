@@ -45,8 +45,10 @@
 <?php $__env->startSection('content_card'); ?>
     <h4><?php echo e($textQRcode); ?></h4>
     <h2><a href="<?php echo e(route('user.payment.comfirm')); ?>/<?php echo e($code); ?>">Xác nhận</a></h2>
-    <?php echo QrCode::generate('Welcome to kerneldev.com!'); ?>
+    <div class="d-flex justify-content-center">
+        <?php echo e($QRcode); ?>
 
+    </div>
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('footer_card'); ?>
 

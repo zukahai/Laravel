@@ -9,6 +9,7 @@ use App\Http\Services\PaymentService;
 use App\Models\Payment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 class PaymentController extends Controller
 {
@@ -52,6 +53,7 @@ class PaymentController extends Controller
 
         $this->data['code'] = $data->code;
         $this->data['textQRcode'] = route('user.payment.comfirm').'/'.$data->code;
+        $this->data['QRcode'] = QrCode::size(300)->generate(route('user.payment.comfirm').'/'.$data->code);
         return view('user.pages.payment.comfirm', $this->data);
     }
 
