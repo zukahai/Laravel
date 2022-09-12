@@ -278,7 +278,7 @@
                             <!--begin::Menu wrapper-->
                             <div class="cursor-pointer symbol symbol-35px symbol-md-40px" data-kt-menu-trigger="click"
                                  data-kt-menu-attach="parent" data-kt-menu-placement="bottom-end">
-                                <img src="{{asset('/admin/assets/media/avatars/300-1.jpg')}}" alt="user"/>
+                                <img src="{{(auth()->user() != null) ? url(auth()->user()->url_avata) : ''}}" alt="user"/>
                             </div>
                             @include('admin.includes.user')
                             <!--end::Menu wrapper-->

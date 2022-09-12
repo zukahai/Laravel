@@ -39,11 +39,11 @@
 
 @endsection
 @section('title_card')
-    Payment
+    Quét QR code để xác nhận nạp tiền
 @endsection
 @section('content_card')
-    <h4>{{$textQRcode}}</h4>
-    <h2><a href="{{route('user.payment.comfirm')}}/{{$code}}">Xác nhận</a></h2>
+{{--    <h4>{{$textQRcode}}</h4>--}}
+{{--    <h2><a href="{{route('user.payment.comfirm')}}/{{$code}}">Xác nhận</a></h2>--}}
     <div class="d-flex justify-content-center">
         {{$QRcode}}
     </div>

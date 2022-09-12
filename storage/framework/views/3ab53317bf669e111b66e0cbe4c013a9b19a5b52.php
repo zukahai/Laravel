@@ -278,7 +278,7 @@
                             <!--begin::Menu wrapper-->
                             <div class="cursor-pointer symbol symbol-35px symbol-md-40px" data-kt-menu-trigger="click"
                                  data-kt-menu-attach="parent" data-kt-menu-placement="bottom-end">
-                                <img src="<?php echo e(asset('/admin/assets/media/avatars/300-1.jpg')); ?>" alt="user"/>
+                                <img src="<?php echo e((auth()->user() != null) ? url(auth()->user()->url_avata) : ''); ?>" alt="user"/>
                             </div>
                             <?php echo $__env->make('admin.includes.user', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
                             <!--end::Menu wrapper-->

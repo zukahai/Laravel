@@ -13,6 +13,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('account_id');
             $table->unsignedBigInteger('money')->default(0);
+            $table->string('url_avata')->default('images/avata.png');
             $table->foreign('account_id')->references('id')->on('accounts');
             $table->timestamps();
         });
