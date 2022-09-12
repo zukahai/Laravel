@@ -45,7 +45,7 @@ Route::prefix('/')->group(function(){
 });
 
 // Routes admin
-Route::prefix('admin')->middleware('checkLoginAdmin')->group(function(){
+Route::prefix('admin')->middleware('auth')->middleware('checkLoginAdmin')->group(function(){
     Route::prefix('account')->group(function(){
         Route::get('/', [AccountController::class, 'index'])->name('admin.account.index');
         Route::get('/add', [AccountController::class, 'formAdd'])->name('admin.account.formAdd');

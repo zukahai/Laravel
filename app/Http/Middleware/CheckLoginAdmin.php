@@ -32,6 +32,8 @@ class CheckLoginAdmin
     }
 
     public function roles() {
-        return auth()->user()->account->roles;
+        if (auth()->user() != null)
+            return auth()->user()->account->roles;
+        return null;
     }
 }

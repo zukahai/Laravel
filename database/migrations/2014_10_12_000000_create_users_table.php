@@ -14,6 +14,9 @@ return new class extends Migration
             $table->unsignedBigInteger('account_id');
             $table->unsignedBigInteger('money')->default(0);
             $table->string('url_avata')->default('images/avata.png');
+            $table->string('full_name')->default('Full Name');
+            $table->string('phone')->default('0123456789');
+            $table->string('address')->default('Address');
             $table->foreign('account_id')->references('id')->on('accounts');
             $table->timestamps();
         });
