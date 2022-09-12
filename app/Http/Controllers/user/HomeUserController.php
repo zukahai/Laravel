@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\user;
 
 use App\Http\Controllers\Controller;
+use App\Http\Services\AccountService;
 use App\Http\Services\SubRankService;
 use App\Http\Services\RankService;
 use App\Models\RequestStaff;
@@ -14,11 +15,13 @@ class HomeUserController extends Controller
     public $data = [];
 
     public function __construct(RequestStaffService $requestStaffService,
-                                SubRankService $subRankService, RankService $rankService)
+                                SubRankService $subRankService,
+                                RankService $rankService, AccountService $accountService)
     {
         $this->requestStaffService = $requestStaffService;
         $this->subRankService = $subRankService;
         $this->rankService = $rankService;
+        $this->accountService = $accountService;
     }
 
     public function index() {;
@@ -45,6 +48,12 @@ class HomeUserController extends Controller
         $request_staff->status_id = 1;
         $this->requestStaffService->add($request_staff);
         return redirect()->back()->with('info', 'Đã gửi yêu cầu, vui lòng chờ');
+    }
+
+    public function view($id = null){
+         $account = $this->accountService->find($id);
+         $this->data['account'] = $account;
+         return view('user.pages.profile.index', $this->data);
     }
 
 }

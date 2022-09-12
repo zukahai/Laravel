@@ -28,7 +28,9 @@
     <!--end::Menu separator-->
     <!--begin::Menu item-->
     <div class="menu-item px-5">
-        <a href="../../demo1/dist/account/overview.html" class="menu-link px-5">My Profile</a>
+        @if(auth()->user() != null)
+            <a href="{{route('user.profile.view')}}/{{auth()->user()->account_id}}" class="menu-link px-5">My Profile</a>
+        @endif
     </div>
     <!--end::Menu item-->
     <!--begin::Menu item-->

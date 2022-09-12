@@ -39,6 +39,9 @@ Route::prefix('/')->group(function(){
         Route::post('/create', [PaymentController::class, 'solveFormCreate'])->name('user.payment.solveFormCreate')->middleware('auth');
         Route::get('/comfirm/{code?}', [PaymentController::class, 'comfirm'])->name('user.payment.comfirm');
     });
+    Route::prefix('/profile')->group(function(){
+        Route::get('/view/{id?}', [HomeUserController::class, 'view'])->name('user.profile.view');
+    });
 });
 
 // Routes admin
@@ -52,7 +55,6 @@ Route::prefix('admin')->middleware('checkLoginAdmin')->group(function(){
         Route::post('/update/{id?}', [AccountController::class, 'update'])->name('admin.account.update');
         Route::get('/role/{id?}', [AccountController::class, 'role'])->name('admin.account.role');
     });
-
     Route::prefix('role')->group(function(){
         Route::get('/', [RoleController::class, 'index'])->name('admin.role.index');
         Route::get('/create', [RoleController::class, 'showCreate'])->name('admin.role.showcreate');
@@ -64,21 +66,18 @@ Route::prefix('admin')->middleware('checkLoginAdmin')->group(function(){
         Route::post('/detail', [RoleAccountController::class, 'add'])->name('admin.role.detail.add');
         Route::get('/detail/delete/{id}', [RoleAccountController::class, 'delete'])->name('admin.role.detail.detete');
     });
-
     Route::prefix('staff')->group(function(){
         Route::get('/', [StatusStaffController::class, 'index'])->name('admin.staff.index');
         Route::get('/request_staff', [RequestStaffController::class, 'index'])->name('admin.account.requestStaff');
         Route::get('/request_staff/delete/{id?}', [RequestStaffController::class, 'delete'])->name('admin.account.requestStaff.delete');
         Route::get('/request_staff/accept/{id?}', [RequestStaffController::class, 'accept'])->name('admin.account.requestStaff.accept');
     });
-
     Route::prefix('rank')->group(function(){
         Route::get('/', [RankController::class, 'index'])->name('admin.rank.index');
         Route::get('/create', [RankController::class, 'create'])->name('admin.rank.create');
         Route::post('/create', [RankController::class, 'solveFormCreate'])->name('admin.rank.solveFormCreate');
         Route::get('/delete/{id?}', [RankController::class, 'delete'])->name('admin.rank.delete');
     });
-
     Route::prefix('subrank')->group(function(){
         Route::get('/', [SubRankController::class, 'index'])->name('admin.subrank.index');
         Route::get('/create', [SubRankController::class, 'create'])->name('admin.subrank.create');
