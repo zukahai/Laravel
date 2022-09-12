@@ -49,7 +49,7 @@
 
 @section('actions_layout')
     @if(auth()->user()->account_id == $account->id)
-    <a href="{{route('admin.account.index')}}" class="btn btn-primary btn-sm mr-2 mb-2 mb-lg-0">
+    <a href="{{route('user.profile.edit')}}/{{$account->id}}" class="btn btn-primary btn-sm mr-2 mb-2 mb-lg-0">
         <i class="fa fa-edit"></i> Sửa thông tin
     </a>
     @endif
@@ -72,7 +72,7 @@
 @endsection
 
 @section('content_card')
-    <section style="background-color: #eee;">
+    <section style="background-color: #0e2a47;">
         <div class="container py-5">
             <div class="row">
                 <div class="col-lg-4">
@@ -122,10 +122,10 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-sm-3">
-                                    <p class="mb-0">Full Name</p>
+                                    <p class="mb-0">Họ tên</p>
                                 </div>
                                 <div class="col-sm-9">
-                                    <p class="text-muted mb-0">Johnatan Smith</p>
+                                    <p class="text-muted mb-0">{{$account->user->full_name}}</p>
                                 </div>
                             </div>
                             <hr>
@@ -134,25 +134,25 @@
                                     <p class="mb-0">Email</p>
                                 </div>
                                 <div class="col-sm-9">
-                                    <p class="text-muted mb-0">example@example.com</p>
+                                    <p class="text-muted mb-0">{{$account->user->email}}</p>
                                 </div>
                             </div>
                             <hr>
                             <div class="row">
                                 <div class="col-sm-3">
-                                    <p class="mb-0">Phone</p>
+                                    <p class="mb-0">Số điện thoại</p>
                                 </div>
                                 <div class="col-sm-9">
-                                    <p class="text-muted mb-0">(097) 234-5678</p>
+                                    <p class="text-muted mb-0">{{$account->user->phone}}</p>
                                 </div>
                             </div>
                             <hr>
                             <div class="row">
                                 <div class="col-sm-3">
-                                    <p class="mb-0">Address</p>
+                                    <p class="mb-0">Địa chỉ</p>
                                 </div>
                                 <div class="col-sm-9">
-                                    <p class="text-muted mb-0">Bay Area, San Francisco, CA</p>
+                                    <p class="text-muted mb-0">{{$account->user->address}}</p>
                                 </div>
                             </div>
                         </div>

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Services\AccountService;
 use App\Http\Services\SubRankService;
 use App\Http\Services\RankService;
+use App\Http\Services\UserService;
 use App\Models\RequestStaff;
 use Illuminate\Http\Request;
 use App\Http\Services\RequestStaffService;
@@ -16,12 +17,14 @@ class HomeUserController extends Controller
 
     public function __construct(RequestStaffService $requestStaffService,
                                 SubRankService $subRankService,
-                                RankService $rankService, AccountService $accountService)
+                                RankService $rankService,
+                                AccountService $accountService, UserService $userService)
     {
         $this->requestStaffService = $requestStaffService;
         $this->subRankService = $subRankService;
         $this->rankService = $rankService;
         $this->accountService = $accountService;
+        $this->userService = $userService;
     }
 
     public function index() {;
@@ -54,6 +57,44 @@ class HomeUserController extends Controller
          $account = $this->accountService->find($id);
          $this->data['account'] = $account;
          return view('user.pages.profile.index', $this->data);
+    }
+
+    public function edit($id = null){
+        if ($id != auth()->user()->account_id)
+            return redirect(route('user.profile.view', ['id'=>auth()->user()->account_id]))->with('warning', 'Bạn không có quyền chỉnh sửa profile của người khác');
+        $this->data['user'] = auth()->user();
+        return view('user.pages.profile.edit', $this->data);
+    }
+
+    public function solveFormEdit($id = null, Request $request) {
+        $data = [];
+        $user = $this->accountService->find($id)->user;
+        $data['full_name'] = $user->full_name;
+        $data['phone'] = $user->phone;
+        $data['email'] = $user->email;
+        $data['url_avata'] = $user->url_avata;
+        $data['address'] = $user->address;
+        if ($request->full_name != null)
+            $data['full_name'] = $request->full_name;
+        if ($request->phone != null)
+            $data['phone'] = $request->phone;
+        if ($request->email != null)
+            $data['email'] = $request->email;
+        if ($request->address != null)
+            $data['address'] = $request->address;
+
+        if ($request->hasFile('url_avata')) {
+            $file = $request->url_avata;
+            $path = $file->store('images');
+            $file->move(public_path('images'), $path);
+            $data['url_avata'] = $path;
+        } else {
+            return "Vui long chon file";
+        }
+
+        $this->userService->update($user->id, $data);
+        return redirect(route('user.profile.view', ['id'=>auth()->user()->account_id]))
+            ->with('info', 'Cập nhật thành công');
     }
 
 }

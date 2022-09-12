@@ -41,6 +41,8 @@ Route::prefix('/')->group(function(){
     });
     Route::prefix('/profile')->group(function(){
         Route::get('/view/{id?}', [HomeUserController::class, 'view'])->name('user.profile.view');
+        Route::get('/edit/{id?}', [HomeUserController::class, 'edit'])->name('user.profile.edit');
+        Route::post('/edit/{id?}', [HomeUserController::class, 'solveFormEdit'])->name('user.profile.solveedit');
     });
 });
 

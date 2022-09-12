@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('url_avata')->default('images/avata.png');
             $table->string('full_name')->default('Full Name');
             $table->string('phone')->default('0123456789');
+            $table->string('email')->default('abcde@gmail.com');
             $table->string('address')->default('Address');
             $table->foreign('account_id')->references('id')->on('accounts');
             $table->timestamps();
