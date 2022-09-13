@@ -35,7 +35,7 @@
     <!--end::Menu item-->
     <!--begin::Menu item-->
     <div class="menu-item px-5">
-        <a href="../../demo1/dist/apps/projects/list.html" class="menu-link px-5">
+        <a href="#" class="menu-link px-5">
             <span class="menu-text">My Projects</span>
             <span class="menu-badge">
 													<span class="badge badge-light-danger badge-circle fw-bold fs-7">3</span>
@@ -45,7 +45,7 @@
     <!--end::Menu item-->
     <!--begin::Menu item-->
     <div class="menu-item px-5">
-        <a href="../../demo1/dist/account/statements.html" class="menu-link px-5">My Statements</a>
+        <a href="#" class="menu-link px-5">My Statements</a>
     </div>
     <!--end::Menu item-->
     <!--begin::Menu separator-->
@@ -54,7 +54,7 @@
 
     <!--begin::Menu item-->
     <div class="menu-item px-5 my-1">
-        <a href="../../demo1/dist/account/settings.html" class="menu-link px-5">Account Settings</a>
+        <a href="#" class="menu-link px-5">Account Settings</a>
     </div>
     <!--end::Menu item-->
     <!--begin::Menu item-->

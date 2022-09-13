@@ -2,12 +2,17 @@
 @section('title_page')
     Edit profile - {{ config('app.name') }}
 @endsection
-@section('name_user')
-    {{(auth()->user()->account->username)}}
 
+@section('name_user')
+    @if(auth()->user() != null)
+        {{(auth()->user()->account->username)}}
+    @endif
 @endsection
+
 @section('email_user')
-    Tài khoản: {{number_format(auth()->user()->money, 0, '', ',')}} VND
+    @if(auth()->user() != null)
+        Tài khoản: {{number_format(auth()->user()->money, 0, '', ',')}} VND
+    @endif
 @endsection
 
 @section('role_user')

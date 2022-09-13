@@ -2,13 +2,13 @@
     Edit profile - <?php echo e(config('app.name')); ?>
 
 <?php $__env->stopSection(); ?>
+
 <?php $__env->startSection('name_user'); ?>
-    <?php echo e((auth()->user()->account->username)); ?>
-
-
+    Name User
 <?php $__env->stopSection(); ?>
+
 <?php $__env->startSection('email_user'); ?>
-    Tài khoản: <?php echo e(number_format(auth()->user()->money, 0, '', ',')); ?> VND
+    Email
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('role_user'); ?>
