@@ -4,11 +4,16 @@
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('name_user'); ?>
-    Name User
+    <?php if(auth()->user() != null): ?>
+        <?php echo e((auth()->user()->account->username)); ?>
+
+    <?php endif; ?>
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('email_user'); ?>
-    Email
+    <?php if(auth()->user() != null): ?>
+        Tài khoản: <?php echo e(number_format(auth()->user()->money, 0, '', ',')); ?> VND
+    <?php endif; ?>
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('role_user'); ?>

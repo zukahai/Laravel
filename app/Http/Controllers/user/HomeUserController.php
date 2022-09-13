@@ -88,8 +88,6 @@ class HomeUserController extends Controller
             $path = $file->store('images');
             $file->move(public_path('images'), $path);
             $data['url_avata'] = $path;
-        } else {
-            return "Vui long chon file";
         }
 
         $this->userService->update($user->id, $data);
