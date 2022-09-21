@@ -11,6 +11,21 @@
     <meta property="og:type" content="article"/>
     <meta property="og:url" content="https://keenthemes.com/metronic"/>
     <meta property="og:site_name" content="Keenthemes | Metronic"/>
+    <script src="https://cdn.tiny.cloud/1/{{env('TINY_KEY')}}/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+    <script>
+        tinymce.init({
+            selector: '#detail',
+            plugins: [
+                'autolink',
+                'lists', 'link', 'image', 'charmap', 'preview', 'anchor', 'searchreplace', 'visualblocks',
+                'fullscreen', 'insertdatetime', 'media', 'table', 'help', 'wordcount'
+            ],
+            toolbar: 'undo redo | formatpainter casechange blocks | bold italic backcolor | forecolor | ' +
+                'alignleft aligncenter alignright alignjustify | ' +
+                'bullist numlist checklist outdent indent | removeformat | a11ycheck code table help',
+            branding: false
+        });
+    </script>
     @include('admin.includes.styles')
 </head>
 <!--end::Head-->

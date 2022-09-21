@@ -12,6 +12,7 @@ use App\Http\Controllers\admin\RankController;
 use App\Http\Controllers\admin\OrderController;
 use App\Http\Controllers\admin\ResetRankController;
 use App\Http\Controllers\admin\PaymentController;
+use App\Http\Controllers\admin\BlogController;
 use App\Http\Controllers\staff\HomeStaffController;
 use App\Http\Controllers\user\HomeUserController;
 
@@ -85,6 +86,10 @@ Route::prefix('admin')->middleware('auth')->middleware('checkLoginAdmin')->group
         Route::get('/create', [SubRankController::class, 'create'])->name('admin.subrank.create');
         Route::post('/create', [SubRankController::class, 'solveFormCreate'])->name('admin.subrank.solveFormCreate');
         Route::get('/delete/{id?}', [SubRankController::class, 'delete'])->name('admin.subrank.delete');
+    });
+    Route::prefix('blog')->group(function(){
+        Route::get('/create', [BlogController::class, 'create'])->name('admin.blog.create');
+        Route::post('/create', [BlogController::class, 'solveCreate'])->name('admin.blog.solveCreate');
     });
 });
 
