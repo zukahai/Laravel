@@ -102,9 +102,9 @@
                 </td>
                 <td class="align-middle text-center">{{$item->account->username}}</td>
                 <td class="align-center justify-content-center">
-                    <a href="{{route('admin.role.detail', ['id' => $item->id])}}" class="btn btn-icon btn-info btn-sm btn-icon-md btn-circle mx-1"
-                       title="Chi tiết">
-                        <i class="fa fa-asterisk"></i>
+                    <a href="{{route('admin.blog.detail', ['id' => $item->id])}}" class="btn btn-icon btn-info btn-sm btn-icon-md btn-circle mx-1"
+                       title="Xem">
+                        <i class="fa fa-eye"></i>
                     </a>
                     <a href="{{route('admin.account.update')}}/{{$item->id}}" class="btn btn-icon btn-success btn-sm btn-icon-md btn-circle mx-1"
                        title="Sửa">

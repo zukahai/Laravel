@@ -55,6 +55,14 @@ class BlogController extends Controller
         }
     }
 
+    public function detail($id = null)
+    {
+        if ($id != null) {
+            $this->data['blog'] = $this->blogService->find($id);
+            return view('admin.pages.blog.detail', $this->data);
+        }
+    }
+
     public function edit(Blog $blog)
     {
         //
