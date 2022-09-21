@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Blog extends Model
 {
     use HasFactory;
+
+    public function account(){
+        return $this->hasOne(Account::class, 'id', 'account_id');
+    }
 }

@@ -15,7 +15,7 @@ class BlogService
     }
 
     public function getAll($sort = 'asc') {
-        return $this->blog->blogBy('id',$sort)->paginate();
+        return $this->blog->orderBy('id',$sort)->paginate();
     }
 
     public function delete($id) {

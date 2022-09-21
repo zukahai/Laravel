@@ -89,4 +89,25 @@ return [
             ],
         ],
     ],
+    [
+        'title' => 'Blog',
+        'name' => 'blog',
+        'route' => 'admin.blog.index',
+        'children' => [
+            [
+                'title' => 'Danh sách blog',
+                'name' => 'index',
+                'route' => 'admin.blog.index',
+            ],
+            [
+                'title' => 'Thêm blog',
+                'name' => 'create',
+                'route' => 'admin.blog.create',
+            ],
+            [
+                'title' => 'Sửa blog',
+                'name' => 'edit'
+            ]
+        ],
+    ],
 ];

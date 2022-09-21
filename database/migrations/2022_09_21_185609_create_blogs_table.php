@@ -18,7 +18,7 @@ return new class extends Migration
             $table->unsignedBigInteger('account_id');
             $table->string('title');
             $table->string('url_image');
-            $table->string('content');
+            $table->longText('content');
             $table->timestamps();
 
             $table->foreign('account_id')->references('id')->on('accounts');

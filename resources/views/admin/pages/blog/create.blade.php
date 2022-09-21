@@ -84,8 +84,8 @@
         </div>
 
         <div class="form-group my-2">
-            <label for="detail">Giới thiệu chi tiết sản phẩm</label>
-            <textarea id="detail" name="detail"></textarea>
+            <label for="detail">Nội dung</label>
+            <textarea id="detail" name="content_blog"></textarea>
         </div>
 
         <div class="justify-content-center d-flex my-5">

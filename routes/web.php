@@ -88,8 +88,10 @@ Route::prefix('admin')->middleware('auth')->middleware('checkLoginAdmin')->group
         Route::get('/delete/{id?}', [SubRankController::class, 'delete'])->name('admin.subrank.delete');
     });
     Route::prefix('blog')->group(function(){
+        Route::get('/', [BlogController::class, 'index'])->name('admin.blog.index');
         Route::get('/create', [BlogController::class, 'create'])->name('admin.blog.create');
         Route::post('/create', [BlogController::class, 'solveCreate'])->name('admin.blog.solveCreate');
+        Route::get('/delete/{id?}', [BlogController::class, 'delete'])->name('admin.blog.delete');
     });
 });
 
