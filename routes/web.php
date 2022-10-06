@@ -14,6 +14,7 @@ use App\Http\Controllers\admin\ResetRankController;
 use App\Http\Controllers\admin\PaymentController;
 use App\Http\Controllers\admin\BlogController;
 use App\Http\Controllers\staff\HomeStaffController;
+use App\Http\Controllers\api\APIController;
 use App\Http\Controllers\user\HomeUserController;
 
 // Routes user
@@ -44,6 +45,10 @@ Route::prefix('/')->group(function(){
         Route::get('/view/{id?}', [HomeUserController::class, 'view'])->name('user.profile.view');
         Route::get('/edit/{id?}', [HomeUserController::class, 'edit'])->name('user.profile.edit');
         Route::post('/edit/{id?}', [HomeUserController::class, 'solveFormEdit'])->name('user.profile.solveedit');
+    });
+    Route::prefix('/pthh')->group(function(){
+        Route::get('/', [APIController::class, 'showInput'])->name('user.pthh.index');
+        Route::post('/', [APIController::class, 'output'])->name('user.pthh.output');
     });
 });
 
