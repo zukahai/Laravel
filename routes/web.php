@@ -13,6 +13,7 @@ use App\Http\Controllers\admin\OrderController;
 use App\Http\Controllers\admin\ResetRankController;
 use App\Http\Controllers\admin\PaymentController;
 use App\Http\Controllers\admin\BlogController;
+use App\Http\Controllers\admin\ShopController;
 use App\Http\Controllers\staff\HomeStaffController;
 use App\Http\Controllers\api\APIController;
 use App\Http\Controllers\user\HomeUserController;
@@ -104,4 +105,9 @@ Route::prefix('admin')->middleware('auth')->middleware('checkLoginAdmin')->group
 
 Route::prefix('staff')->middleware('checkStaff')->group(function(){
     Route::get('/', [HomeStaffController::class, 'index'])->name('staff.index');
+});
+
+Route::prefix('/shop')->group(function(){
+    Route::get('/', [ShopController::class, 'index'])->name('shop.index');
+    Route::get('/abc', [ShopController::class, 'index'])->name('shop.index2');
 });
