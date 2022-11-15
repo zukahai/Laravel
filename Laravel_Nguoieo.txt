@@ -1,0 +1,88 @@
+Các thứ cần nhớ trong laravel:
+ROUTE
+- Cách tạp route:
+	+ Để tạo route cho api thì viết vào file api.php
+	+ Tạo route bình thường vào file web.php
+- Có 4 loại route theo từng phương thức (GET, POST, PUT, DELETE)
+- Một route bắt buộc phải có:
+	+ Phương thức ((GET, POST, PUT, DELETE)
+	+ path (url)
+	+ Một funtion khi gọi đến route đó, thương sẽ gọi đến một hàm bên controller
+- Có thể nhóm cách route khi chúng cùng prefix (tiền tố)
+- Mỗi route hoặc group route đều có thể thêm middleware
+
+CONTROLLER
+- Gồm các phương thức, được gọi khi người dùng request đến mỗi route
+- Thường sẽ viết thêm các service cho dễ sử dụng, service sẽ được khai báo ở contructor của controller
+- Các hàm trong route thường sẽ return về mỗi view('path của view') hoặc chuyển hướng redrict(route('ten route'))
+- Truyền dữ liệu qua view: dùng một mảng $data, rồi return View('abc', $this->data);
+- Nếu các hàm có nhận request bên view gửi qua thì tham số truyền vào phải có thêm request, để check request dùng dd($request->all())
+  Tên cả những gì bên view gửi sang đều là request, có thể là post form, hoặc là get theo parameter (ví dụ /account?keyworld=abc)
+- Nếu các hàm gọi đến khi path route của nó là path{?id} thì bên hàm sẽ có thêm thuộc tính id = null (nếu không có id thì nó là null)
+
+
+VIEW
+- View engine mà mình là blade, tên file số là filename.blade.php
+- Mỗi số cú pháp blade:
+	+ @if ----- @endif
+	+@foreach ---- @endforeach
+	+ {{biến}}
+- Có thể kế thừa giao diện bằng @extends('main') Thì nó sẽ kết thừa giao diện của main.blade.php
+	+ Khi kết thừa như thế thì bên main.blade.php sẽ có những @yield('name')
+	Để định nhĩa lại những @yield ta dùng:
+	@section('name')
+    		Nội dung
+	@endsection
+- Nếu là post dữ liệu bằng form thì nên có một token bằng input hidden hoặc đơn giản là thêm @csrf
+- Lấy nhanh các path route bằng tên của chúng ví dụ href="{{route('name')}}"
+
+MODEL
+- Model trong laravel thường dùng khi mình dùng đến database (Config database ở file .env)
+- Trong model thường không có gì trừ các relationship (khi nào cần dùng cái nào thì mình xem lại code cái đó)
+- Khi đã có model ta thường dùng model để truy vấn cơ sở dữ liệu bằng ORM
+	Ví dụ với Model tên là Linh:
+	+ Linh::get() lấy ra tất cả các dòng
+	+ Linh:: find(id) tìm kiếm các dòng theo id tương từ Linh::where('id', '=',id)->get()
+	+ Linh::Where('id', '=',id)->Where('name', '=',name) where AND 2 điều kiện
+	+ Linh::Where('id', '=',id)->orWhere('name', '=',name) where OR 2 điều kiện
+	+ Lưu và DB
+		Linh linh = new Linh();
+		linh->name = "Linh";
+		linh->age = 19;
+		linh->save()
+	+ Cập nhật
+		$data = []
+		data['name'] = "Tên mới";
+		data['age' = 20;
+		Linh::find(id)->update($data)
+	Hoặc là
+		$linh = Linh::find(id)
+		linh->name = "Tên mới";
+		linh->age = 20
+		linh->save()
+	Cơ mà nên áp dụng cách trên
+
+KHÁC
+- Quy chuẩn đặt tên Table:
+	+ Đặt tên table là số nhiều, các từ cách nhau bởi dấu _: ví dụ tanle accounts, roles, account_roles
+- Quy chuẩn đặt tên Model
+	+ Với model viết hoa chữ cái đầu của mỗi từ trừ chữ cái đầu: Account, AccountRole
+(Hai phần trên nếu tạo bằng lệnh cmd thì nó tự tạo, k cần nhớ)
+- Migrate
+	+ Để tạo database thì cần có file migrate
+	+ Chạy lệnh sẽ tạo chạy các file chưa migrate
+	+ Để migrate lại một file nào đó đã từng migrate thì cần xoá dòng tương ứng trong xampp (SQL)
+	  Xoá luôn table nếu file đó dùng để tạo table
+- Tài nguyên dùng trong web sẽ lưu ở folder public:
+	+ Để gọi một file js, css tạo dùng asset('link'
+	+ Để gọi file ảnh ta dùng url('link')
+- Middelware:
+	+ Middle ware có thể tự tạo cũng như có một số cái có sẵn như middelware('auth')
+	+ Tạo middelware có dùng lệnh như tạo model luôn
+	+ Tạo xong phải thêm trong file kernel.php nữa
+- Valaidate dữ liệu:
+	+ Dùng để kiểm tra dữ liệu mà view request lên (Không được rỗng, phải là số, ...)
+	+ Xem các validate ở dòng 41:
+	https://github.com/mylinh030203/Laravel/blob/main/app/Http/Controllers/AccountController.php
+
+YÊU BÉ CON <3
