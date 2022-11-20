@@ -29,7 +29,7 @@ class HomeUserController extends Controller
     }
 
     public function index() {
-        dd(User::find(1));
+//        dd(User::find(1));
         return view('user.pages.index');
     }
 

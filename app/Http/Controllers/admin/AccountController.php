@@ -111,6 +111,10 @@ class AccountController extends Controller
         return View('admin.pages.account.login');
     }
 
+    public function testlogin() {
+        return View('admin.pages.account.testlogin');
+    }
+
     public function checkLogin(Request $request) {
         $request->flash();
         $username = $request->username;
