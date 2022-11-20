@@ -2,16 +2,13 @@
 
 namespace App\Http\Controllers\admin;
 
-use App\Models\User;
-use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Http\Services\AccountService;
 use App\Http\Services\RoleService;
-use App\Http\Controllers\admin\RoleAccountController;
-use App\Http\Services\RoleAccountService;
 use App\Models\Account;
+use App\User;
 use Cookie;
+use Illuminate\Http\Request;
 
 class AccountController extends Controller
 {

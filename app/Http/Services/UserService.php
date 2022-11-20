@@ -3,8 +3,8 @@
 namespace App\Http\Services;
 
 
-use App\Models\user;
 use App\Models\userAccount;
+use App\user;
 use Cookie;
 
 class UserService

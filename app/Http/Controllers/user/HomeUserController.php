@@ -4,12 +4,13 @@ namespace App\Http\Controllers\user;
 
 use App\Http\Controllers\Controller;
 use App\Http\Services\AccountService;
-use App\Http\Services\SubRankService;
 use App\Http\Services\RankService;
+use App\Http\Services\RequestStaffService;
+use App\Http\Services\SubRankService;
 use App\Http\Services\UserService;
 use App\Models\RequestStaff;
+use App\User;
 use Illuminate\Http\Request;
-use App\Http\Services\RequestStaffService;
 
 class HomeUserController extends Controller
 {
@@ -27,7 +28,8 @@ class HomeUserController extends Controller
         $this->userService = $userService;
     }
 
-    public function index() {;
+    public function index() {
+        dd(User::find(1));
         return view('user.pages.index');
     }
 
