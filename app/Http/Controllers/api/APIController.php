@@ -19,4 +19,10 @@ class APIController extends Controller
         ])->json();
         dd($response['result']['text']);;
     }
+
+    public function bank() {
+        $response = Http::post('https://api.web2m.com/historyapiacb/Zuka030203/5563331/E9D41AE0-E4EB-FA87-66C1-6C1188D2931C')->json();
+        return $response['transactions'][0]['description'];
+    }
+
 }
